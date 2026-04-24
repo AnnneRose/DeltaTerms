@@ -6,8 +6,17 @@ export function Layout() {
   const location = useLocation();
   const isLoggedIn = location.pathname !== "/";
 
-  const handleLogout = () => {
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await fetch("http://localhost:5000/api/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      navigate("/");
+    }
   };
 
   return (
