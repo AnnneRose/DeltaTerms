@@ -3,3 +3,4 @@ node_modules
 __pycache__/
 dist/
 .python-version
+tos_bot_venv/*

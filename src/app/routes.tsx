@@ -16,7 +16,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   useEffect(() => {
     // Check if user is authenticated on component mount
-    fetch("http://localhost:5000/api/me", {
+    fetch("/api/me", {
       credentials: "include",
     })
       .then((res) => setIsAuthenticated(res.ok))

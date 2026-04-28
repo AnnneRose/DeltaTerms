@@ -10,7 +10,7 @@ type Service = {
 };
 let mockServices: Service[];
 try {
-  const rawData = await fetch("http://localhost:5000/api/tos-history", {
+  const rawData = await fetch("/api/tos-history", {
     credentials: "include",
     method: "GET",
   }).then((res) => res.json());
