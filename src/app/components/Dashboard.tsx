@@ -1,37 +1,32 @@
 import { useNavigate } from "react-router";
 import { ExternalLink, MessageSquare, Calendar } from "lucide-react";
 
-// Mock data - will be replaced with Supabase data
-const mockServices = [
-  {
-    id: "1",
-    name: "Google",
-    url: "https://policies.google.com/terms",
-    lastAccepted: "2026-03-15",
-    hasChanges: true,
-  },
-  {
-    id: "2",
-    name: "Facebook",
-    url: "https://facebook.com/terms",
-    lastAccepted: "2026-02-10",
-    hasChanges: false,
-  },
-  {
-    id: "3",
-    name: "Amazon",
-    url: "https://amazon.com/conditions-of-use",
-    lastAccepted: "2026-01-20",
-    hasChanges: true,
-  },
-  {
-    id: "4",
-    name: "Twitter",
-    url: "https://twitter.com/tos",
-    lastAccepted: "2025-12-05",
-    hasChanges: false,
-  },
-];
+type Service = {
+  id: string;
+  name: string;
+  url: string;
+  lastAccepted: string;
+  hasChanges: boolean;
+};
+let mockServices: Service[];
+try {
+  const rawData = await fetch("http://localhost:5000/api/tos-history", {
+    credentials: "include",
+    method: "GET",
+  }).then((res) => res.json());
+  console.log("Fetched services:", rawData);
+  mockServices = rawData.map((item: any) => ({
+    id: String(item.id),
+    name: item.chatbot_name,
+    url: item.website_url,
+    lastAccepted: "N/A", // you don't have this in backend yet
+    hasChanges: !!item.delta, // assume delta means changes exist
+  }));
+} catch (error) {
+  console.log(error);
+  mockServices =[];
+}
+
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -58,10 +53,10 @@ export function Dashboard() {
               )}
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            {/* <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
               <Calendar size={16} />
               <span>Accepted: {service.lastAccepted}</span>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-2 text-sm text-blue-600 mb-4 hover:underline">
               <ExternalLink size={16} />

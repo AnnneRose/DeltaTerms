@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
+from sqlalchemy.exc import IntegrityError
 import os
 
 
@@ -48,27 +49,14 @@ class User(db.Model, UserMixin):
 
 class Websites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    chatbot_name = db.Column(db.String(200), nullable=False)
+    chatbot_name = db.Column(db.String(200), nullable=False, unique=True)
     previous_delta = db.Column(db.String(2000), nullable=True)
     content_1 = db.Column(db.Text, nullable=False)
     content_2 = db.Column(db.Text, nullable=True)
     url_name = db.Column(db.String(200), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-# Sanity check to print out all of the users and websites
-with app.app_context():
-    from sqlalchemy import inspect
-    inspector = inspect(db.engine)
-    print(inspector.get_table_names())
 
-with app.app_context():
-    print(User.query.all())
-
-    for row in User.query.all():
-        print(row.id, row.username, row.email)
-
-    for row in Websites.query.all():
-        print(row.id, row.chatbot_name, row.url_name)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -156,11 +144,12 @@ def save_tos_history():
         return "", 200
     
     data = request.get_json(silent=True) or {}
+    print("data:",data)
     chatbot_name = data.get('chatbot_name', '').strip()
     current_tos = data.get('current_tos', '').strip()
-    previous_tos = data.get('previous_tos', '').strip()
+    # previous_tos = data.get('previous_tos', '').strip()
     website_url = data.get('website_url', '').strip()
-    delta = data.get('delta', '').strip()
+    # delta = data.get('delta', '').strip()
     
     if not chatbot_name or not current_tos or not website_url:
         return jsonify(error="chatbot_name, current_tos, and website_url are required"), 400
@@ -168,20 +157,31 @@ def save_tos_history():
     tos_record = Websites(
         chatbot_name=chatbot_name,
         content_1=current_tos,
-        content_2=previous_tos or None,
+        content_2=None,
         url_name=website_url,
-        previous_delta=delta or None,
+        previous_delta= None,
         user_id=current_user.id
     )
-    db.session.add(tos_record)
+    record = db.session.query(Websites).filter_by(chatbot_name=chatbot_name).first()
+    if record:
+        record.previous_delta = generate_delta(record.content_1, current_tos)
+        record.content_2 = record.content_1
+        record.content_1 = tos_record.content_1
+        record.url_name = tos_record.url_name
+    else:
+        db.session.add(tos_record)
     db.session.commit()
+        
     
     return jsonify(message="TOS history saved", id=tos_record.id), 201
-
+def generate_delta(old_tos, new_tos):
+    # Placeholder for actual delta generation logic
+    return None
 @app.route("/api/tos-history", methods=["GET"])
 @login_required
 def get_tos_history():
     tos_records = Websites.query.filter_by(user_id=current_user.id).all()
+    print("Fetched TOS records for user_id", current_user.id, ":", tos_records)
     return jsonify([
         {
             'id': record.id,
@@ -226,4 +226,18 @@ def data():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+    # Sanity check to print out all of the users and websites
+    with app.app_context():
+        from sqlalchemy import inspect
+        inspector = inspect(db.engine)
+        print(inspector.get_table_names())
+
+    with app.app_context():
+        print(User.query.all())
+
+        for row in User.query.all():
+            print(row.id, row.username, row.email)
+
+        for row in Websites.query.all():
+            print(row.id, row.chatbot_name, row.url_name, row.user_id, row.content_1, row.content_2, row.previous_delta)
     app.run(debug=True)
