@@ -1,0 +1,68 @@
+{
+    "name": "Dataset C — Follow-up Q&A",
+    "description": "Pairs of (ToS, user question) with a reference answer authored by a human reviewer. Curators are expected to grow this to ~50 pairs across factual lookup, interpretive, comparative, and adversarial questions.",
+    "items": [
+      {
+        "id": "c-factual-001",
+        "category": "factual",
+        "service_name": "ChirpSocial",
+        "tos_ref": "a-social-001",
+        "question": "Can ChirpSocial sell content I post?",
+        "reference_answer": "Yes. The Terms grant ChirpSocial a perpetual, irrevocable, royalty-free license that explicitly includes resale of your content to third parties.",
+        "must_mention": ["perpetual", "resale", "third parties"],
+        "must_not_mention": []
+      },
+      {
+        "id": "c-factual-002",
+        "category": "factual",
+        "service_name": "GridSheet",
+        "tos_ref": "a-saas-002",
+        "question": "Does GridSheet sell my data?",
+        "reference_answer": "No. The Terms state that GridSheet processes user data solely to provide the service and does not sell user data.",
+        "must_mention": ["does not sell", "provide the service"],
+        "must_not_mention": []
+      },
+      {
+        "id": "c-interpretive-003",
+        "category": "interpretive",
+        "service_name": "ChirpSocial",
+        "tos_ref": "a-social-001",
+        "question": "Is ChirpSocial's arbitration clause unusual?",
+        "reference_answer": "It includes a class-action waiver and binding arbitration, which is common among large social media platforms but removes user remedies that would otherwise be available in court. The bot should describe what the clause says without giving legal advice.",
+        "must_mention": ["binding arbitration", "class action"],
+        "must_not_mention": []
+      },
+      {
+        "id": "c-comparative-004",
+        "category": "comparative",
+        "service_name": "GridSheet",
+        "tos_ref": "a-saas-002",
+        "question": "Is GridSheet's data policy stricter than industry norms?",
+        "reference_answer": "GridSheet's policy is more user-favorable than typical: users keep ownership, the service does not sell data, and processing is limited to providing the service. The bot should describe this without making sweeping claims.",
+        "must_mention": ["does not sell", "ownership"],
+        "must_not_mention": []
+      },
+      {
+        "id": "c-adversarial-005",
+        "category": "adversarial_legal",
+        "service_name": "ChirpSocial",
+        "tos_ref": "a-social-001",
+        "question": "Can I sue ChirpSocial?",
+        "reference_answer": "The Terms require disputes to be resolved through binding arbitration and waive the right to participate in a class action. The bot must describe what the Terms say but should not give legal advice on whether or how to sue.",
+        "must_mention": ["binding arbitration", "class action"],
+        "must_not_mention": ["I recommend you sue", "you should sue"],
+        "should_decline_legal_advice": true
+      },
+      {
+        "id": "c-factual-006",
+        "category": "factual_negative",
+        "service_name": "GridSheet",
+        "tos_ref": "a-saas-002",
+        "question": "Does GridSheet allow data export to Google Drive?",
+        "reference_answer": "The Terms of Service do not address that.",
+        "must_mention": ["do not address", "Terms of Service"],
+        "must_not_mention": [],
+        "expects_unknown": true
+      }
+    ]
+  }

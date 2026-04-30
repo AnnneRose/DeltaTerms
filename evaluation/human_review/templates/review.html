@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DeltaTerms — Human Review</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; margin: 2rem; max-width: 1100px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+    th { background: #f3f3f3; }
+    pre { background: #f7f7f7; padding: 10px; white-space: pre-wrap; word-wrap: break-word; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .reasons { color: #a14b00; font-size: 0.9rem; }
+    label { display: block; margin: 0.25rem 0; }
+    input[type=number] { width: 4rem; }
+    .hidden { display: none; }
+    #revealed-scores { background: #fffbe6; border: 1px solid #e0c97c; padding: 10px; margin-top: 1rem; }
+    .ship-yes { color: #2c7a2c; font-weight: bold; }
+    .ship-no { color: #b21a1a; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+{% if mode == 'index' %}
+  <h1>Review Queue</h1>
+  <p>The cases below were routed for human review by the triage layer. Click a case to score it. The LLM judge's scores are hidden until you submit your own.</p>
+  {% if queue|length == 0 %}
+    <p><em>No cases require review.</em></p>
+  {% else %}
+    <table>
+      <thead>
+        <tr>
+          <th>Test ID</th><th>Mode</th><th>Sector</th><th>Adversarial</th><th>Triage reasons</th><th>#Reviews</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in queue %}
+          <tr>
+            <td>{{ c.test_id }}</td>
+            <td>{{ c.mode }}</td>
+            <td>{{ c.sector }}</td>
+            <td>{{ 'yes' if c.is_adversarial else 'no' }}</td>
+            <td class="reasons">{{ c.reasons|join('; ') }}</td>
+            <td>{{ c.review_count }}</td>
+            <td><a href="/case/{{ c.test_id }}">Review →</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+{% elif mode == 'case' %}
+  <a href="/">← back to queue</a>
+  <h1>Reviewing {{ case.test_id }}</h1>
+
+  <p><strong>Mode:</strong> {{ case.mode }} &nbsp;|&nbsp;
+     <strong>Sector:</strong> {{ case.sector or '—' }} &nbsp;|&nbsp;
+     <strong>Service:</strong> {{ case.service_name }}</p>
+  <p class="reasons"><strong>Triage reasons:</strong>
+    {{ case.triage.reasons|join('; ') }}</p>
+
+  <div class="columns">
+    <div>
+      <h3>User input</h3>
+      <pre>{{ case.user_input }}</pre>
+      <h3>Source ToS</h3>
+      <pre>{{ case.source_tos }}</pre>
+      {% if case.previous_tos %}
+        <h3>Previous ToS</h3>
+        <pre>{{ case.previous_tos }}</pre>
+      {% endif %}
+      {% if case.ground_truth %}
+        <h3>Ground truth annotations</h3>
+        <pre>{{ case.ground_truth }}</pre>
+      {% endif %}
+    </div>
+    <div>
+      <h3>Bot response</h3>
+      <pre>{{ case.response }}</pre>
+
+      <h3>Your scores (0–5)</h3>
+      <form id="review-form">
+        <label>Reviewer ID
+          <input type="text" name="reviewer_id" required />
+        </label>
+        <label>Reviewer role
+          <select name="reviewer_role">
+            <option value="generalist">generalist</option>
+            <option value="domain_expert">domain expert</option>
+          </select>
+        </label>
+
+        {% for metric in metric_names %}
+          <label>{{ metric }}
+            <input type="number" name="score-{{ metric }}" min="0" max="5" required />
+          </label>
+        {% endfor %}
+
+        <label>Ship / No-ship
+          <select name="ship_no_ship">

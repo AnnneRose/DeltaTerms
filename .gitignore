@@ -7,3 +7,4 @@ tos_bot_venv/*
 .serena/
 .env
 conversation_logs/
+evaluation/results/*

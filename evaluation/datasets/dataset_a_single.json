@@ -1,0 +1,86 @@
+{
+  "name": "Dataset A — Single-Version ToS",
+  "description": "Diverse Terms of Service drawn from different sectors. Each document is annotated with clauses labeled harmful, neutral, or user-favorable. Used for first-contact summary, harm-flagging, and faithfulness evaluation. The seed entries below are illustrative; the curators are expected to grow this to ~30 documents across social media, e-commerce, SaaS, research consent forms, and mobile apps.",
+  "items": [
+    {
+      "id": "a-social-001",
+      "sector": "social_media",
+      "service_name": "ChirpSocial",
+      "tos_text": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, perpetual, irrevocable, royalty-free license to use, reproduce, distribute, modify, and create derivative works from any content you post, including for advertising and resale to third parties.\n3. ARBITRATION. Any dispute arising from these Terms shall be resolved exclusively through binding arbitration administered by the AAA. You waive your right to a jury trial and to participate in any class action.\n4. ACCOUNT TERMINATION. We may suspend or terminate your account at any time, for any reason, without prior notice.\n5. CHANGES TO TERMS. We may modify these Terms at any time. Continued use after changes constitutes acceptance.\n6. SUPPORT. We aim to respond to support tickets within 5 business days.",
+      "annotations": {
+        "harmful": [
+          {"clause": "Section 2 perpetual irrevocable license including resale", "rationale": "Perpetual license that survives account deletion and explicitly permits resale of user content."},
+          {"clause": "Section 3 binding arbitration with class-action waiver", "rationale": "Forced arbitration plus class action waiver removes user remedies."},
+          {"clause": "Section 4 termination without notice for any reason", "rationale": "Unilateral termination without cause."},
+          {"clause": "Section 5 unilateral modification with continued-use acceptance", "rationale": "Browsewrap-style unilateral modification."}
+        ],
+        "neutral": [
+          {"clause": "Section 1 account creation acknowledgement"},
+          {"clause": "Section 6 support response window"}
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "Posted content is licensed perpetually and may be resold.",
+        "Disputes go to arbitration; class actions waived.",
+        "Account can be terminated without notice.",
+        "Terms can change at any time."
+      ]
+    },
+    {
+      "id": "a-saas-002",
+      "sector": "saas",
+      "service_name": "GridSheet",
+      "tos_text": "1. SERVICE. GridSheet provides cloud-based spreadsheet software.\n2. DATA OWNERSHIP. You retain all ownership of data you upload.\n3. DATA PROCESSING. GridSheet processes data solely to provide the service. We do not sell user data.\n4. SECURITY. We encrypt data at rest with AES-256.\n5. SUBSCRIPTION. Monthly fees are billed in advance and are non-refundable.\n6. TERMINATION. Either party may terminate for material breach with 30 days' written notice.\n7. GOVERNING LAW. These Terms are governed by the laws of Delaware.",
+      "annotations": {
+        "harmful": [
+          {"clause": "Section 5 non-refundable subscription", "rationale": "Borderline: standard SaaS practice but can be flagged for prepaid annual plans."}
+        ],
+        "neutral": [
+          {"clause": "Section 1 service description"},
+          {"clause": "Section 4 encryption disclosure"},
+          {"clause": "Section 6 termination on notice"},
+          {"clause": "Section 7 governing law"}
+        ],
+        "user_favorable": [
+          {"clause": "Section 2 user retains data ownership"},
+          {"clause": "Section 3 no data sale"}
+        ]
+      },
+      "expected_summary_points": [
+        "Users keep ownership of their data.",
+        "GridSheet does not sell data and only uses it to run the service.",
+        "Subscriptions are non-refundable.",
+        "Either side can terminate on 30 days' notice for material breach."
+      ]
+    },
+    {
+      "id": "a-research-003",
+      "sector": "research_consent",
+      "service_name": "MindWell Sleep Study",
+      "high_stakes": true,
+      "tos_text": "INFORMED CONSENT — MINDWELL SLEEP STUDY\n\n1. PURPOSE. This study examines the effects of a sleep-tracking app on insomnia.\n2. PROCEDURES. Participants wear a wrist sensor for 8 weeks and complete weekly surveys.\n3. RISKS. Minimal risk: skin irritation from the sensor strap.\n4. DATA. De-identified data may be shared with collaborating universities. Identifiable data will not be shared outside the research team.\n5. WITHDRAWAL. You may withdraw at any time without penalty.\n6. COMPENSATION. Participants receive $75 upon completion.\n7. CONTACT. For questions contact the IRB at irb@example.edu.",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {"clause": "Section 1 purpose"},
+          {"clause": "Section 2 procedures"},
+          {"clause": "Section 4 de-identified data sharing"},
+          {"clause": "Section 6 compensation"},
+          {"clause": "Section 7 IRB contact"}
+        ],
+        "user_favorable": [
+          {"clause": "Section 3 minimal risk disclosure"},
+          {"clause": "Section 5 unconditional withdrawal"}
+        ]
+      },
+      "expected_summary_points": [
+        "Wear a wrist sensor for 8 weeks and fill out weekly surveys.",
+        "Risk is minimal; mainly possible skin irritation.",
+        "De-identified data may be shared with collaborators; identifiable data is kept within the research team.",
+        "Withdrawal is allowed at any time without penalty.",
+        "Compensation is $75 on completion."
+      ]
+    }
+  ]
+}

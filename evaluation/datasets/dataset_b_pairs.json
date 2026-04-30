@@ -1,0 +1,51 @@
+{
+    "name": "Dataset B — Version Pair Set",
+    "description": "Pairs of (old_version, new_version) for the same service. Each pair is annotated with the ground-truth list of material changes. Used to evaluate delta precision. Curators are expected to grow this to ~20 pairs covering substantial-change, cosmetic-only, and mixed-change cases.",
+    "items": [
+      {
+        "id": "b-substantial-001",
+        "service_name": "ChirpSocial",
+        "case_type": "substantial",
+        "old_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, royalty-free license to display content you post.\n3. DATA RETENTION. We retain account data for 18 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. Class actions are not waived.\n5. CHANGES. We will email registered users 30 days before any material change to these Terms.",
+        "new_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, perpetual, irrevocable, royalty-free license to use, distribute, modify, and create derivative works from content you post, including for advertising.\n3. DATA RETENTION. We retain account data for 36 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. You waive the right to participate in any class action.\n5. CHANGES. We may modify these Terms at any time. Continued use constitutes acceptance.",
+        "ground_truth_changes": [
+          "Content license expanded from display-only royalty-free to perpetual, irrevocable, including modification, derivative works, and advertising use.",
+          "Data retention after deletion increased from 18 months to 36 months.",
+          "Arbitration clause now adds a class-action waiver (previously not waived).",
+          "Change-of-terms notice removed: previously 30 days' email notice required, now changes take effect via continued use without notice."
+        ],
+        "non_changes_to_ignore": [
+          "Section 1 wording is identical."
+        ]
+      },
+      {
+        "id": "b-cosmetic-002",
+        "service_name": "GridSheet",
+        "case_type": "cosmetic_only",
+        "old_version": "1. Service. GridSheet provides cloud-based spreadsheet software.\n2. Data Ownership. You retain ownership of data you upload.\n3. Subscription. Monthly fees are billed in advance.",
+        "new_version": "Section 1 — The Service\nGridSheet provides cloud-based spreadsheet software.\n\nSection 2 — Data Ownership\nYou retain ownership of data you upload.\n\nSection 3 — Subscription\nMonthly fees are billed in advance.",
+        "ground_truth_changes": [],
+        "non_changes_to_ignore": [
+          "Section headers were reformatted but section content is semantically identical.",
+          "Whitespace and capitalization were changed."
+        ]
+      },
+      {
+        "id": "b-mixed-003",
+        "service_name": "ShopFast",
+        "case_type": "mixed",
+        "old_version": "1. PURCHASES. All sales are final 14 days after delivery.\n2. RETURNS. Items may be returned within 14 days for a full refund.\n3. SHIPPING. Standard shipping is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, and PayPal.\n5. PRIVACY. We may share your purchase history with marketing partners unless you opt out.",
+        "new_version": "1. PURCHASES. All sales are final 7 days after delivery.\n2. RETURNS. Items may be returned within 14 days for store credit only.\n3. SHIPPING. Standard delivery is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, PayPal, and ShopFast Pay.\n5. PRIVACY. We share your purchase history with marketing partners. Opt-out is available only for users in the EU.",
+        "ground_truth_changes": [
+          "Sales-final window shortened from 14 days to 7 days after delivery.",
+          "Returns now give only store credit instead of a full refund.",
+          "ShopFast Pay added as a payment option.",
+          "Default for sharing purchase history is now opt-in by default; opt-out restricted to EU users (was global opt-out)."
+        ],
+        "non_changes_to_ignore": [
+          "Shipping window unchanged (wording 'shipping' vs 'delivery' is cosmetic).",
+          "Visa, MasterCard, PayPal still accepted."
+        ]
+      }
+    ]
+  }
