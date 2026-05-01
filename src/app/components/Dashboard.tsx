@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
-import { ExternalLink, MessageSquare } from "lucide-react";
+import { ExternalLink, MessageSquare, RefreshCw } from "lucide-react";
 
 type Service = {
   id: string;
@@ -121,14 +121,29 @@ export function Dashboard() {
                 </a>
               </div>
 
-              <button
-                type="button"
-                onClick={() => navigate(`/chat/${service.id}`)}
-                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-              >
-                <MessageSquare size={18} />
-                <span>Review & Chat</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => navigate(`/chat/${service.id}`)}
+                  className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  <MessageSquare size={18} />
+                  <span>Review & Chat</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    navigate("/upload", {
+                      state: { serviceName: service.name, url: service.url },
+                    })
+                  }
+                  className="flex items-center justify-center gap-2 border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50 transition-colors"
+                  title="Upload an updated version"
+                >
+                  <RefreshCw size={18} />
+                  <span>Update</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>

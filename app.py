@@ -7,6 +7,12 @@ from dotenv import load_dotenv
 from sqlalchemy.exc import IntegrityError
 import os
 
+from delta import DeltaGenerator
+from chat import Chatbot
+import json
+import uuid
+from datetime import datetime
+
 
 load_dotenv()
 
@@ -15,6 +21,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 db = SQLAlchemy(app)
+delta_generator = DeltaGenerator()
+chatbot = Chatbot()
+LOGS_DIR = "conversation_logs"
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -171,19 +180,26 @@ def save_tos_history():
     )
     record = db.session.query(Websites).filter_by(chatbot_name=chatbot_name).first()
     if record:
-        record.previous_delta = generate_delta(record.content_1, current_tos)
+        print(f"[upsert] UPDATE path for chatbot_name={chatbot_name!r} (existing id={record.id})")
+        print(f"[upsert] old content_1 length={len(record.content_1 or '')}, new content length={len(current_tos)}")
+        delta = generate_delta(record.content_1, current_tos)
+        print(f"[upsert] generated delta: {delta!r}")
+        record.previous_delta = delta
         record.content_2 = record.content_1
         record.content_1 = tos_record.content_1
         record.url_name = tos_record.url_name
     else:
+        print(f"[upsert] CREATE path for chatbot_name={chatbot_name!r} (no existing record found)")
+        existing_names = [r.chatbot_name for r in Websites.query.filter_by(user_id=current_user.id).all()]
+        print(f"[upsert] this user's existing chatbot_names: {existing_names}")
         db.session.add(tos_record)
     db.session.commit()
         
     
     return jsonify(message="TOS history saved", id=tos_record.id), 201
 def generate_delta(old_tos, new_tos):
-    # Placeholder for actual delta generation logic
-    return None
+    return delta_generator.get_delta(old_tos, new_tos)
+    
 @app.route("/api/tos-history", methods=["GET"])
 @login_required
 def get_tos_history():
@@ -200,6 +216,73 @@ def get_tos_history():
         }
         for record in tos_records
     ]), 200
+
+def log_chat_turn(conversation_id, service_id, history, user_message, assistant_reply):
+    os.makedirs(LOGS_DIR, exist_ok=True)
+    path = os.path.join(LOGS_DIR, f"{conversation_id}.json")
+
+    turns = []
+    for turn in history or []:
+        role = turn.get("role")
+        content = turn.get("content", "")
+        if role in ("user", "assistant") and content:
+            turns.append({"role": role, "content": content})
+    turns.append({"role": "user", "content": user_message})
+    turns.append({"role": "assistant", "content": assistant_reply})
+
+    payload = {
+        "name": conversation_id,
+        "service_id": service_id,
+        "user_id": current_user.id if current_user.is_authenticated else None,
+        "timestamp": datetime.now().isoformat(),
+        "conversation": turns,
+        "retrieved_context": "",
+    }
+    with open(path, "w") as f:
+        json.dump(payload, f, indent=2)
+
+
+@app.route("/api/chat/<int:service_id>", methods=["POST", "OPTIONS"])
+@login_required
+def chat(service_id):
+    if request.method == "OPTIONS":
+        return "", 200
+
+    record = Websites.query.filter_by(id=service_id, user_id=current_user.id).first()
+    if not record:
+        return jsonify(error="Service not found"), 404
+
+    data = request.get_json(silent=True) or {}
+    message = (data.get("message") or "").strip()
+    history = data.get("history") or []
+    conversation_id = (data.get("conversation_id") or "").strip() or str(uuid.uuid4())[:8]
+
+    if not message:
+        return jsonify(error="message is required"), 400
+
+    try:
+        reply = chatbot.get_response(
+            user_input=message,
+            history=history,
+            service_name=record.chatbot_name,
+            current_tos=record.content_1,
+            previous_tos=record.content_2,
+            delta=record.previous_delta,
+        )
+    except Exception as exc:
+        print(f"[chat] generation failed: {type(exc).__name__}: {exc}")
+        return jsonify(error="The model is busy or unavailable. Please try again."), 502
+
+    if not reply:
+        return jsonify(error="The model returned an empty response. Please try again."), 502
+
+    try:
+        log_chat_turn(conversation_id, service_id, history, message, reply)
+    except Exception as exc:
+        print(f"[chat] logging failed (non-fatal): {type(exc).__name__}: {exc}")
+
+    return jsonify(reply=reply, conversation_id=conversation_id), 200
+
 
 @app.route("/api/hello")
 def hello():
