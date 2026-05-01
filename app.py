@@ -199,6 +199,7 @@ def save_tos_history():
     return jsonify(message="TOS history saved", id=tos_record.id), 201
 def generate_delta(old_tos, new_tos):
     return delta_generator.get_delta(old_tos, new_tos)
+    
 @app.route("/api/tos-history", methods=["GET"])
 @login_required
 def get_tos_history():

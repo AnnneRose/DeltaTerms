@@ -48,7 +48,7 @@ export function Layout() {
                     }`}
                   >
                     <Upload size={18} />
-                    <span>Add/Update ToS</span>
+                    <span>Add ToS</span>
                   </button>
                 </nav>
               </div>
