@@ -47,5 +47,6 @@ class DeltaGenerator:
             print(f"[delta] HF returned content length={len(content) if content else 0}")
             return content.strip() if content else None
         except Exception as exc:
+            
             print(f"[delta] generation failed: {type(exc).__name__}: {exc}")
             return None
