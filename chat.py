@@ -1,5 +1,7 @@
 from huggingface_hub import InferenceClient
+
 from config import BASE_MODEL, HF_TOKEN
+from inference_retry import call_with_hf_retry
 
 SYSTEM_PROMPT_TEMPLATE = """
 You are a Terms of Service assistant for the service "{service_name}". You help
@@ -95,7 +97,10 @@ class Chatbot:
             f"current_tos_len={len(current_tos)}, "
             f"previous_tos_len={len(previous_tos or '')}"
         )
-        output = self.client.chat_completion(messages=messages, max_tokens=1024)
+        output = call_with_hf_retry(
+            lambda: self.client.chat_completion(messages=messages, max_tokens=1024),
+            label="chat",
+        )
         content = output.choices[0].message.content
         print(f"[chat] HF returned content length={len(content) if content else 0}")
         return (content or "").strip()

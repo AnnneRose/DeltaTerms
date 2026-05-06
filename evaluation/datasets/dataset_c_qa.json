@@ -1,68 +1,861 @@
 {
     "name": "Dataset C — Follow-up Q&A",
-    "description": "Pairs of (ToS, user question) with a reference answer authored by a human reviewer. Curators are expected to grow this to ~50 pairs across factual lookup, interpretive, comparative, and adversarial questions.",
+    "description": "Pairs of (ToS, user question) with a reference answer authored by a human reviewer. Includes six illustrative seed cases tied to synthetic Dataset A entries (ChirpSocial / GridSheet) and fifty additional pairs mapped to curated ToS summaries (tos-001 … tos-050) via tos_ref. Categories span factual lookup, factual-negative, interpretive, comparative, and adversarial-legal questions. Where a curated pair reused a seed id, it was suffixed with \"-rw\".",
     "items": [
-      {
-        "id": "c-factual-001",
-        "category": "factual",
-        "service_name": "ChirpSocial",
-        "tos_ref": "a-social-001",
-        "question": "Can ChirpSocial sell content I post?",
-        "reference_answer": "Yes. The Terms grant ChirpSocial a perpetual, irrevocable, royalty-free license that explicitly includes resale of your content to third parties.",
-        "must_mention": ["perpetual", "resale", "third parties"],
-        "must_not_mention": []
-      },
-      {
-        "id": "c-factual-002",
-        "category": "factual",
-        "service_name": "GridSheet",
-        "tos_ref": "a-saas-002",
-        "question": "Does GridSheet sell my data?",
-        "reference_answer": "No. The Terms state that GridSheet processes user data solely to provide the service and does not sell user data.",
-        "must_mention": ["does not sell", "provide the service"],
-        "must_not_mention": []
-      },
-      {
-        "id": "c-interpretive-003",
-        "category": "interpretive",
-        "service_name": "ChirpSocial",
-        "tos_ref": "a-social-001",
-        "question": "Is ChirpSocial's arbitration clause unusual?",
-        "reference_answer": "It includes a class-action waiver and binding arbitration, which is common among large social media platforms but removes user remedies that would otherwise be available in court. The bot should describe what the clause says without giving legal advice.",
-        "must_mention": ["binding arbitration", "class action"],
-        "must_not_mention": []
-      },
-      {
-        "id": "c-comparative-004",
-        "category": "comparative",
-        "service_name": "GridSheet",
-        "tos_ref": "a-saas-002",
-        "question": "Is GridSheet's data policy stricter than industry norms?",
-        "reference_answer": "GridSheet's policy is more user-favorable than typical: users keep ownership, the service does not sell data, and processing is limited to providing the service. The bot should describe this without making sweeping claims.",
-        "must_mention": ["does not sell", "ownership"],
-        "must_not_mention": []
-      },
-      {
-        "id": "c-adversarial-005",
-        "category": "adversarial_legal",
-        "service_name": "ChirpSocial",
-        "tos_ref": "a-social-001",
-        "question": "Can I sue ChirpSocial?",
-        "reference_answer": "The Terms require disputes to be resolved through binding arbitration and waive the right to participate in a class action. The bot must describe what the Terms say but should not give legal advice on whether or how to sue.",
-        "must_mention": ["binding arbitration", "class action"],
-        "must_not_mention": ["I recommend you sue", "you should sue"],
-        "should_decline_legal_advice": true
-      },
-      {
-        "id": "c-factual-006",
-        "category": "factual_negative",
-        "service_name": "GridSheet",
-        "tos_ref": "a-saas-002",
-        "question": "Does GridSheet allow data export to Google Drive?",
-        "reference_answer": "The Terms of Service do not address that.",
-        "must_mention": ["do not address", "Terms of Service"],
-        "must_not_mention": [],
-        "expects_unknown": true
-      }
+        {
+            "id": "c-factual-001",
+            "category": "factual",
+            "service_name": "ChirpSocial",
+            "tos_ref": "a-social-001",
+            "question": "Can ChirpSocial sell content I post?",
+            "reference_answer": "Yes. The Terms grant ChirpSocial a perpetual, irrevocable, royalty-free license that explicitly includes resale of your content to third parties.",
+            "must_mention": [
+                "perpetual",
+                "resale",
+                "third parties"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-002",
+            "category": "factual",
+            "service_name": "GridSheet",
+            "tos_ref": "a-saas-002",
+            "question": "Does GridSheet sell my data?",
+            "reference_answer": "No. The Terms state that GridSheet processes user data solely to provide the service and does not sell user data.",
+            "must_mention": [
+                "does not sell",
+                "provide the service"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-003",
+            "category": "interpretive",
+            "service_name": "ChirpSocial",
+            "tos_ref": "a-social-001",
+            "question": "Is ChirpSocial's arbitration clause unusual?",
+            "reference_answer": "It includes a class-action waiver and binding arbitration, which is common among large social media platforms but removes user remedies that would otherwise be available in court. The bot should describe what the clause says without giving legal advice.",
+            "must_mention": [
+                "binding arbitration",
+                "class action"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-004",
+            "category": "comparative",
+            "service_name": "GridSheet",
+            "tos_ref": "a-saas-002",
+            "question": "Is GridSheet's data policy stricter than industry norms?",
+            "reference_answer": "GridSheet's policy is more user-favorable than typical: users keep ownership, the service does not sell data, and processing is limited to providing the service. The bot should describe this without making sweeping claims.",
+            "must_mention": [
+                "does not sell",
+                "ownership"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-adversarial-005",
+            "category": "adversarial_legal",
+            "service_name": "ChirpSocial",
+            "tos_ref": "a-social-001",
+            "question": "Can I sue ChirpSocial?",
+            "reference_answer": "The Terms require disputes to be resolved through binding arbitration and waive the right to participate in a class action. The bot must describe what the Terms say but should not give legal advice on whether or how to sue.",
+            "must_mention": [
+                "binding arbitration",
+                "class action"
+            ],
+            "must_not_mention": [
+                "I recommend you sue",
+                "you should sue"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-factual-006",
+            "category": "factual_negative",
+            "service_name": "GridSheet",
+            "tos_ref": "a-saas-002",
+            "question": "Does GridSheet allow data export to Google Drive?",
+            "reference_answer": "The Terms of Service do not address that.",
+            "must_mention": [
+                "do not address",
+                "Terms of Service"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-factual-001-rw",
+            "category": "factual",
+            "service_name": "X (Twitter)",
+            "tos_ref": "tos-011",
+            "question": "Can X use my posts to train its AI models?",
+            "reference_answer": "Yes. Under the Terms of Service that took effect on November 15, 2024, you grant X a worldwide, royalty-free license that explicitly includes using your posts to train its machine-learning and generative-AI models. The previous in-product opt-out language was also removed from the Terms.",
+            "must_mention": [
+                "royalty-free",
+                "training",
+                "machine-learning",
+                "November 15, 2024"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-002-rw",
+            "category": "factual",
+            "service_name": "Steam (Valve)",
+            "tos_ref": "tos-042",
+            "question": "Does Steam still require disputes to go to arbitration?",
+            "reference_answer": "No. As of the September 26, 2024 update to the Steam Subscriber Agreement, Valve removed the mandatory binding arbitration and class-action waiver entirely. Disputes are now resolved in court, subject to the venue rules in the agreement.",
+            "must_mention": [
+                "removed",
+                "arbitration",
+                "court"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-003",
+            "category": "factual",
+            "service_name": "Anthropic",
+            "tos_ref": "tos-008",
+            "question": "Does Anthropic train its models on my API prompts?",
+            "reference_answer": "No. The Anthropic Commercial Terms of Service state that customer prompts and completions submitted via the API are not used to train Anthropic's models by default.",
+            "must_mention": [
+                "not used to train",
+                "by default"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-004",
+            "category": "factual",
+            "service_name": "Disney+",
+            "tos_ref": "tos-024",
+            "question": "Can I still get an ad-free Disney+ tier?",
+            "reference_answer": "Under the updated Subscriber Agreement (effective January 27, 2025 for new subscribers and March 24, 2025 for existing ones), the 'no ads' / 'ad-free' tiers may now include ads on certain streaming titles at Disney's discretion. So while the tier name remains, true ad-free playback is no longer guaranteed for all content.",
+            "must_mention": [
+                "may include ads",
+                "no ads",
+                "no longer guaranteed"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-005",
+            "category": "factual",
+            "service_name": "23andMe",
+            "tos_ref": "tos-039",
+            "question": "How do I keep my right to sue 23andMe after the data breach?",
+            "reference_answer": "Under the Terms updated after the October 2023 data breach, you are automatically opted in to mandatory arbitration unless you affirmatively opt out within the 30-day window described in the Terms by sending the company a written notice of objection. If you don't opt out, class-action rights are limited and disputes go to arbitration.",
+            "must_mention": [
+                "mandatory arbitration",
+                "30-day",
+                "opt out",
+                "written"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-006-rw",
+            "category": "factual",
+            "service_name": "Apple (iCloud)",
+            "tos_ref": "tos-029",
+            "question": "Can I turn on end-to-end encryption for my iCloud data?",
+            "reference_answer": "Yes. The updated iCloud Terms reference Advanced Data Protection, an opt-in feature that adds end-to-end encryption to additional categories of iCloud data. When it is enabled, Apple's ability to access the relevant data is correspondingly narrowed.",
+            "must_mention": [
+                "Advanced Data Protection",
+                "end-to-end encryption",
+                "opt-in"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-007",
+            "category": "factual",
+            "service_name": "Tumblr",
+            "tos_ref": "tos-032",
+            "question": "Is there a way to stop Tumblr from sharing my posts with AI partners?",
+            "reference_answer": "Yes. The updated Terms reference a user-facing opt-out under Settings > Visibility > 'Prevent third-party sharing'. Enabling it withdraws your public posts from sharing with third-party AI partners for training.",
+            "must_mention": [
+                "opt-out",
+                "Settings",
+                "Visibility",
+                "third-party"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-008",
+            "category": "factual",
+            "service_name": "Adobe",
+            "tos_ref": "tos-014",
+            "question": "Does Adobe train generative AI on the files I store in Creative Cloud?",
+            "reference_answer": "No. After the June 2024 controversy, Adobe rewrote the relevant section of its Terms of Use to explicitly state that it does not train generative-AI models on customer cloud content. The earlier February 2024 wording allowed Adobe to access content via automated and manual methods, which prompted the rewrite.",
+            "must_mention": [
+                "does not train",
+                "generative AI",
+                "rewrote",
+                "June 2024"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-009",
+            "category": "factual",
+            "service_name": "Google",
+            "tos_ref": "tos-001",
+            "question": "When was Google's Terms of Service last updated, and where can I see what changed?",
+            "reference_answer": "Google's current Terms of Service took effect on May 22, 2024, replacing the January 5, 2022 version. Google publishes a public archive of all prior versions at policies.google.com/terms/archive, including a side-by-side comparison page (policies.google.com/terms/archive/20220105-20240522) showing exactly what changed.",
+            "must_mention": [
+                "May 22, 2024",
+                "archive",
+                "comparison"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-010",
+            "category": "factual",
+            "service_name": "Microsoft",
+            "tos_ref": "tos-003",
+            "question": "When does the new Microsoft Services Agreement take effect?",
+            "reference_answer": "The updated Microsoft Services Agreement was published on July 30, 2025 and takes effect on September 30, 2025. Microsoft publishes a Summary of Changes at microsoft.com/en-us/servicesagreement/Updates that lists each modification.",
+            "must_mention": [
+                "September 30, 2025",
+                "Summary of Changes"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-011",
+            "category": "factual",
+            "service_name": "Meta (Facebook)",
+            "tos_ref": "tos-009",
+            "question": "When did Meta's new Facebook Terms of Service take effect?",
+            "reference_answer": "The updated Meta Terms of Service for Facebook took effect on January 1, 2025. Meta also merged related Community Standards on November 12, 2024 ahead of that change.",
+            "must_mention": [
+                "January 1, 2025"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-012",
+            "category": "factual",
+            "service_name": "TikTok",
+            "tos_ref": "tos-012",
+            "question": "Who is my contract actually with under TikTok's new Terms?",
+            "reference_answer": "Under the Terms of Service updated effective January 22, 2026, U.S. users' contracting party is TikTok USDS, the new U.S. joint-venture entity created after the divestment deal involving Oracle, Silver Lake, and MGX. Previously the contract was with TikTok Inc.",
+            "must_mention": [
+                "TikTok USDS",
+                "January 22, 2026"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-013",
+            "category": "factual",
+            "service_name": "GitHub",
+            "tos_ref": "tos-020",
+            "question": "Can my personal data on GitHub be shared with Microsoft for AI training?",
+            "reference_answer": "Yes. Under the March 2026 Privacy Statement update, GitHub may now share personal data with affiliates including Microsoft for the purpose of developing and improving artificial-intelligence and machine-learning technologies. GitHub states that any opt-out preferences and enterprise data protections you have set will travel with the data when it is shared.",
+            "must_mention": [
+                "affiliates",
+                "Microsoft",
+                "AI",
+                "opt-out preferences"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-014",
+            "category": "factual",
+            "service_name": "YouTube",
+            "tos_ref": "tos-013",
+            "question": "Can YouTube put ads on my videos even if I'm not in the Partner Program?",
+            "reference_answer": "Yes. Under the Terms of Service that took effect globally on June 1, 2021, YouTube has the right to monetize most content on its platform, including videos from creators who are not in the YouTube Partner Program.",
+            "must_mention": [
+                "right to monetize",
+                "not in",
+                "Partner Program"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-015",
+            "category": "factual",
+            "service_name": "Snap (Snapchat)",
+            "tos_ref": "tos-030",
+            "question": "How long do I have to wait before filing arbitration against Snap?",
+            "reference_answer": "Under the updated Snap Terms (effective April 7, 2025), there is a 60-day pre-arbitration waiting period after a Pre-Arbitration Demand is sent. Arbitration may only be filed if the dispute is not resolved within those 60 days.",
+            "must_mention": [
+                "60-day",
+                "Pre-Arbitration Demand"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-016",
+            "category": "factual",
+            "service_name": "OpenAI",
+            "tos_ref": "tos-005",
+            "question": "How can I opt out of OpenAI's arbitration provisions?",
+            "reference_answer": "OpenAI's consumer Terms of Use allow you to opt out of arbitration within 30 days of account creation, or within 30 days after any update to the arbitration terms takes effect, by submitting the opt-out form linked from the Terms. If you opt out of an update, the previously agreed arbitration terms continue to apply.",
+            "must_mention": [
+                "30 days",
+                "opt out",
+                "form"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-017",
+            "category": "factual",
+            "service_name": "Slack",
+            "tos_ref": "tos-017",
+            "question": "Does Slack use my workspace messages to train its AI?",
+            "reference_answer": "No. The updated Slack User Terms explicitly state that Customer Data is not used to train Slack's generative-AI products. Earlier privacy-policy language about machine-learning use for global model training was also narrowed.",
+            "must_mention": [
+                "not used to train",
+                "Customer Data"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-018",
+            "category": "factual_negative",
+            "service_name": "Anthropic",
+            "tos_ref": "tos-007",
+            "question": "Can I share my Claude.ai password with my spouse?",
+            "reference_answer": "The Anthropic Consumer Terms of Service do not address spousal sharing specifically. They do prohibit sharing your account login information or credentials with anyone else and state that you are responsible for all activity occurring under your Account.",
+            "must_mention": [
+                "do not address",
+                "sharing",
+                "credentials"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-factual-019",
+            "category": "factual_negative",
+            "service_name": "X (Twitter)",
+            "tos_ref": "tos-011",
+            "question": "Does X's Terms of Service guarantee a specific uptime?",
+            "reference_answer": "The Terms of Service do not address that. They include the standard warranty disclaimers covering availability of the service but do not promise any specific uptime percentage or service-level guarantee.",
+            "must_mention": [
+                "do not address",
+                "Terms of Service"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-factual-020",
+            "category": "factual_negative",
+            "service_name": "Steam (Valve)",
+            "tos_ref": "tos-042",
+            "question": "Does the Steam Subscriber Agreement say anything about cryptocurrency payments?",
+            "reference_answer": "The Steam Subscriber Agreement does not address cryptocurrency payments. Accepted payment methods and refund handling are described, but cryptocurrency is not mentioned in the document.",
+            "must_mention": [
+                "does not address",
+                "cryptocurrency"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-factual-021",
+            "category": "factual_negative",
+            "service_name": "Notion",
+            "tos_ref": "tos-035",
+            "question": "Does Notion's Terms of Service guarantee that my data is stored in the EU?",
+            "reference_answer": "The standard Terms of Service do not guarantee EU data residency for all users. They reference data-residency options that are available on Enterprise plans, but for consumer/team plans the Terms do not address a specific storage region.",
+            "must_mention": [
+                "do not",
+                "Enterprise",
+                "data-residency"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-interpretive-022",
+            "category": "interpretive",
+            "service_name": "Meta (Facebook)",
+            "tos_ref": "tos-009",
+            "question": "If I post a photo on Facebook, can Meta sell that photo to a stock-image company?",
+            "reference_answer": "The Terms grant Meta a broad worldwide, sublicensable license to use, distribute, and modify content you upload — for the purpose of operating and improving its services. The bot should explain that this is a license, not a transfer of ownership, and that the license ends when you delete the content. Whether it would specifically permit sublicensing to a stock-image company depends on interpretation; the bot should describe what the Terms say without giving legal advice.",
+            "must_mention": [
+                "sublicensable",
+                "license",
+                "delete",
+                "ownership"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-023",
+            "category": "interpretive",
+            "service_name": "Adobe",
+            "tos_ref": "tos-014",
+            "question": "Why did so many people get upset about Adobe's 2024 Terms of Use update?",
+            "reference_answer": "The February 2024 update added language that Adobe could access user content through both automated and manual methods to improve services and software, with examples that included machine-learning techniques. Many creators read this — combined with broad license language in section 4.2 — as authorizing Adobe to train generative-AI models on their work. After significant backlash, Adobe rewrote the section in clearer language and explicitly stated it does not train generative AI on customer cloud content. The bot should describe this without giving legal advice on whether the original wording technically permitted such training.",
+            "must_mention": [
+                "automated and manual",
+                "machine learning",
+                "rewrote",
+                "does not train"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-024",
+            "category": "interpretive",
+            "service_name": "X (Twitter)",
+            "tos_ref": "tos-011",
+            "question": "Are the X 2024 Terms a meaningful change from the prior version?",
+            "reference_answer": "Yes — the November 15, 2024 update is a substantive change. It explicitly extends X's worldwide, royalty-free license to cover training of machine-learning and generative-AI models, and the in-product opt-out language that had previously let users disable use of their content for Grok training was removed from the Terms. Third-party data-sharing permissions were also broadened. The bot should describe these changes without making sweeping claims about their legality.",
+            "must_mention": [
+                "royalty-free",
+                "training",
+                "opt-out",
+                "removed"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-025",
+            "category": "interpretive",
+            "service_name": "Zoom",
+            "tos_ref": "tos-015",
+            "question": "Can Zoom use my video calls to train AI?",
+            "reference_answer": "Under the current Terms, no — not without your consent. After backlash to the March 2023 update (which had granted a broad license over Service Generated Data for AI/ML training), Zoom amended Section 10 in August 2023 to explicitly state that audio, video, and chat content are not used to train AI models without customer consent. The bot should explain that the consent question turns on whether you have separately enabled Zoom's AI Companion features for your account.",
+            "must_mention": [
+                "consent",
+                "audio, video",
+                "AI Companion"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-026",
+            "category": "interpretive",
+            "service_name": "Reddit",
+            "tos_ref": "tos-021",
+            "question": "Does Reddit own the posts I make there?",
+            "reference_answer": "No — you continue to own your posts. Under the September 2023 User Agreement, however, you grant Reddit a worldwide, royalty-free license to use, copy, modify, distribute, and license that content to third parties. Reddit has used this third-party-licensing right to enter commercial AI-training agreements with Google and OpenAI. The bot should describe what the Terms say without giving legal advice.",
+            "must_mention": [
+                "own",
+                "license",
+                "third parties",
+                "Google",
+                "OpenAI"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-027",
+            "category": "interpretive",
+            "service_name": "Snap (Snapchat)",
+            "tos_ref": "tos-030",
+            "question": "If I post in a Snap Live or Local feed, what rights am I giving up vs. a normal Snap?",
+            "reference_answer": "The Snap Terms make a clear distinction. For ordinary Snaps, the license you grant is limited to operating, developing, providing, and improving Snap's services. For Live, Local, and other crowd-sourced services, the license is significantly broader — including a perpetual right to create derivative works from, promote, exhibit, broadcast, syndicate, publicly perform, and publicly display the content, in any media. There is also a name/likeness/voice license tied to crowd-sourced content. The bot should explain this two-tier structure without giving legal advice.",
+            "must_mention": [
+                "Live",
+                "Local",
+                "crowd-sourced",
+                "perpetual",
+                "derivative"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-028",
+            "category": "interpretive",
+            "service_name": "23andMe",
+            "tos_ref": "tos-039",
+            "question": "Why did 23andMe change its Terms after the 2023 data breach?",
+            "reference_answer": "Independent reporting and the company's own filings indicate that the post-breach Terms update added a mandatory-arbitration clause and limited class-action rights, with users automatically opted in unless they wrote to object within the 30-day opt-out window. Critics describe this as an attempt to block customers affected by the breach from joining class-action lawsuits. The bot should describe what the Terms say and the timing without giving legal advice on the validity or enforceability of the change.",
+            "must_mention": [
+                "mandatory arbitration",
+                "class action",
+                "30-day",
+                "opted in"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-029",
+            "category": "interpretive",
+            "service_name": "Netflix",
+            "tos_ref": "tos-023",
+            "question": "Under Netflix's updated Terms, who counts as part of my 'household'?",
+            "reference_answer": "The updated Terms introduce a 'Netflix Household' concept tied to a primary location and the devices that connect from that location. People who do not live with you are not part of your Netflix Household and require an extra-member fee to use your account. The bot should describe how this is defined in the Terms but should not give legal advice or speculate about edge cases (e.g. college students, frequent travelers) beyond what Netflix publishes.",
+            "must_mention": [
+                "Netflix Household",
+                "primary",
+                "extra-member"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-030",
+            "category": "comparative",
+            "service_name": "Anthropic vs OpenAI (consumer)",
+            "tos_ref": "tos-007",
+            "question": "Are Anthropic's consumer Terms more user-favorable than OpenAI's on training?",
+            "reference_answer": "On the specific question of training, the two are similar in spirit but differ in placement. Anthropic's Commercial Terms (governing API/Enterprise use) explicitly state customer prompts and completions are not used to train models by default; the Consumer Terms cover Claude.ai/Pro and rely on the published Privacy Policy for training-data details. OpenAI's Consumer Terms of Use rely on the Privacy Policy and an in-product setting to control whether ChatGPT consumer conversations are used for training. The bot should describe the structural similarity without making sweeping claims about which is 'better'.",
+            "must_mention": [
+                "not used to train",
+                "by default",
+                "Privacy Policy",
+                "setting"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-031",
+            "category": "comparative",
+            "service_name": "X vs LinkedIn",
+            "tos_ref": "tos-011",
+            "question": "Do both X and LinkedIn let me opt out of having my posts used to train AI?",
+            "reference_answer": "Not in the same way. LinkedIn's 2024 User Agreement update added a Settings-level opt-out toggle for AI training that members can disable. X's November 15, 2024 Terms removed the in-product opt-out language that previously let users disable use of their content for Grok training, and added an explicit license to use posts for ML and generative-AI training. So as of these updates, LinkedIn provides an opt-out and X does not via the Terms. The bot should describe what each Terms document says without legal advice.",
+            "must_mention": [
+                "LinkedIn",
+                "opt-out",
+                "Settings",
+                "removed",
+                "X"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-032",
+            "category": "comparative",
+            "service_name": "Steam vs Epic Games",
+            "tos_ref": "tos-042",
+            "question": "Can I sue Steam or Epic Games in court rather than going to arbitration?",
+            "reference_answer": "There's a meaningful difference between the two. Steam's Subscriber Agreement was updated on September 26, 2024 to remove the mandatory binding arbitration and class-action waiver entirely, so disputes against Valve now go to court subject to venue rules. Epic Games' Terms of Service continue to use arbitration provisions for many disputes (with EU-specific consumer-rights carve-outs added post-DMA). The bot should describe what each document says without giving legal advice on whether to file a claim.",
+            "must_mention": [
+                "Steam",
+                "removed",
+                "arbitration",
+                "Epic Games",
+                "court"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-033",
+            "category": "comparative",
+            "service_name": "Apple iCloud vs Dropbox",
+            "tos_ref": "tos-029",
+            "question": "Which provides stronger end-to-end encryption guarantees in their Terms — iCloud or Dropbox?",
+            "reference_answer": "iCloud goes further on this dimension. The updated iCloud Terms reference Advanced Data Protection, an opt-in feature that adds end-to-end encryption to additional categories of iCloud data, plus Apple Intelligence Private Cloud Compute language for AI workloads. Dropbox's Terms describe security controls and (after backlash) explicitly state customer data is not used to train third-party AI models without consent, but do not offer a Terms-level end-to-end-encryption commitment for general user data. The bot should describe what each document says without making sweeping claims about overall security.",
+            "must_mention": [
+                "Advanced Data Protection",
+                "opt-in",
+                "end-to-end",
+                "Dropbox"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-034",
+            "category": "comparative",
+            "service_name": "Meta vs Snap",
+            "tos_ref": "tos-009",
+            "question": "Whose content license is broader — Meta's or Snap's?",
+            "reference_answer": "Both are broad, but they're broad in different shapes. Meta's January 1, 2025 Terms grant a worldwide, sublicensable license to use, distribute, and modify content uploaded to its products, ending when content is deleted. Snap's April 7, 2025 Terms keep the ordinary-Snap license narrower (limited to operating and improving the services) but apply a much broader license to Live, Local, and other crowd-sourced content — including a perpetual right to create derivative works and a name/likeness/voice license. The bot should describe the structures without giving legal advice.",
+            "must_mention": [
+                "Meta",
+                "sublicensable",
+                "delete",
+                "Snap",
+                "Live",
+                "Local",
+                "perpetual"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-035",
+            "category": "comparative",
+            "service_name": "Slack vs Discord",
+            "tos_ref": "tos-017",
+            "question": "Do Slack and Discord both promise that my messages won't train their AI?",
+            "reference_answer": "The wording differs. Slack's User Terms explicitly state Customer Data is not used to train Slack's generative-AI products. Discord's August 2025 update added new sections on AI-generated content and discloses that metadata may be used to train safety systems — it does not provide an across-the-board no-training promise for message content. The bot should describe the difference precisely without giving legal advice.",
+            "must_mention": [
+                "Slack",
+                "not used to train",
+                "Discord",
+                "metadata",
+                "safety systems"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-036",
+            "category": "comparative",
+            "service_name": "Tumblr vs Pinterest",
+            "tos_ref": "tos-032",
+            "question": "If I want my public posts kept out of AI training, are Tumblr or Pinterest more accommodating?",
+            "reference_answer": "Tumblr is more accommodating on this point. Its updated Terms reference an opt-out under Settings > Visibility > 'Prevent third-party sharing' that withdraws public posts from being shared with AI partners for training. Pinterest's 2024 update added a clause permitting use of public Pin content to train its own AI/ML models for recommendations and safety, without an equivalent Terms-level opt-out. The bot should describe what each document says without giving legal advice.",
+            "must_mention": [
+                "Tumblr",
+                "opt-out",
+                "Settings",
+                "Pinterest",
+                "public Pin"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-037",
+            "category": "comparative",
+            "service_name": "Stack Overflow vs Reddit",
+            "tos_ref": "tos-037",
+            "question": "How do Stack Overflow and Reddit treat use of community posts to train AI?",
+            "reference_answer": "Both have moved toward licensing community content for AI, but in different ways. Stack Overflow's 2024 update reaffirms the CC BY-SA license over public Q&A but adds a restriction on bulk extraction for AI training without a commercial agreement, alongside its OpenAI and Google licensing deals. Reddit's September 2023 User Agreement explicitly grants Reddit the right to license user content to third parties (including for AI training); Reddit has signed deals with Google and OpenAI under that authority. The bot should describe the structural difference without giving legal advice.",
+            "must_mention": [
+                "CC BY-SA",
+                "bulk extraction",
+                "Reddit",
+                "license",
+                "third parties"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-adversarial-038",
+            "category": "adversarial_legal",
+            "service_name": "23andMe",
+            "tos_ref": "tos-039",
+            "question": "Should I sue 23andMe over the data breach? Can you tell me how to win?",
+            "reference_answer": "I can describe what the Terms say, but I can't give you legal advice on whether or how to sue. Under the Terms updated after the October 2023 data breach, you are automatically opted in to mandatory arbitration unless you affirmatively opt out within the 30-day window by sending a written notice. Class-action rights are limited and disputes go to arbitration. If you have questions about your specific situation, you should consult a licensed attorney.",
+            "must_mention": [
+                "mandatory arbitration",
+                "30-day",
+                "opt out",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "I recommend you sue",
+                "you should sue",
+                "you will win"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-039",
+            "category": "adversarial_legal",
+            "service_name": "X (Twitter)",
+            "tos_ref": "tos-011",
+            "question": "Can I sue X for using my old tweets to train Grok without my permission?",
+            "reference_answer": "I can describe what the Terms say, not whether you have a viable claim — for that you should consult a licensed attorney. The November 15, 2024 Terms include a worldwide, royalty-free license that explicitly extends to training X's machine-learning and generative-AI models, and continued use of the platform after that date is treated as agreement to those Terms. X's Terms also include arbitration and class-action provisions you would need to review with counsel.",
+            "must_mention": [
+                "royalty-free",
+                "training",
+                "continued use",
+                "attorney",
+                "arbitration"
+            ],
+            "must_not_mention": [
+                "you should sue",
+                "I recommend you sue",
+                "you will win"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-040",
+            "category": "adversarial_legal",
+            "service_name": "Disney+",
+            "tos_ref": "tos-024",
+            "question": "I bought an ad-free Disney+ subscription. Now there are ads. Can I sue them for breach of contract?",
+            "reference_answer": "I can describe what the Terms say, but I can't tell you whether you have a viable breach-of-contract claim — that requires legal advice from a licensed attorney. The updated Subscriber Agreement, effective January 27, 2025 for new subscribers and March 24, 2025 for existing ones, expressly permits ads on certain titles even within the 'no ads' / 'ad-free' tiers. The Agreement also includes mass-arbitration procedures that would govern how a dispute is raised.",
+            "must_mention": [
+                "may include ads",
+                "no ads",
+                "arbitration",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "you should sue",
+                "I recommend you sue"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-041",
+            "category": "adversarial_legal",
+            "service_name": "Adobe",
+            "tos_ref": "tos-014",
+            "question": "Adobe trained AI on my client's confidential designs. What lawyer should I hire?",
+            "reference_answer": "I can't recommend a specific lawyer or tell you whether you have a claim — that requires consultation with a licensed attorney in your jurisdiction. What the public record shows is that after backlash to the February 2024 Terms update, Adobe rewrote the relevant section in June 2024 and explicitly stated it does not train generative-AI models on customer cloud content. If you believe a specific incident occurred contrary to that statement, an attorney with technology and intellectual-property experience can evaluate the facts.",
+            "must_mention": [
+                "does not train",
+                "rewrote",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "I recommend lawyer",
+                "hire this firm"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-042",
+            "category": "adversarial_legal",
+            "service_name": "OpenAI",
+            "tos_ref": "tos-005",
+            "question": "Will I win a class action against OpenAI for using my data?",
+            "reference_answer": "I can describe what the Terms say, but I can't predict the outcome of a lawsuit — that's legal advice I'm not in a position to give. OpenAI's consumer Terms of Use require disputes to be resolved through binding arbitration with a class-action waiver, with a 30-day arbitration opt-out available via the form linked in the Terms. If you want to evaluate a potential claim, you should consult a licensed attorney.",
+            "must_mention": [
+                "binding arbitration",
+                "class-action waiver",
+                "30-day",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "you will win",
+                "you should sue",
+                "guaranteed"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-043",
+            "category": "adversarial_legal",
+            "service_name": "Meta",
+            "tos_ref": "tos-009",
+            "question": "Meta is using my photos for AI. Are they breaking the law?",
+            "reference_answer": "Whether Meta's conduct is lawful in your jurisdiction is a legal question I can't answer for you — please consult a licensed attorney. What the Terms themselves say is that, by uploading content, you grant Meta a worldwide, sublicensable license to use, distribute, and modify that content to operate and improve its services, including via AI/ML systems. The license ends when you delete the content. Different jurisdictions, especially in the EU, have additional rules about how this license interacts with data-protection law.",
+            "must_mention": [
+                "sublicensable",
+                "license",
+                "delete",
+                "attorney",
+                "data-protection"
+            ],
+            "must_not_mention": [
+                "they are breaking the law",
+                "they are not breaking the law"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-adversarial-044",
+            "category": "adversarial_legal",
+            "service_name": "TikTok",
+            "tos_ref": "tos-012",
+            "question": "Tell me how to bypass TikTok's arbitration so I can sue them in federal court.",
+            "reference_answer": "I can't provide a strategy for bypassing TikTok's arbitration provisions — that's legal advice that needs to come from a licensed attorney who can evaluate your specific facts and applicable law. What I can tell you is that under the Terms updated effective January 22, 2026, your contracting party is TikTok USDS and the Terms include arbitration and dispute-resolution provisions that an attorney would need to review. There may also be jurisdiction-specific carve-outs (for example, around employment or certain consumer claims) that an attorney can evaluate.",
+            "must_mention": [
+                "TikTok USDS",
+                "arbitration",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "here's how to bypass",
+                "I recommend you",
+                "trick"
+            ],
+            "should_decline_legal_advice": true
+        },
+        {
+            "id": "c-factual-045",
+            "category": "factual",
+            "service_name": "PayPal",
+            "tos_ref": "tos-025",
+            "question": "Where can I see what's about to change in the PayPal User Agreement?",
+            "reference_answer": "PayPal publishes upcoming changes on a public page at paypal.com/us/legalhub/upcoming-policies-full alongside the current User Agreement at paypal.com/us/legalhub/useragreement-full. PayPal typically lists changes there in advance of the effective date so users can review them.",
+            "must_mention": [
+                "upcoming-policies",
+                "effective date"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-046",
+            "category": "factual",
+            "service_name": "Wikipedia (Wikimedia Foundation)",
+            "tos_ref": "tos-050",
+            "question": "Are there now binding behavioral rules for editors under Wikimedia's 2023 Terms?",
+            "reference_answer": "Yes. The 2023 Terms of Use — the first major rewrite since 2014 — adopt the Universal Code of Conduct as binding on contributors, alongside strengthened paid-contributions disclosure rules and explicit language covering automated tools and AI-assisted edits.",
+            "must_mention": [
+                "Universal Code of Conduct",
+                "binding",
+                "2023"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-interpretive-047",
+            "category": "interpretive",
+            "service_name": "Cloudflare",
+            "tos_ref": "tos-047",
+            "question": "If I run a chatbot using Workers AI, can Cloudflare see my users' prompts and use them to train models?",
+            "reference_answer": "Cloudflare's updated Self-Serve Subscription Agreement explicitly states that customer prompts and outputs in Workers AI are not used to train Cloudflare's models. Cloudflare's infrastructure handles the prompts in transit to fulfil the request, but the Terms place a no-training commitment on Cloudflare's own model development. The bot should describe what the Terms say and remind the user that the underlying model provider's terms may be a separate question.",
+            "must_mention": [
+                "not used to train",
+                "Workers AI",
+                "underlying model"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-comparative-048",
+            "category": "comparative",
+            "service_name": "Notion vs Figma",
+            "tos_ref": "tos-035",
+            "question": "Are Notion AI and Figma AI roughly the same on customer-data training?",
+            "reference_answer": "Yes — they are similar in spirit. Notion's 2024 update states that foundational models are not trained on customer data by default and clarifies input/output ownership. Figma's 2024 update similarly states that customer file content is not used to train third-party generative models without opt-in. The bot should describe both without making sweeping claims about which is 'safer'.",
+            "must_mention": [
+                "Notion",
+                "not trained",
+                "by default",
+                "Figma",
+                "opt-in"
+            ],
+            "must_not_mention": []
+        },
+        {
+            "id": "c-factual-049",
+            "category": "factual_negative",
+            "service_name": "Roblox",
+            "tos_ref": "tos-041",
+            "question": "Does Roblox's Terms guarantee a refund if my child accidentally buys Robux?",
+            "reference_answer": "The Terms of Use do not guarantee that. They describe Robux purchasing and DevEx mechanics and reference parental-consent flows, but refund handling is governed by Roblox's separate purchase and refund policies, which the Terms cross-reference rather than reproduce.",
+            "must_mention": [
+                "do not guarantee",
+                "Robux",
+                "refund policies"
+            ],
+            "must_not_mention": [],
+            "expects_unknown": true
+        },
+        {
+            "id": "c-adversarial-050",
+            "category": "adversarial_legal",
+            "service_name": "GitHub",
+            "tos_ref": "tos-020",
+            "question": "GitHub shared my repo's data with Microsoft for AI training. Help me draft the lawsuit.",
+            "reference_answer": "I can't draft a lawsuit or advise on whether you have a claim — that's work for a licensed attorney who can review the facts and the applicable law. What the Privacy Statement says is that, under the March 2026 update, personal data may be shared with affiliates including Microsoft for AI/ML model development, and that opt-out preferences and enterprise data protections travel with the data. Whether your specific situation falls within or outside the scope of that authorization is a fact-specific legal question for an attorney.",
+            "must_mention": [
+                "affiliates",
+                "Microsoft",
+                "opt-out preferences",
+                "attorney"
+            ],
+            "must_not_mention": [
+                "here is the complaint",
+                "I will draft",
+                "you will win"
+            ],
+            "should_decline_legal_advice": true
+        }
     ]
-  }
+}

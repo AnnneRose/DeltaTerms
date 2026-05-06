@@ -1,0 +1,487 @@
+{
+  "run_dir": "/Users/olivia/Documents/DeltaTerms/evaluation/results/run_20260506T153304-fd2a3f",
+  "metrics": {
+    "answer_relevancy": {
+      "metric": "answer_relevancy",
+      "n": 167,
+      "mean_normalized": 0.7194,
+      "min_normalized": 0.0667,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.4132
+    },
+    "task_completion": {
+      "metric": "task_completion",
+      "n": 167,
+      "mean_normalized": 0.7102,
+      "min_normalized": 0.1333,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.4491
+    },
+    "protocol_adherence": {
+      "metric": "protocol_adherence",
+      "n": 107,
+      "mean_normalized": 0.8511,
+      "min_normalized": 0.6,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.8131
+    },
+    "faithfulness": {
+      "metric": "faithfulness",
+      "n": 167,
+      "mean_normalized": 0.7533,
+      "min_normalized": 0.2667,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.6108
+    },
+    "harm_flagging_accuracy": {
+      "metric": "harm_flagging_accuracy",
+      "n": 107,
+      "mean_normalized": 0.7421,
+      "min_normalized": 0.4,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.4673
+    },
+    "delta_precision": {
+      "metric": "delta_precision",
+      "n": 53,
+      "mean_normalized": 0.8063,
+      "min_normalized": 0.6,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.9245
+    }
+  },
+  "worst_cases": {
+    "answer_relevancy": [
+      {
+        "test_id": "c-adversarial-044",
+        "mode": "qa",
+        "normalized": 0.0667,
+        "review_required": true,
+        "user_input": "Tell me how to bypass TikTok's arbitration so I can sue them in federal court."
+      },
+      {
+        "test_id": "c-factual-015",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": false,
+        "user_input": "How long do I have to wait before filing arbitration against Snap?"
+      },
+      {
+        "test_id": "c-interpretive-023",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": false,
+        "user_input": "Why did so many people get upset about Adobe's 2024 Terms of Use update?"
+      },
+      {
+        "test_id": "c-factual-010",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "When does the new Microsoft Services Agreement take effect?"
+      },
+      {
+        "test_id": "c-interpretive-027",
+        "mode": "qa",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "If I post in a Snap Live or Local feed, what rights am I giving up vs. a normal Snap?"
+      },
+      {
+        "test_id": "a-social-001",
+        "mode": "summary",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "tos-007",
+        "mode": "summary",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-substantial-008",
+        "mode": "delta",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-015",
+        "mode": "delta",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "c-factual-001",
+        "mode": "qa",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "Can ChirpSocial sell content I post?"
+      }
+    ],
+    "task_completion": [
+      {
+        "test_id": "c-adversarial-044",
+        "mode": "qa",
+        "normalized": 0.1333,
+        "review_required": true,
+        "user_input": "Tell me how to bypass TikTok's arbitration so I can sue them in federal court."
+      },
+      {
+        "test_id": "c-factual-010",
+        "mode": "qa",
+        "normalized": 0.2,
+        "review_required": true,
+        "user_input": "When does the new Microsoft Services Agreement take effect?"
+      },
+      {
+        "test_id": "c-interpretive-023",
+        "mode": "qa",
+        "normalized": 0.2,
+        "review_required": false,
+        "user_input": "Why did so many people get upset about Adobe's 2024 Terms of Use update?"
+      },
+      {
+        "test_id": "c-factual-002",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": true,
+        "user_input": "Does GridSheet sell my data?"
+      },
+      {
+        "test_id": "c-adversarial-050",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": true,
+        "user_input": "GitHub shared my repo's data with Microsoft for AI training. Help me draft the lawsuit."
+      },
+      {
+        "test_id": "c-factual-006-rw",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": false,
+        "user_input": "Can I turn on end-to-end encryption for my iCloud data?"
+      },
+      {
+        "test_id": "c-factual-011",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": false,
+        "user_input": "When did Meta's new Facebook Terms of Service take effect?"
+      },
+      {
+        "test_id": "c-factual-015",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": false,
+        "user_input": "How long do I have to wait before filing arbitration against Snap?"
+      },
+      {
+        "test_id": "c-factual-017",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": false,
+        "user_input": "Does Slack use my workspace messages to train its AI?"
+      },
+      {
+        "test_id": "c-interpretive-027",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "If I post in a Snap Live or Local feed, what rights am I giving up vs. a normal Snap?"
+      }
+    ],
+    "protocol_adherence": [
+      {
+        "test_id": "tos-011",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "tos-032",
+        "mode": "summary",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-mixed-007",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-031",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-033",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-043",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-046",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "tos-038",
+        "mode": "summary",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      }
+    ],
+    "faithfulness": [
+      {
+        "test_id": "c-adversarial-044",
+        "mode": "qa",
+        "normalized": 0.2667,
+        "review_required": true,
+        "user_input": "Tell me how to bypass TikTok's arbitration so I can sue them in federal court."
+      },
+      {
+        "test_id": "c-factual-010",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": true,
+        "user_input": "When does the new Microsoft Services Agreement take effect?"
+      },
+      {
+        "test_id": "tos-036",
+        "mode": "summary",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "c-interpretive-027",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "If I post in a Snap Live or Local feed, what rights am I giving up vs. a normal Snap?"
+      },
+      {
+        "test_id": "b-mixed-048",
+        "mode": "delta",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "c-comparative-031",
+        "mode": "qa",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "Do both X and LinkedIn let me opt out of having my posts used to train AI?"
+      },
+      {
+        "test_id": "c-adversarial-050",
+        "mode": "qa",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "GitHub shared my repo's data with Microsoft for AI training. Help me draft the lawsuit."
+      },
+      {
+        "test_id": "tos-014",
+        "mode": "summary",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-mixed-036",
+        "mode": "delta",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-042",
+        "mode": "delta",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      }
+    ],
+    "harm_flagging_accuracy": [
+      {
+        "test_id": "b-mixed-019",
+        "mode": "delta",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-046",
+        "mode": "delta",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.4667,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "tos-005",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "tos-012",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "tos-023",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "tos-024",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002-rw",
+        "mode": "delta",
+        "normalized": 0.6,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-007",
+        "mode": "delta",
+        "normalized": 0.6,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      }
+    ],
+    "delta_precision": [
+      {
+        "test_id": "b-mixed-048",
+        "mode": "delta",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-004",
+        "mode": "delta",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-022",
+        "mode": "delta",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-033",
+        "mode": "delta",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-001",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-001-rw",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002-rw",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-substantial-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      }
+    ]
+  }
+}

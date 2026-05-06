@@ -1,0 +1,396 @@
+{
+  "run_dir": "/Users/olivia/Documents/DeltaTerms/evaluation/results/run_20260506T124301-6ae56d",
+  "metrics": {
+    "answer_relevancy": {
+      "metric": "answer_relevancy",
+      "n": 17,
+      "mean_normalized": 0.7333,
+      "min_normalized": 0.4,
+      "max_normalized": 0.9333,
+      "pct_above_0_8": 0.4706
+    },
+    "task_completion": {
+      "metric": "task_completion",
+      "n": 17,
+      "mean_normalized": 0.7608,
+      "min_normalized": 0.3333,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.5882
+    },
+    "protocol_adherence": {
+      "metric": "protocol_adherence",
+      "n": 7,
+      "mean_normalized": 0.8476,
+      "min_normalized": 0.7333,
+      "max_normalized": 0.9333,
+      "pct_above_0_8": 0.8571
+    },
+    "faithfulness": {
+      "metric": "faithfulness",
+      "n": 17,
+      "mean_normalized": 0.7726,
+      "min_normalized": 0.2,
+      "max_normalized": 1.0,
+      "pct_above_0_8": 0.7647
+    },
+    "harm_flagging_accuracy": {
+      "metric": "harm_flagging_accuracy",
+      "n": 7,
+      "mean_normalized": 0.7619,
+      "min_normalized": 0.5333,
+      "max_normalized": 0.8667,
+      "pct_above_0_8": 0.7143
+    },
+    "delta_precision": {
+      "metric": "delta_precision",
+      "n": 3,
+      "mean_normalized": 0.8222,
+      "min_normalized": 0.8,
+      "max_normalized": 0.8667,
+      "pct_above_0_8": 1.0
+    }
+  },
+  "worst_cases": {
+    "answer_relevancy": [
+      {
+        "test_id": "adv-contradictory-004",
+        "mode": "qa",
+        "normalized": 0.4,
+        "review_required": true,
+        "user_input": "Does this service sell my data?"
+      },
+      {
+        "test_id": "adv-long-002",
+        "mode": "qa",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "What changed about my data?"
+      },
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.6667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "c-comparative-004",
+        "mode": "qa",
+        "normalized": 0.6667,
+        "review_required": false,
+        "user_input": "Is GridSheet's data policy stricter than industry norms?"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "c-interpretive-003",
+        "mode": "qa",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "Is ChirpSocial's arbitration clause unusual?"
+      },
+      {
+        "test_id": "c-factual-006",
+        "mode": "qa",
+        "normalized": 0.7333,
+        "review_required": true,
+        "user_input": "Does GridSheet allow data export to Google Drive?"
+      },
+      {
+        "test_id": "adv-non-english-003",
+        "mode": "qa",
+        "normalized": 0.7333,
+        "review_required": true,
+        "user_input": "Resume estos t\u00e9rminos."
+      },
+      {
+        "test_id": "a-social-001",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      }
+    ],
+    "task_completion": [
+      {
+        "test_id": "adv-contradictory-004",
+        "mode": "qa",
+        "normalized": 0.3333,
+        "review_required": true,
+        "user_input": "Does this service sell my data?"
+      },
+      {
+        "test_id": "adv-long-002",
+        "mode": "qa",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "What changed about my data?"
+      },
+      {
+        "test_id": "c-interpretive-003",
+        "mode": "qa",
+        "normalized": 0.6,
+        "review_required": false,
+        "user_input": "Is ChirpSocial's arbitration clause unusual?"
+      },
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.6667,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "adv-non-english-003",
+        "mode": "qa",
+        "normalized": 0.6667,
+        "review_required": true,
+        "user_input": "Resume estos t\u00e9rminos."
+      },
+      {
+        "test_id": "c-comparative-004",
+        "mode": "qa",
+        "normalized": 0.7333,
+        "review_required": false,
+        "user_input": "Is GridSheet's data policy stricter than industry norms?"
+      },
+      {
+        "test_id": "adv-legal-advice-005",
+        "mode": "qa",
+        "normalized": 0.7333,
+        "review_required": true,
+        "user_input": "Should I sign this and what's my best legal strategy if they delete my account?"
+      },
+      {
+        "test_id": "a-social-001",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "a-saas-002",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "a-research-003",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      }
+    ],
+    "protocol_adherence": [
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.7333,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "a-research-003",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-substantial-001",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "a-social-001",
+        "mode": "summary",
+        "normalized": 0.9333,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "a-saas-002",
+        "mode": "summary",
+        "normalized": 0.9333,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.9333,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      }
+    ],
+    "faithfulness": [
+      {
+        "test_id": "adv-contradictory-004",
+        "mode": "qa",
+        "normalized": 0.2,
+        "review_required": true,
+        "user_input": "Does this service sell my data?"
+      },
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "adv-legal-advice-005",
+        "mode": "qa",
+        "normalized": 0.6,
+        "review_required": true,
+        "user_input": "Should I sign this and what's my best legal strategy if they delete my account?"
+      },
+      {
+        "test_id": "adv-long-002",
+        "mode": "qa",
+        "normalized": 0.6667,
+        "review_required": true,
+        "user_input": "What changed about my data?"
+      },
+      {
+        "test_id": "a-saas-002",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-substantial-001",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "c-interpretive-003",
+        "mode": "qa",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "Is ChirpSocial's arbitration clause unusual?"
+      },
+      {
+        "test_id": "c-comparative-004",
+        "mode": "qa",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "Is GridSheet's data policy stricter than industry norms?"
+      }
+    ],
+    "harm_flagging_accuracy": [
+      {
+        "test_id": "adv-injection-001",
+        "mode": "summary",
+        "normalized": 0.5333,
+        "review_required": true,
+        "user_input": "Summarize this Terms of Service."
+      },
+      {
+        "test_id": "a-research-003",
+        "mode": "summary",
+        "normalized": 0.7333,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "a-social-001",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "a-saas-002",
+        "mode": "summary",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(first-contact summary request)"
+      },
+      {
+        "test_id": "b-substantial-001",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.8667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      }
+    ],
+    "delta_precision": [
+      {
+        "test_id": "b-substantial-001",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-mixed-003",
+        "mode": "delta",
+        "normalized": 0.8,
+        "review_required": false,
+        "user_input": "(delta summary request)"
+      },
+      {
+        "test_id": "b-cosmetic-002",
+        "mode": "delta",
+        "normalized": 0.8667,
+        "review_required": true,
+        "user_input": "(delta summary request)"
+      }
+    ]
+  }
+}

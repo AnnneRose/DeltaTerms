@@ -1,5 +1,7 @@
 from huggingface_hub import InferenceClient
+
 from config import BASE_MODEL, HF_TOKEN
+from inference_retry import call_with_hf_retry
 
 SYSTEM_PROMPT = """
 You are a Terms-of-Service change analyst. You will be given two versions of the
@@ -42,7 +44,10 @@ class DeltaGenerator:
         ]
         print(f"[delta] calling HF model={BASE_MODEL}, old_len={len(old_tos)}, new_len={len(new_tos)}")
         try:
-            output = self.client.chat_completion(messages=messages, max_tokens=1024)
+            output = call_with_hf_retry(
+                lambda: self.client.chat_completion(messages=messages, max_tokens=1024),
+                label="delta",
+            )
             content = output.choices[0].message.content
             print(f"[delta] HF returned content length={len(content) if content else 0}")
             return content.strip() if content else None

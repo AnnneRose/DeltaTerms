@@ -24,6 +24,8 @@ from typing import Optional
 from huggingface_hub import InferenceClient
 
 from config import BASE_MODEL, HF_TOKEN
+from inference_retry import call_with_hf_retry
+
 from .metrics import Metric
 
 
@@ -242,10 +244,13 @@ class Evaluator:
             },
         ]
         try:
-            output = self.client.chat_completion(
-                messages=messages,
-                max_tokens=self.max_tokens,
-                temperature=self.temperature,
+            output = call_with_hf_retry(
+                lambda: self.client.chat_completion(
+                    messages=messages,
+                    max_tokens=self.max_tokens,
+                    temperature=self.temperature,
+                ),
+                label="evaluator",
             )
             raw = (output.choices[0].message.content or "").strip()
         except Exception as exc:  # noqa: BLE001

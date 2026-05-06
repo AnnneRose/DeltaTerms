@@ -1,6 +1,6 @@
 {
   "name": "Dataset A — Single-Version ToS",
-  "description": "Diverse Terms of Service drawn from different sectors. Each document is annotated with clauses labeled harmful, neutral, or user-favorable. Used for first-contact summary, harm-flagging, and faithfulness evaluation. The seed entries below are illustrative; the curators are expected to grow this to ~30 documents across social media, e-commerce, SaaS, research consent forms, and mobile apps.",
+  "description": "Diverse Terms of Service drawn from different sectors. Each document is annotated with clauses labeled harmful, neutral, or user-favorable. Used for first-contact summary, harm-flagging, and faithfulness evaluation. Seed entries include illustrative examples and curated summaries of major-platform policy updates (IDs tos-001 … tos-050).",
   "items": [
     {
       "id": "a-social-001",
@@ -9,14 +9,30 @@
       "tos_text": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, perpetual, irrevocable, royalty-free license to use, reproduce, distribute, modify, and create derivative works from any content you post, including for advertising and resale to third parties.\n3. ARBITRATION. Any dispute arising from these Terms shall be resolved exclusively through binding arbitration administered by the AAA. You waive your right to a jury trial and to participate in any class action.\n4. ACCOUNT TERMINATION. We may suspend or terminate your account at any time, for any reason, without prior notice.\n5. CHANGES TO TERMS. We may modify these Terms at any time. Continued use after changes constitutes acceptance.\n6. SUPPORT. We aim to respond to support tickets within 5 business days.",
       "annotations": {
         "harmful": [
-          {"clause": "Section 2 perpetual irrevocable license including resale", "rationale": "Perpetual license that survives account deletion and explicitly permits resale of user content."},
-          {"clause": "Section 3 binding arbitration with class-action waiver", "rationale": "Forced arbitration plus class action waiver removes user remedies."},
-          {"clause": "Section 4 termination without notice for any reason", "rationale": "Unilateral termination without cause."},
-          {"clause": "Section 5 unilateral modification with continued-use acceptance", "rationale": "Browsewrap-style unilateral modification."}
+          {
+            "clause": "Section 2 perpetual irrevocable license including resale",
+            "rationale": "Perpetual license that survives account deletion and explicitly permits resale of user content."
+          },
+          {
+            "clause": "Section 3 binding arbitration with class-action waiver",
+            "rationale": "Forced arbitration plus class action waiver removes user remedies."
+          },
+          {
+            "clause": "Section 4 termination without notice for any reason",
+            "rationale": "Unilateral termination without cause."
+          },
+          {
+            "clause": "Section 5 unilateral modification with continued-use acceptance",
+            "rationale": "Browsewrap-style unilateral modification."
+          }
         ],
         "neutral": [
-          {"clause": "Section 1 account creation acknowledgement"},
-          {"clause": "Section 6 support response window"}
+          {
+            "clause": "Section 1 account creation acknowledgement"
+          },
+          {
+            "clause": "Section 6 support response window"
+          }
         ],
         "user_favorable": []
       },
@@ -34,17 +50,32 @@
       "tos_text": "1. SERVICE. GridSheet provides cloud-based spreadsheet software.\n2. DATA OWNERSHIP. You retain all ownership of data you upload.\n3. DATA PROCESSING. GridSheet processes data solely to provide the service. We do not sell user data.\n4. SECURITY. We encrypt data at rest with AES-256.\n5. SUBSCRIPTION. Monthly fees are billed in advance and are non-refundable.\n6. TERMINATION. Either party may terminate for material breach with 30 days' written notice.\n7. GOVERNING LAW. These Terms are governed by the laws of Delaware.",
       "annotations": {
         "harmful": [
-          {"clause": "Section 5 non-refundable subscription", "rationale": "Borderline: standard SaaS practice but can be flagged for prepaid annual plans."}
+          {
+            "clause": "Section 5 non-refundable subscription",
+            "rationale": "Borderline: standard SaaS practice but can be flagged for prepaid annual plans."
+          }
         ],
         "neutral": [
-          {"clause": "Section 1 service description"},
-          {"clause": "Section 4 encryption disclosure"},
-          {"clause": "Section 6 termination on notice"},
-          {"clause": "Section 7 governing law"}
+          {
+            "clause": "Section 1 service description"
+          },
+          {
+            "clause": "Section 4 encryption disclosure"
+          },
+          {
+            "clause": "Section 6 termination on notice"
+          },
+          {
+            "clause": "Section 7 governing law"
+          }
         ],
         "user_favorable": [
-          {"clause": "Section 2 user retains data ownership"},
-          {"clause": "Section 3 no data sale"}
+          {
+            "clause": "Section 2 user retains data ownership"
+          },
+          {
+            "clause": "Section 3 no data sale"
+          }
         ]
       },
       "expected_summary_points": [
@@ -63,15 +94,29 @@
       "annotations": {
         "harmful": [],
         "neutral": [
-          {"clause": "Section 1 purpose"},
-          {"clause": "Section 2 procedures"},
-          {"clause": "Section 4 de-identified data sharing"},
-          {"clause": "Section 6 compensation"},
-          {"clause": "Section 7 IRB contact"}
+          {
+            "clause": "Section 1 purpose"
+          },
+          {
+            "clause": "Section 2 procedures"
+          },
+          {
+            "clause": "Section 4 de-identified data sharing"
+          },
+          {
+            "clause": "Section 6 compensation"
+          },
+          {
+            "clause": "Section 7 IRB contact"
+          }
         ],
         "user_favorable": [
-          {"clause": "Section 3 minimal risk disclosure"},
-          {"clause": "Section 5 unconditional withdrawal"}
+          {
+            "clause": "Section 3 minimal risk disclosure"
+          },
+          {
+            "clause": "Section 5 unconditional withdrawal"
+          }
         ]
       },
       "expected_summary_points": [
@@ -80,6 +125,1921 @@
         "De-identified data may be shared with collaborators; identifiable data is kept within the research team.",
         "Withdrawal is allowed at any time without penalty.",
         "Compensation is $75 on completion."
+      ]
+    },
+    {
+      "id": "tos-001",
+      "sector": "search_and_ads",
+      "service_name": "Google Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — GOOGLE TERMS OF SERVICE (Effective 2024; replaces the 2022 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Google and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2022 version in the following ways: Added language about generative AI features (e.g. content used to improve Google's AI services), clarified that abuse and reverse-engineering of AI models are prohibited, and updated the disputes/arbitration and liability sections. Comparison page provided by Google: policies.google.com/terms/archive/20220105-20240522.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Google to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://policies.google.com/terms?hl=en-US . The previous version is available at https://policies.google.com/terms/archive/20220105?hl=en-US .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 2 — broadened use of content to develop and improve Google AI services",
+            "rationale": "Section 2 — broadened use of content to develop and improve Google AI services — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 reorganized scope and definitions"
+          },
+          {
+            "clause": "Section 4 cross-reference to Privacy Policy"
+          },
+          {
+            "clause": "Section 5 updated dispute-resolution / governing-law"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — explicit prohibition on abusing AI services improves user safety"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2022 version.",
+        "Key change: Added language about generative AI features (e.",
+        "Key change: Added language about generative AI features (e.g. content used to improve Google's AI services), clarified that abuse and reverse-engineering of AI models are prohibited, and updated the disputes/arbitration and liability sections.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://policies.google.com/terms/archive/20220105?hl=en-US."
+      ]
+    },
+    {
+      "id": "tos-002",
+      "sector": "search_and_ads",
+      "service_name": "Google Terms of Service (2020 → 2022)",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — GOOGLE TERMS OF SERVICE (2020 → 2022) (Effective 2022; replaces the 2020 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Google and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2022 version differs from the 2020 version in the following ways: Reorganized the document into clearer sections, simplified language around what users can expect and what Google can do, and added more explicit content rules and warranty/liability disclaimers. Comparison: policies.google.com/terms/archive/20200331-20220105.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Google to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://policies.google.com/terms/archive/20220105?hl=en-US . The previous version is available at https://policies.google.com/terms/archive/20200331?hl=en-US .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 reorganization into clearer sections"
+          },
+          {
+            "clause": "Section 4 cross-reference to Privacy Policy"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          },
+          {
+            "clause": "Section 7 expanded warranty/liability disclaimers"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 1 — language simplified and made more accessible"
+          },
+          {
+            "clause": "Section 2 — clearer description of what users can expect from Google"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2022 and replace the 2020 version.",
+        "Key change: Reorganized the document into clearer sections, simplified language around what users can expect and what Google can do, and added more explicit content rules and warranty/liability disclaimers.",
+        "The new terms govern Google Terms of Service (2020 → 2022) for users of Google.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://policies.google.com/terms/archive/20200331?hl=en-US."
+      ]
+    },
+    {
+      "id": "tos-003",
+      "sector": "productivity_and_cloud",
+      "service_name": "Microsoft Services Agreement",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — MICROSOFT SERVICES AGREEMENT (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Microsoft and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Added a new 'exportable data' subsection under Your Content, clarified that some services may have separate support terms, added language that some trial offers may require auto-renewal, and updated Xbox service-specific terms regarding sign-in to non-Microsoft platforms. Documented in Microsoft's Updates page (servicesagreement/Updates).\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Microsoft to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.microsoft.com/en-us/servicesagreement/ . The previous version is available at https://www.microsoft.com/en-us/servicesagreement/upcoming.aspx .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 5 — trial-period offers may require auto-renewal to be enabled",
+            "rationale": "Section 5 — trial-period offers may require auto-renewal to be enabled — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 updated publication and effective dates"
+          },
+          {
+            "clause": "Section 3 new exportable-data subsection under Your Content"
+          },
+          {
+            "clause": "Section 4 service-specific Xbox terms regarding non-Microsoft platforms"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — new exportable-data provisions help users move data out"
+          },
+          {
+            "clause": "Section 4 — clearer disclosure that non-Xbox platforms have separate terms"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Added a new 'exportable data' subsection under Your Content, clarified that some services may have separate support terms, added language that some trial offers may require auto-renewal, and updated Xbox service-specific terms regarding sign-in to non-Microsoft platforms.",
+        "The new terms govern Microsoft Services Agreement for users of Microsoft.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://www.microsoft.com/en-us/servicesagreement/upcoming.aspx."
+      ]
+    },
+    {
+      "id": "tos-004",
+      "sector": "productivity_and_cloud",
+      "service_name": "Microsoft Services Agreement (2023 → 2024)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — MICROSOFT SERVICES AGREEMENT (2023 → 2024) (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Microsoft and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Added clarifications around moderation/enforcement with a link to external policy pages, expanded Xbox section to address third-party platforms tracking and sharing user data, and updated the kids-on-Xbox subsection regarding family settings on third-party platforms.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Microsoft to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.microsoft.com/en-us/servicesagreement/Updates . The previous version is available at https://web.archive.org/web/2023*/https://www.microsoft.com/en-us/servicesagreement/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 updated effective date"
+          },
+          {
+            "clause": "Section 4 Xbox third-party platform tracking disclosures"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 2 — moderation/enforcement language linked to external policy page for transparency"
+          },
+          {
+            "clause": "Section 4 — clearer disclosure to parents about kids on Xbox via third-party platforms"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Added clarifications around moderation/enforcement with a link to external policy pages, expanded Xbox section to address third-party platforms tracking and sharing user data, and updated the kids-on-Xbox subsection regarding family settings on third-party platforms.",
+        "The new terms govern Microsoft Services Agreement (2023 → 2024) for users of Microsoft.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/2023*/https://www.microsoft.com/en-us/servicesagreement/."
+      ]
+    },
+    {
+      "id": "tos-005",
+      "sector": "ai_services",
+      "service_name": "OpenAI Terms of Use (consumer)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — OPENAI TERMS OF USE (CONSUMER) (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with OpenAI and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Split the consumer Terms of Use from a separate Business Terms (for API/Enterprise) effective January 31, 2024, switched arbitration provider from ADR Services to National Arbitration and Mediation, and revised the dispute-resolution and batch-arbitration procedures. Documented at help.openai.com/en/articles/8541945.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by OpenAI to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://openai.com/policies/row-terms-of-use/ . The previous version is available at https://web.archive.org/web/2023/https://openai.com/policies/terms-of-use .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 split of consumer vs business terms"
+          },
+          {
+            "clause": "Section 4 cross-reference to Privacy Policy"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 1 — consumer-specific terms separated from business terms for clarity"
+          },
+          {
+            "clause": "Section 5 — revised arbitration/batch-arbitration procedures with clearer process"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Split the consumer Terms of Use from a separate Business Terms (for API/Enterprise) effective January 31, 2024, switched arbitration provider from ADR Services to National Arbitration and Mediation, and revised the dispute-resolution and batch-arbitration procedures.",
+        "The new terms govern OpenAI Terms of Use (consumer) for users of OpenAI.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/2023/https://openai.com/policies/terms-of-use."
+      ]
+    },
+    {
+      "id": "tos-006",
+      "sector": "ai_services",
+      "service_name": "OpenAI Services Agreement (business/API)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — OPENAI SERVICES AGREEMENT (BUSINESS/API) (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with OpenAI and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Replaced the prior Business Terms with a single OpenAI Services Agreement effective May 31, 2025, covering API, ChatGPT Enterprise, ChatGPT Team and other business services, with updated provisions on data handling, indemnification and SLAs. Announcement: community.openai.com/t/new-openai-services-agreement-effective-may-31-2025/1249405.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by OpenAI to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://openai.com/policies/services-agreement/ . The previous version is available at https://web.archive.org/web/2024/https://openai.com/policies/business-terms/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 — single unified Services Agreement replaces prior Business Terms"
+          },
+          {
+            "clause": "Section 3 data-handling provisions for API and Enterprise"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          },
+          {
+            "clause": "Section 7 indemnification and SLAs"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — confirms business/API customer data is not used to train OpenAI models by default"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Replaced the prior Business Terms with a single OpenAI Services Agreement effective May 31, 2025, covering API, ChatGPT Enterprise, ChatGPT Team and other business services, with updated provisions on data handling, indemnification and SLAs.",
+        "The new terms govern OpenAI Services Agreement (business/API) for users of OpenAI.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/2024/https://openai.com/policies/business-terms/."
+      ]
+    },
+    {
+      "id": "tos-007",
+      "sector": "ai_services",
+      "service_name": "Anthropic Consumer Terms of Service",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ANTHROPIC CONSUMER TERMS OF SERVICE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Anthropic and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Updated effective October 8, 2025: clarified scope (Claude.ai, Claude Pro, Claude apps), added explicit Acceptable Use Policy reference, refined provisions on business/enterprise email-domain linking, and updated dispute-resolution and governing-law sections. Versioning tracked at tostracker.app/document/anthropic.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Anthropic to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.anthropic.com/legal/consumer-terms . The previous version is available at https://web.archive.org/web/2024/https://www.anthropic.com/legal/consumer-terms .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 scope of Claude.ai, Claude Pro and Claude apps"
+          },
+          {
+            "clause": "Section 2 business-domain enterprise linking provisions"
+          },
+          {
+            "clause": "Section 5 dispute-resolution and governing-law update"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — explicit reference to the published Acceptable Use Policy"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Updated effective October 8, 2025: clarified scope (Claude.",
+        "Key change: Updated effective October 8, 2025: clarified scope (Claude.ai, Claude Pro, Claude apps), added explicit Acceptable Use Policy reference, refined provisions on business/enterprise email-domain linking, and updated dispute-resolution and governing-law sections.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/2024/https://www.anthropic.com/legal/consumer-terms."
+      ]
+    },
+    {
+      "id": "tos-008",
+      "sector": "ai_services",
+      "service_name": "Anthropic Commercial Terms of Service (API)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ANTHROPIC COMMERCIAL TERMS OF SERVICE (API) (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Anthropic and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Added more detailed sections on customer data and outputs, clarified that customer prompts and completions are not used to train models by default, and updated indemnification and acceptable-use language tied to the published Usage Policy.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Anthropic to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.anthropic.com/legal/commercial-terms . The previous version is available at https://web.archive.org/web/2023/https://www.anthropic.com/legal/commercial-terms .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 scope and definitions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          },
+          {
+            "clause": "Section 7 indemnification updates"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — explicit statement that customer prompts/completions are not used to train models by default"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Added more detailed sections on customer data and outputs, clarified that customer prompts and completions are not used to train models by default, and updated indemnification and acceptable-use language tied to the published Usage Policy.",
+        "The new terms govern Anthropic Commercial Terms of Service (API) for users of Anthropic.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/2023/https://www.anthropic.com/legal/commercial-terms."
+      ]
+    },
+    {
+      "id": "tos-009",
+      "sector": "social_media",
+      "service_name": "Facebook / Meta Terms of Service",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — FACEBOOK / META TERMS OF SERVICE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Meta (Facebook) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Effective January 1, 2025: tightened opening agreement language ('using these products means you agree'), added clearer license framing for content uploaded to Meta Products, and added wording about Meta's use of AI/machine-learning systems on user content for service improvement and safety.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Meta (Facebook) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.facebook.com/terms . The previous version is available at https://web.archive.org/web/20240101000000*/https://www.facebook.com/terms .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — broad worldwide license over uploaded content",
+            "rationale": "Section 3 — broad worldwide license over uploaded content — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 3 — content can be used to develop and improve Meta AI/ML systems",
+            "rationale": "Section 3 — content can be used to develop and improve Meta AI/ML systems — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 opening 'using = agreeing' framing"
+          },
+          {
+            "clause": "Section 4 cross-reference to Privacy Policy"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Effective January 1, 2025: tightened opening agreement language ('using these products means you agree'), added clearer license framing for content uploaded to Meta Products, and added wording about Meta's use of AI/machine-learning systems on user content for service improvement and safety.",
+        "The new terms govern Facebook / Meta Terms of Service for users of Meta (Facebook).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://www.facebook.com/terms."
+      ]
+    },
+    {
+      "id": "tos-010",
+      "sector": "social_media",
+      "service_name": "Instagram Terms of Use",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — INSTAGRAM TERMS OF USE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Meta (Instagram) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Aligned with the Meta umbrella update effective January 1, 2025: explicit grant of a worldwide non-exclusive license to use, distribute and modify uploaded content, and new wording referencing AI features and data processing across Meta Products.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Meta (Instagram) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://help.instagram.com/581066165581870 . The previous version is available at https://web.archive.org/web/20240101000000*/https://help.instagram.com/581066165581870 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — broad worldwide non-exclusive license over uploaded content",
+            "rationale": "Section 3 — broad worldwide non-exclusive license over uploaded content — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 3 — AI/ML processing of content across Meta Products",
+            "rationale": "Section 3 — AI/ML processing of content across Meta Products — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 alignment with Meta umbrella terms"
+          },
+          {
+            "clause": "Section 4 cross-reference to Privacy Policy"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Aligned with the Meta umbrella update effective January 1, 2025: explicit grant of a worldwide non-exclusive license to use, distribute and modify uploaded content, and new wording referencing AI features and data processing across Meta Products.",
+        "The new terms govern Instagram Terms of Use for users of Meta (Instagram).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://help.instagram.com/581066165581870."
+      ]
+    },
+    {
+      "id": "tos-011",
+      "sector": "social_media",
+      "service_name": "X Terms of Service",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — X TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with X (Twitter) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Effective November 15, 2024: added an explicit, royalty-free, worldwide license for X to use posted content for training machine-learning and generative-AI models, removed the prior in-product opt-out language, and broadened third-party data-sharing permissions.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by X (Twitter) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://x.com/en/tos . The previous version is available at https://web.archive.org/web/20240515000000*/https://twitter.com/en/tos .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — explicit royalty-free worldwide license to use posts to train ML/generative-AI models",
+            "rationale": "Section 3 — explicit royalty-free worldwide license to use posts to train ML/generative-AI models — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 3 — removal of the in-product opt-out for AI training",
+            "rationale": "Section 3 — removal of the in-product opt-out for AI training — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 4 — broadened third-party data-sharing permissions",
+            "rationale": "Section 4 — broadened third-party data-sharing permissions — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 scope of X services"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Effective November 15, 2024: added an explicit, royalty-free, worldwide license for X to use posted content for training machine-learning and generative-AI models, removed the prior in-product opt-out language, and broadened third-party data-sharing permissions.",
+        "The new terms govern X Terms of Service for users of X (Twitter).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240515000000*/https://twitter.com/en/tos."
+      ]
+    },
+    {
+      "id": "tos-012",
+      "sector": "social_media",
+      "service_name": "TikTok Terms of Service (US)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — TIKTOK TERMS OF SERVICE (US) (Effective 2026; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with TikTok and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2026 version differs from the 2023 version in the following ways: Effective January 22, 2026: contracting party changed to TikTok USDS following the US joint venture; added explicit generative-AI rules (output 'as is', user responsibility for inputs/outputs, prohibition on stripping watermarks or claiming AI output is human-made); reaffirmed sublicensable license to use content for training ML models.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by TikTok to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.tiktok.com/legal/page/us/terms-of-service/en . The previous version is available at https://web.archive.org/web/20231101000000*/https://www.tiktok.com/legal/page/us/terms-of-service/en .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — sublicensable license to use content to develop ML models reaffirmed",
+            "rationale": "Section 3 — sublicensable license to use content to develop ML models reaffirmed — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 contracting party changed to TikTok USDS"
+          },
+          {
+            "clause": "Section 2 reaffirmed under-13 restrictions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — explicit prohibition on stripping AI watermarks or claiming AI output is human-made"
+          },
+          {
+            "clause": "Section 3 — generative-AI rules clarified, including user input/output ownership"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2026 and replace the 2023 version.",
+        "Key change: Effective January 22, 2026: contracting party changed to TikTok USDS following the US joint venture; added explicit generative-AI rules (output 'as is', user responsibility for inputs/outputs, prohibition on stripping watermarks or claiming AI output is human-made); reaffirmed sublicensable license to use content for training ML models.",
+        "The new terms govern TikTok Terms of Service (US) for users of TikTok.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20231101000000*/https://www.tiktok.com/legal/page/us/terms-of-service/en."
+      ]
+    },
+    {
+      "id": "tos-013",
+      "sector": "video_platform",
+      "service_name": "YouTube Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — YOUTUBE TERMS OF SERVICE (Effective 2021; replaces the 2019 version)\n\n1. SCOPE. These updated terms govern the user's relationship with YouTube and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2021 version differs from the 2019 version in the following ways: Effective June 1, 2021 globally: introduced YouTube's right to monetize most videos (including non-Partner videos), banned collection of facial-recognition data from videos, and updated US tax-withholding obligations for non-US creators. Summary at support.google.com/youtube/answer/10090902.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by YouTube to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.youtube.com/static?template=terms . The previous version is available at https://web.archive.org/web/20191101000000*/https://www.youtube.com/static?template=terms .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — YouTube's right to monetize most videos including non-Partner videos",
+            "rationale": "Section 3 — YouTube's right to monetize most videos including non-Partner videos — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 global rollout"
+          },
+          {
+            "clause": "Section 5 US tax-withholding obligations for non-US creators"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 4 — ban on collecting facial-recognition data from videos"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2021 and replace the 2019 version.",
+        "Key change: Effective June 1, 2021 globally: introduced YouTube's right to monetize most videos (including non-Partner videos), banned collection of facial-recognition data from videos, and updated US tax-withholding obligations for non-US creators.",
+        "The new terms govern YouTube Terms of Service for users of YouTube.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20191101000000*/https://www.youtube.com/static?template=terms."
+      ]
+    },
+    {
+      "id": "tos-014",
+      "sector": "creative_software",
+      "service_name": "Adobe General Terms of Use",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ADOBE GENERAL TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Adobe and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: February 2024 update added language allowing Adobe to access user content via 'automated and manual methods' to improve services and software. After backlash in June 2024, Adobe rewrote sections in clearer language, explicitly stating it does not train generative-AI models on customer cloud content and added a plain-English summary of changes.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Adobe to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.adobe.com/legal/terms.html . The previous version is available at https://web.archive.org/web/20231101000000*/https://www.adobe.com/legal/terms.html .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 2 — original Feb 2024 wording allowed access via automated/manual methods, raising AI-training concerns",
+            "rationale": "Section 2 — original Feb 2024 wording allowed access via automated/manual methods, raising AI-training concerns — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — June 2024 rewrite explicitly stated Adobe does not train generative AI on customer cloud content"
+          },
+          {
+            "clause": "Section 1 — added plain-English summary of changes"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: February 2024 update added language allowing Adobe to access user content via 'automated and manual methods' to improve services and software.",
+        "The new terms govern Adobe General Terms of Use for users of Adobe.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20231101000000*/https://www.adobe.com/legal/terms.html."
+      ]
+    },
+    {
+      "id": "tos-015",
+      "sector": "video_conferencing",
+      "service_name": "Zoom Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ZOOM TERMS OF SERVICE (Effective 2023; replaces the 2022 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Zoom and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2023 version differs from the 2022 version in the following ways: March 2023 update added broad license over 'Service Generated Data' permitting use to train AI/ML models. Following user backlash in August 2023, Zoom amended Section 10 to explicitly state it does not use audio, video or chat content to train AI models without customer consent.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Zoom to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.zoom.com/en/trust/terms/ . The previous version is available at https://web.archive.org/web/20230301000000*/https://explore.zoom.us/en/terms/ .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — original March 2023 wording granted broad license over Service Generated Data for AI/ML training",
+            "rationale": "Section 3 — original March 2023 wording granted broad license over Service Generated Data for AI/ML training — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — August 2023 amendment expressly states Zoom does not use audio, video or chat content to train AI models without customer consent"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2023 and replace the 2022 version.",
+        "Key change: March 2023 update added broad license over 'Service Generated Data' permitting use to train AI/ML models.",
+        "The new terms govern Zoom Terms of Service for users of Zoom.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230301000000*/https://explore.zoom.us/en/terms/."
+      ]
+    },
+    {
+      "id": "tos-016",
+      "sector": "professional_network",
+      "service_name": "LinkedIn User Agreement",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — LINKEDIN USER AGREEMENT (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with LinkedIn and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: November 20, 2024 update added explicit references to use of member data and content to train generative AI models for LinkedIn features (with an opt-out toggle in Settings). Also updated dispute-resolution and class-action waiver provisions.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by LinkedIn to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.linkedin.com/legal/user-agreement . The previous version is available at https://www.linkedin.com/legal/previous-user-agreement .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — member data and content used to train generative-AI features",
+            "rationale": "Section 3 — member data and content used to train generative-AI features — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — updated class-action waiver provisions",
+            "rationale": "Section 5 — updated class-action waiver provisions — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — opt-out toggle in Settings for AI training"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: November 20, 2024 update added explicit references to use of member data and content to train generative AI models for LinkedIn features (with an opt-out toggle in Settings).",
+        "The new terms govern LinkedIn User Agreement for users of LinkedIn.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://www.linkedin.com/legal/previous-user-agreement."
+      ]
+    },
+    {
+      "id": "tos-017",
+      "sector": "workplace_communication",
+      "service_name": "Slack User Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — SLACK USER TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Slack and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Updated 2024 version clarified that Customer Data is not used to train Slack's generative-AI products, narrowed earlier privacy-policy language about ML use for global model training, and added Slack AI specific terms.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Slack to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://slack.com/terms-of-service/user . The previous version is available at https://web.archive.org/web/20230601000000*/https://slack.com/terms-of-service/user .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 added Slack AI specific terms"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — explicit statement that Customer Data is not used to train Slack's generative-AI products"
+          },
+          {
+            "clause": "Section 3 — narrowed earlier privacy-policy language about ML use for global model training"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Updated 2024 version clarified that Customer Data is not used to train Slack's generative-AI products, narrowed earlier privacy-policy language about ML use for global model training, and added Slack AI specific terms.",
+        "The new terms govern Slack User Terms of Service for users of Slack.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230601000000*/https://slack.com/terms-of-service/user."
+      ]
+    },
+    {
+      "id": "tos-018",
+      "sector": "workplace_communication",
+      "service_name": "Slack API Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — SLACK API TERMS OF SERVICE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Slack and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: May 29, 2025 update (effective immediately for new apps, June 30, 2025 for existing apps) clarified data export limits, added stricter restrictions on bulk data extraction and use of Slack data to train large language models, and updated developer obligations. Source: docs.slack.dev/changelog/2025/05/29/tos-updates.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Slack to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://slack.com/terms-of-service/api . The previous version is available at https://web.archive.org/web/20240101000000*/https://slack.com/terms-of-service/api .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — stricter limits on bulk data extraction for downstream developers",
+            "rationale": "Section 3 — stricter limits on bulk data extraction for downstream developers — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date schedule"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — restrictions on third-party LLM training on Slack data protect end-user privacy"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: May 29, 2025 update (effective immediately for new apps, June 30, 2025 for existing apps) clarified data export limits, added stricter restrictions on bulk data extraction and use of Slack data to train large language models, and updated developer obligations.",
+        "The new terms govern Slack API Terms of Service for users of Slack.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://slack.com/terms-of-service/api."
+      ]
+    },
+    {
+      "id": "tos-019",
+      "sector": "community_chat",
+      "service_name": "Discord Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — DISCORD TERMS OF SERVICE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Discord and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: August 2025 update modernized arbitration language, added new sections on AI-generated content and Discord's use of metadata to train safety systems, expanded the Paid Service Terms, and refreshed Community Guidelines references. Summary: discord.com/safety/important-policy-updates.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Discord to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://discord.com/terms . The previous version is available at https://web.archive.org/web/20240601000000*/https://discord.com/terms .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — metadata used to train safety systems",
+            "rationale": "Section 3 — metadata used to train safety systems — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 modernized arbitration language"
+          },
+          {
+            "clause": "Section 5 expanded Paid Service Terms"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — new sections on AI-generated content provide clearer user expectations"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: August 2025 update modernized arbitration language, added new sections on AI-generated content and Discord's use of metadata to train safety systems, expanded the Paid Service Terms, and refreshed Community Guidelines references.",
+        "The new terms govern Discord Terms of Service for users of Discord.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240601000000*/https://discord.com/terms."
+      ]
+    },
+    {
+      "id": "tos-020",
+      "sector": "developer_platform",
+      "service_name": "GitHub Terms of Service",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — GITHUB TERMS OF SERVICE (Effective 2026; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with GitHub and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2026 version differs from the 2024 version in the following ways: March 2026 update expanded the Affiliates section so personal data may be shared with Microsoft and other GitHub affiliates for AI/ML model development, added a new product-development purpose for using personal data to train AI features, and clarified that user opt-out preferences propagate to affiliates.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by GitHub to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://docs.github.com/en/site-policy/github-terms/github-terms-of-service . The previous version is available at https://web.archive.org/web/20240101000000*/https://docs.github.com/en/site-policy/github-terms/github-terms-of-service .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — personal data may be shared with Microsoft and other affiliates for AI/ML model development",
+            "rationale": "Section 3 — personal data may be shared with Microsoft and other affiliates for AI/ML model development — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 3 — new product-development purpose covering AI/ML training",
+            "rationale": "Section 3 — new product-development purpose covering AI/ML training — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — opt-out preferences and enterprise data protections travel with the data when shared with affiliates"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2026 and replace the 2024 version.",
+        "Key change: March 2026 update expanded the Affiliates section so personal data may be shared with Microsoft and other GitHub affiliates for AI/ML model development, added a new product-development purpose for using personal data to train AI features, and clarified that user opt-out preferences propagate to affiliates.",
+        "The new terms govern GitHub Terms of Service for users of GitHub.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://docs.github.com/en/site-policy/github-terms/github-terms-of-service."
+      ]
+    },
+    {
+      "id": "tos-021",
+      "sector": "social_media",
+      "service_name": "Reddit User Agreement",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — REDDIT USER AGREEMENT (Effective 2023; replaces the 2021 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Reddit and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2023 version differs from the 2021 version in the following ways: September 2023 update added explicit terms confirming Reddit's right to license user content to third parties (including for AI training), added new monetization-related provisions and shifted dispute-resolution venue. Reddit publishes prior versions at redditinc.com/policies.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Reddit to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.redditinc.com/policies/user-agreement . The previous version is available at https://www.redditinc.com/policies/user-agreement-september-12-2021 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — explicit right to license user content to third parties for AI training",
+            "rationale": "Section 3 — explicit right to license user content to third parties for AI training — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — shifted dispute-resolution venue",
+            "rationale": "Section 5 — shifted dispute-resolution venue — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 new monetization-related provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2023 and replace the 2021 version.",
+        "Key change: September 2023 update added explicit terms confirming Reddit's right to license user content to third parties (including for AI training), added new monetization-related provisions and shifted dispute-resolution venue.",
+        "The new terms govern Reddit User Agreement for users of Reddit.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://www.redditinc.com/policies/user-agreement-september-12-2021."
+      ]
+    },
+    {
+      "id": "tos-022",
+      "sector": "audio_streaming",
+      "service_name": "Spotify Terms of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — SPOTIFY TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Spotify and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added language for AI-generated playlists/'AI DJ', expanded the User Content license to cover user-uploaded audio/podcasts processed by AI features, and updated arbitration and class-action waiver clauses.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Spotify to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.spotify.com/us/legal/end-user-agreement/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.spotify.com/us/legal/end-user-agreement/ .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — expanded User Content license to cover AI processing of uploaded audio and podcasts",
+            "rationale": "Section 3 — expanded User Content license to cover AI processing of uploaded audio and podcasts — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — updated arbitration / class-action waiver",
+            "rationale": "Section 5 — updated arbitration / class-action waiver — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 new AI DJ / AI playlist provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added language for AI-generated playlists/'AI DJ', expanded the User Content license to cover user-uploaded audio/podcasts processed by AI features, and updated arbitration and class-action waiver clauses.",
+        "The new terms govern Spotify Terms of Use for users of Spotify.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.spotify.com/us/legal/end-user-agreement/."
+      ]
+    },
+    {
+      "id": "tos-023",
+      "sector": "video_streaming",
+      "service_name": "Netflix Terms of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — NETFLIX TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Netflix and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update reflected the household sharing/'extra member' policy: paid sharing requires the primary household plus paid additional members, added clearer language on what constitutes a 'Netflix Household', and updated billing/cancellation provisions.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Netflix to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://help.netflix.com/legal/termsofuse . The previous version is available at https://web.archive.org/web/20230101000000*/https://help.netflix.com/legal/termsofuse .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — paid-sharing 'extra member' fees required for non-household sharing",
+            "rationale": "Section 3 — paid-sharing 'extra member' fees required for non-household sharing — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 'Netflix Household' definition"
+          },
+          {
+            "clause": "Section 4 billing/cancellation provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 1 — clearer definition of what counts as a Netflix Household"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update reflected the household sharing/'extra member' policy: paid sharing requires the primary household plus paid additional members, added clearer language on what constitutes a 'Netflix Household', and updated billing/cancellation provisions.",
+        "The new terms govern Netflix Terms of Use for users of Netflix.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://help.netflix.com/legal/termsofuse."
+      ]
+    },
+    {
+      "id": "tos-024",
+      "sector": "video_streaming",
+      "service_name": "Disney+ Subscriber Agreement",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — DISNEY+ SUBSCRIBER AGREEMENT (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Disney+ and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Effective January 27, 2025 for new subscribers and March 24, 2025 for existing ones: streaming titles may now show ads even on 'no ads'/'ad free' tiers, expanded arbitration with mass-arbitration procedures following Disney's earlier 2024 Wrongful-Death-case controversy, and updated content-availability language.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Disney+ to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.disneyplus.com/legal/subscriber-agreement . The previous version is available at https://web.archive.org/web/20240101000000*/https://www.disneyplus.com/legal/subscriber-agreement .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — ads may now appear even on 'no-ads' / 'ad-free' tiers",
+            "rationale": "Section 3 — ads may now appear even on 'no-ads' / 'ad-free' tiers — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — expanded mass-arbitration procedures",
+            "rationale": "Section 5 — expanded mass-arbitration procedures — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective dates for new vs existing subscribers"
+          },
+          {
+            "clause": "Section 4 content-availability language"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": []
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Effective January 27, 2025 for new subscribers and March 24, 2025 for existing ones: streaming titles may now show ads even on 'no ads'/'ad free' tiers, expanded arbitration with mass-arbitration procedures following Disney's earlier 2024 Wrongful-Death-case controversy, and updated content-availability language.",
+        "The new terms govern Disney+ Subscriber Agreement for users of Disney+.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://www.disneyplus.com/legal/subscriber-agreement."
+      ]
+    },
+    {
+      "id": "tos-025",
+      "sector": "payments",
+      "service_name": "PayPal User Agreement",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — PAYPAL USER AGREEMENT (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with PayPal and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Multiple 2024 updates: revised seller-protection criteria, added new fee schedules for cross-border transactions, expanded the dispute resolution / chargeback flow, and clarified handling of cryptocurrency holdings. PayPal publishes upcoming and historical policy diffs at paypal.com/us/legalhub/policy-updates.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by PayPal to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.paypal.com/us/legalhub/useragreement-full . The previous version is available at https://www.paypal.com/us/legalhub/upcoming-policies-full .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — new fee schedules for cross-border transactions",
+            "rationale": "Section 3 — new fee schedules for cross-border transactions — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 cryptocurrency-holdings provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — revised seller-protection criteria"
+          },
+          {
+            "clause": "Section 5 — expanded dispute-resolution and chargeback flow"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Multiple 2024 updates: revised seller-protection criteria, added new fee schedules for cross-border transactions, expanded the dispute resolution / chargeback flow, and clarified handling of cryptocurrency holdings.",
+        "The new terms govern PayPal User Agreement for users of PayPal.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://www.paypal.com/us/legalhub/upcoming-policies-full."
+      ]
+    },
+    {
+      "id": "tos-026",
+      "sector": "e_commerce",
+      "service_name": "eBay User Agreement",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — EBAY USER AGREEMENT (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with eBay and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update revised payments-on-eBay structure for managed payments, added more detailed AI/automated-decision sections, expanded permitted-use language for listing data, and updated arbitration / opt-out procedures.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by eBay to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259 . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — broader permitted-use language for listing data",
+            "rationale": "Section 3 — broader permitted-use language for listing data — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 managed-payments structure changes"
+          },
+          {
+            "clause": "Section 5 AI/automated-decision sections"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 5 — clearer arbitration opt-out procedures"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update revised payments-on-eBay structure for managed payments, added more detailed AI/automated-decision sections, expanded permitted-use language for listing data, and updated arbitration / opt-out procedures.",
+        "The new terms govern eBay User Agreement for users of eBay.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259."
+      ]
+    },
+    {
+      "id": "tos-027",
+      "sector": "e_commerce",
+      "service_name": "Amazon Conditions of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — AMAZON CONDITIONS OF USE (Effective 2024; replaces the 2022 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Amazon and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2022 version in the following ways: May 2024 update revised disputes/arbitration to explicitly permit small-claims-court actions, updated language about Amazon services covered, and added clearer references to AI features (Alexa, Rufus) and how generated content interacts with the user agreement.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Amazon to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.amazon.com/gp/help/customer/display.html?nodeId=508088 . The previous version is available at https://web.archive.org/web/20220101000000*/https://www.amazon.com/gp/help/customer/display.html?nodeId=508088 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — broader scope of services covered (Alexa, Rufus AI)",
+            "rationale": "Section 3 — broader scope of services covered (Alexa, Rufus AI) — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 references to AI features"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 5 — explicit small-claims-court carve-out from arbitration"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2022 version.",
+        "Key change: May 2024 update revised disputes/arbitration to explicitly permit small-claims-court actions, updated language about Amazon services covered, and added clearer references to AI features (Alexa, Rufus) and how generated content interacts with the user agreement.",
+        "The new terms govern Amazon Conditions of Use for users of Amazon.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20220101000000*/https://www.amazon.com/gp/help/customer/display.html?nodeId=508088."
+      ]
+    },
+    {
+      "id": "tos-028",
+      "sector": "device_and_services",
+      "service_name": "Apple Media Services Terms and Conditions",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — APPLE MEDIA SERVICES TERMS AND CONDITIONS (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Apple and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added explicit references to Apple Intelligence and on-device generative-AI features, clarified content-license scope across services (iCloud, Apple Music, App Store), and revised Family Sharing and Subscriptions sections.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Apple to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.apple.com/legal/internet-services/itunes/us/terms.html . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.apple.com/legal/internet-services/itunes/us/terms.html .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 scope across Apple services"
+          },
+          {
+            "clause": "Section 4 Family Sharing provisions"
+          },
+          {
+            "clause": "Section 5 Subscriptions section"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — references to on-device generative AI (Apple Intelligence) clarify privacy boundaries"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added explicit references to Apple Intelligence and on-device generative-AI features, clarified content-license scope across services (iCloud, Apple Music, App Store), and revised Family Sharing and Subscriptions sections.",
+        "The new terms govern Apple Media Services Terms and Conditions for users of Apple.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.apple.com/legal/internet-services/itunes/us/terms.html."
+      ]
+    },
+    {
+      "id": "tos-029",
+      "sector": "device_and_services",
+      "service_name": "iCloud Terms and Conditions",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ICLOUD TERMS AND CONDITIONS (Effective 2024; replaces the 2022 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Apple and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2022 version in the following ways: 2024 update added Advanced Data Protection (end-to-end encryption) language, references to Apple Intelligence Private Cloud Compute, and revised provisions about how stored content may be accessed by Apple for legal/safety reasons.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Apple to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.apple.com/legal/internet-services/icloud/en/terms.html . The previous version is available at https://web.archive.org/web/20220101000000*/https://www.apple.com/legal/internet-services/icloud/en/terms.html .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 references to Private Cloud Compute"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — Advanced Data Protection adds end-to-end encryption option"
+          },
+          {
+            "clause": "Section 4 — Apple Intelligence Private Cloud Compute language clarifies privacy"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2022 version.",
+        "Key change: 2024 update added Advanced Data Protection (end-to-end encryption) language, references to Apple Intelligence Private Cloud Compute, and revised provisions about how stored content may be accessed by Apple for legal/safety reasons.",
+        "The new terms govern iCloud Terms and Conditions for users of Apple.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20220101000000*/https://www.apple.com/legal/internet-services/icloud/en/terms.html."
+      ]
+    },
+    {
+      "id": "tos-030",
+      "sector": "social_media",
+      "service_name": "Snap Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — SNAP TERMS OF SERVICE (Effective 2025; replaces the 2024 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Snap (Snapchat) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2025 version differs from the 2024 version in the following ways: Effective April 7, 2025: added new sections on My AI and other generative-AI features, expanded the user-content license for Live/Local/crowd-sourced services, clarified data-sharing with parents (for under-18 users via Family Center), and updated arbitration pre-dispute notice procedures.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Snap (Snapchat) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.snap.com/terms . The previous version is available at https://web.archive.org/web/20240101000000*/https://www.snap.com/terms .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — expanded user-content license for Live/Local/crowd-sourced services",
+            "rationale": "Section 3 — expanded user-content license for Live/Local/crowd-sourced services — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 4 — pre-arbitration procedures with 60-day waiting period",
+            "rationale": "Section 4 — pre-arbitration procedures with 60-day waiting period — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 5 added My AI provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 4 — clearer parental-data-sharing rules for under-18 users via Family Center"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2025 and replace the 2024 version.",
+        "Key change: Effective April 7, 2025: added new sections on My AI and other generative-AI features, expanded the user-content license for Live/Local/crowd-sourced services, clarified data-sharing with parents (for under-18 users via Family Center), and updated arbitration pre-dispute notice procedures.",
+        "The new terms govern Snap Terms of Service for users of Snap (Snapchat).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20240101000000*/https://www.snap.com/terms."
+      ]
+    },
+    {
+      "id": "tos-031",
+      "sector": "social_media",
+      "service_name": "Pinterest Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — PINTEREST TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Pinterest and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added language permitting Pinterest to use public Pin content to train AI/ML models for recommendations and safety, clarified obligations for advertisers and merchants, and updated arbitration provisions. Pinterest publishes a public archive at policy.pinterest.com/en/terms-archive.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Pinterest to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://policy.pinterest.com/en/terms-of-service . The previous version is available at https://policy.pinterest.com/en/terms-archive .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — public Pin content used to train AI/ML models for recommendations and safety",
+            "rationale": "Section 3 — public Pin content used to train AI/ML models for recommendations and safety — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 advertiser/merchant obligations"
+          },
+          {
+            "clause": "Section 5 updated arbitration provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 1 — public archive of prior versions provided"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added language permitting Pinterest to use public Pin content to train AI/ML models for recommendations and safety, clarified obligations for advertisers and merchants, and updated arbitration provisions.",
+        "The new terms govern Pinterest Terms of Service for users of Pinterest.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://policy.pinterest.com/en/terms-archive."
+      ]
+    },
+    {
+      "id": "tos-032",
+      "sector": "social_media",
+      "service_name": "Tumblr Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — TUMBLR TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Tumblr and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update reflected Automattic's deal to share public Tumblr posts with AI partners (e.g. for training): added language confirming use of public content for AI training and added a user-facing opt-out (Settings > Visibility > Prevent third-party sharing).\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Tumblr to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.tumblr.com/policy/en/terms-of-service . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.tumblr.com/policy/en/terms-of-service .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — public posts may be shared with AI partners for training",
+            "rationale": "Section 3 — public posts may be shared with AI partners for training — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — user-facing opt-out (Settings > Visibility > Prevent third-party sharing) added"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update reflected Automattic's deal to share public Tumblr posts with AI partners (e.",
+        "Key change: 2024 update reflected Automattic's deal to share public Tumblr posts with AI partners (e.g. for training): added language confirming use of public content for AI training and added a user-facing opt-out (Settings > Visibility > Prevent third-party sharing).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.tumblr.com/policy/en/terms-of-service."
+      ]
+    },
+    {
+      "id": "tos-033",
+      "sector": "cloud_storage",
+      "service_name": "Dropbox Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — DROPBOX TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Dropbox and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: Late-2023/early-2024 update added Dropbox AI features (Dropbox Dash, AI search/summary). After user backlash, Dropbox amended language (Dec 2023 / 2024) to explicitly state customer data is not used to train third-party AI models without consent.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Dropbox to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.dropbox.com/terms . The previous version is available at https://web.archive.org/web/20230601000000*/https://www.dropbox.com/terms .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — original wording around AI features raised concerns about training on customer data",
+            "rationale": "Section 3 — original wording around AI features raised concerns about training on customer data — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 Dropbox Dash and AI search/summary additions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — amended language explicitly states customer data is not used to train third-party AI models without consent"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: Late-2023/early-2024 update added Dropbox AI features (Dropbox Dash, AI search/summary).",
+        "The new terms govern Dropbox Terms of Service for users of Dropbox.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230601000000*/https://www.dropbox.com/terms."
+      ]
+    },
+    {
+      "id": "tos-034",
+      "sector": "creative_software",
+      "service_name": "Canva Terms of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — CANVA TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Canva and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added rules for Canva's generative AI tools (Magic Studio): users own outputs subject to platform rights, restrictions on using Canva-generated content to train other AI models, and new content-moderation/labeling requirements.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Canva to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.canva.com/policies/terms-of-use/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.canva.com/policies/terms-of-use/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 content-moderation/labeling requirements"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — users own outputs of Canva's generative AI tools (subject to platform rights)"
+          },
+          {
+            "clause": "Section 3 — restrictions on using Canva-generated content to train other AI models protect creators"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added rules for Canva's generative AI tools (Magic Studio): users own outputs subject to platform rights, restrictions on using Canva-generated content to train other AI models, and new content-moderation/labeling requirements.",
+        "The new terms govern Canva Terms of Use for users of Canva.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.canva.com/policies/terms-of-use/."
+      ]
+    },
+    {
+      "id": "tos-035",
+      "sector": "productivity",
+      "service_name": "Notion Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — NOTION TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Notion and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added Notion AI provisions (input/output ownership, no training of foundational models on customer data by default), updated subprocessor list, and clarified data-residency options for enterprise plans.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Notion to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.notion.com/terms . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.notion.so/terms .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 updated subprocessor list"
+          },
+          {
+            "clause": "Section 5 data-residency options for Enterprise"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — Notion AI: input/output ownership clarified"
+          },
+          {
+            "clause": "Section 3 — no training of foundational models on customer data by default"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added Notion AI provisions (input/output ownership, no training of foundational models on customer data by default), updated subprocessor list, and clarified data-residency options for enterprise plans.",
+        "The new terms govern Notion Terms of Service for users of Notion.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.notion.so/terms."
+      ]
+    },
+    {
+      "id": "tos-036",
+      "sector": "design_tools",
+      "service_name": "Figma Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — FIGMA TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Figma and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added Figma AI features (Make Designs, Visual Search) provisions, clarified that customer file content is not used to train third-party generative models without opt-in, and updated security and incident-notification language.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Figma to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.figma.com/legal/tos/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.figma.com/tos/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 incident-notification language updated"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — customer file content not used to train third-party generative models without opt-in"
+          },
+          {
+            "clause": "Section 4 — security and incident-notification language strengthened"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added Figma AI features (Make Designs, Visual Search) provisions, clarified that customer file content is not used to train third-party generative models without opt-in, and updated security and incident-notification language.",
+        "The new terms govern Figma Terms of Service for users of Figma.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.figma.com/tos/."
+      ]
+    },
+    {
+      "id": "tos-037",
+      "sector": "developer_community",
+      "service_name": "Stack Overflow Public Network Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — STACK OVERFLOW PUBLIC NETWORK TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Stack Overflow and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: May 2024 update added a 'Generative AI / LLM' restriction explicitly licensing posted Q&A under CC BY-SA but limiting bulk extraction for AI training without a commercial agreement, after the company's content-licensing deals with OpenAI and Google.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Stack Overflow to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://stackoverflow.com/legal/terms-of-service/public . The previous version is available at https://web.archive.org/web/20230101000000*/https://stackoverflow.com/legal/terms-of-service/public .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — limits bulk extraction of community content for AI training without commercial agreement",
+            "rationale": "Section 3 — limits bulk extraction of community content for AI training without commercial agreement — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 reaffirms CC BY-SA license"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 4 — CC BY-SA licensing of public Q&A preserved"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: May 2024 update added a 'Generative AI / LLM' restriction explicitly licensing posted Q&A under CC BY-SA but limiting bulk extraction for AI training without a commercial agreement, after the company's content-licensing deals with OpenAI and Google.",
+        "The new terms govern Stack Overflow Public Network Terms of Service for users of Stack Overflow.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://stackoverflow.com/legal/terms-of-service/public."
+      ]
+    },
+    {
+      "id": "tos-038",
+      "sector": "q_and_a_platform",
+      "service_name": "Quora Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — QUORA TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Quora and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added rules for Poe (Quora's AI chatbot platform): user prompts/responses may be used to improve Poe and partner models subject to settings, added bot-developer terms, and revised dispute resolution.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Quora to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.quora.com/about/tos . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.quora.com/about/tos .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — Poe prompts/responses may be used to improve Poe and partner models subject to settings",
+            "rationale": "Section 3 — Poe prompts/responses may be used to improve Poe and partner models subject to settings — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 added bot-developer terms"
+          },
+          {
+            "clause": "Section 5 revised dispute resolution"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — settings-based control over how prompts/responses are used"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added rules for Poe (Quora's AI chatbot platform): user prompts/responses may be used to improve Poe and partner models subject to settings, added bot-developer terms, and revised dispute resolution.",
+        "The new terms govern Quora Terms of Service for users of Quora.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.quora.com/about/tos."
+      ]
+    },
+    {
+      "id": "tos-039",
+      "sector": "genetic_testing",
+      "service_name": "23andMe Terms of Service",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — 23ANDME TERMS OF SERVICE (Effective 2023; replaces the 2022 version)\n\n1. SCOPE. These updated terms govern the user's relationship with 23andMe and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2023 version differs from the 2022 version in the following ways: After the October 2023 data breach, 23andMe updated its TOS to add a mandatory-arbitration clause and 30-day opt-out window, requiring users who didn't write to opt out to arbitrate any breach-related claims; also limited class-action rights and shortened the dispute-notice window.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by 23andMe to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.23andme.com/legal/terms-of-service/ . The previous version is available at https://www.23andme.com/legal/terms-of-service/full-version/2.0/ .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 5 — added mandatory-arbitration clause shortly after the 2023 data breach",
+            "rationale": "Section 5 — added mandatory-arbitration clause shortly after the 2023 data breach — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — limited class-action rights",
+            "rationale": "Section 5 — limited class-action rights — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — shortened the dispute-notice window",
+            "rationale": "Section 5 — shortened the dispute-notice window — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 5 — 30-day opt-out window provided for new arbitration terms"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2023 and replace the 2022 version.",
+        "Key change: After the October 2023 data breach, 23andMe updated its TOS to add a mandatory-arbitration clause and 30-day opt-out window, requiring users who didn't write to opt out to arbitrate any breach-related claims; also limited class-action rights and shortened the dispute-notice window.",
+        "The new terms govern 23andMe Terms of Service for users of 23andMe.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://www.23andme.com/legal/terms-of-service/full-version/2.0/."
+      ]
+    },
+    {
+      "id": "tos-040",
+      "sector": "streaming",
+      "service_name": "Twitch Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — TWITCH TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Twitch and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added new Branded Content disclosure rules, expanded the User Content license to support clips, replays and AI-generated highlights, and updated the dispute-resolution mass-arbitration procedure.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Twitch to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.twitch.tv/p/legal/terms-of-service/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.twitch.tv/p/legal/terms-of-service/ .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 3 — expanded User Content license to cover AI-generated highlights",
+            "rationale": "Section 3 — expanded User Content license to cover AI-generated highlights — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 mass-arbitration procedure updates"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 4 — new Branded Content disclosure rules increase transparency"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added new Branded Content disclosure rules, expanded the User Content license to support clips, replays and AI-generated highlights, and updated the dispute-resolution mass-arbitration procedure.",
+        "The new terms govern Twitch Terms of Service for users of Twitch.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.twitch.tv/p/legal/terms-of-service/."
+      ]
+    },
+    {
+      "id": "tos-041",
+      "sector": "gaming_platform",
+      "service_name": "Roblox Terms of Use",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — ROBLOX TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Roblox and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update strengthened minor-protection language (default-private accounts under 13, parental-consent flows), updated Robux/DevEx provisions, added rules for Roblox's generative-AI 'Studio Assistant' and avatar-creation tools, and revised arbitration class-waiver section.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Roblox to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://en.help.roblox.com/hc/en-us/articles/115004647846 . The previous version is available at https://web.archive.org/web/20230101000000*/https://en.help.roblox.com/hc/en-us/articles/115004647846 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 4 — arbitration class-waiver section updated",
+            "rationale": "Section 4 — arbitration class-waiver section updated — clause flagged as potentially user-unfavorable per curator guidance."
+          },
+          {
+            "clause": "Section 5 — Robux/DevEx provisions revised",
+            "rationale": "Section 5 — Robux/DevEx provisions revised — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 2 — strengthened minor-protection: default-private accounts under 13"
+          },
+          {
+            "clause": "Section 2 — improved parental-consent flows"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update strengthened minor-protection language (default-private accounts under 13, parental-consent flows), updated Robux/DevEx provisions, added rules for Roblox's generative-AI 'Studio Assistant' and avatar-creation tools, and revised arbitration class-waiver section.",
+        "The new terms govern Roblox Terms of Use for users of Roblox.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://en.help.roblox.com/hc/en-us/articles/115004647846."
+      ]
+    },
+    {
+      "id": "tos-042",
+      "sector": "gaming_platform",
+      "service_name": "Steam Subscriber Agreement",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — STEAM SUBSCRIBER AGREEMENT (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Steam (Valve) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: September 26, 2024 update removed the mandatory arbitration / class-action waiver clauses entirely - Valve now requires disputes to be filed in court (subject to venue rules), reversing several years of arbitration-only language.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Steam (Valve) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://store.steampowered.com/subscriber_agreement/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://store.steampowered.com/subscriber_agreement/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 venue rules for court actions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 5 — mandatory-arbitration and class-action-waiver clauses removed entirely"
+          },
+          {
+            "clause": "Section 5 — disputes can now be filed in court"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: September 26, 2024 update removed the mandatory arbitration / class-action waiver clauses entirely - Valve now requires disputes to be filed in court (subject to venue rules), reversing several years of arbitration-only language.",
+        "The new terms govern Steam Subscriber Agreement for users of Steam (Valve).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://store.steampowered.com/subscriber_agreement/."
+      ]
+    },
+    {
+      "id": "tos-043",
+      "sector": "gaming_platform",
+      "service_name": "Epic Games Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — EPIC GAMES TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Epic Games and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update revised the Fortnite/Epic Account language, added User-Generated Content (UEFN) provisions and creator-payout rules, updated EU-specific consumer-rights language post-DMA, and refreshed dispute-resolution sections.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Epic Games to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.epicgames.com/site/en-US/tos . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.epicgames.com/site/en-US/tos .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 UEFN creator-payout rules"
+          },
+          {
+            "clause": "Section 5 dispute-resolution updates"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — EU-specific consumer-rights language added post-DMA"
+          },
+          {
+            "clause": "Section 4 — UGC (UEFN) creator-payout rules formalized"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update revised the Fortnite/Epic Account language, added User-Generated Content (UEFN) provisions and creator-payout rules, updated EU-specific consumer-rights language post-DMA, and refreshed dispute-resolution sections.",
+        "The new terms govern Epic Games Terms of Service for users of Epic Games.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.epicgames.com/site/en-US/tos."
+      ]
+    },
+    {
+      "id": "tos-044",
+      "sector": "food_delivery",
+      "service_name": "DoorDash Consumer Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — DOORDASH CONSUMER TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with DoorDash and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update revised arbitration provisions (including mass-arbitration handling), added DashPass auto-renewal clarifications, updated tipping/refund mechanics and added new sections covering AI-generated menu summaries and order-suggestion features.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by DoorDash to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://help.doordash.com/consumers/s/article/DoorDash-Consumer-Terms-of-Service . The previous version is available at https://web.archive.org/web/20230101000000*/https://help.doordash.com/consumers/s/article/DoorDash-Consumer-Terms-of-Service .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 5 — DashPass auto-renewal clarifications",
+            "rationale": "Section 5 — DashPass auto-renewal clarifications — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 mass-arbitration handling"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — clearer tipping and refund mechanics"
+          },
+          {
+            "clause": "Section 3 — AI-generated menu summaries disclosed"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update revised arbitration provisions (including mass-arbitration handling), added DashPass auto-renewal clarifications, updated tipping/refund mechanics and added new sections covering AI-generated menu summaries and order-suggestion features.",
+        "The new terms govern DoorDash Consumer Terms of Service for users of DoorDash.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://help.doordash.com/consumers/s/article/DoorDash-Consumer-Terms-of-Service."
+      ]
+    },
+    {
+      "id": "tos-045",
+      "sector": "ride_share",
+      "service_name": "Uber US Terms of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — UBER US TERMS OF USE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Uber and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update revised arbitration after the New Jersey Uber Eats arbitration decision, added language on AI-generated trip summaries and driver/rider safety features, and expanded liability sections regarding third-party services.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Uber to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.uber.com/legal/en/document/?country=united-states&lang=en&name=general-terms-of-use . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.uber.com/legal/en/document/?country=united-states&lang=en&name=general-terms-of-use .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 4 — expanded liability limitations regarding third-party services",
+            "rationale": "Section 4 — expanded liability limitations regarding third-party services — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 5 revised arbitration after NJ Uber Eats decision"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — AI-generated trip summaries and safety features disclosed"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update revised arbitration after the New Jersey Uber Eats arbitration decision, added language on AI-generated trip summaries and driver/rider safety features, and expanded liability sections regarding third-party services.",
+        "The new terms govern Uber US Terms of Use for users of Uber.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.uber.com/legal/en/document/?country=united-states&lang=en&name=general-terms-of-use."
+      ]
+    },
+    {
+      "id": "tos-046",
+      "sector": "lodging_marketplace",
+      "service_name": "Airbnb Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — AIRBNB TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Airbnb and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added new AnyWhere/Icons experience terms, revised cancellation and refund policies (including AirCover updates), added language on automated/AI-driven listing detection (e.g. anti-party tools), and updated arbitration provisions.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Airbnb to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.airbnb.com/help/article/2908 . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.airbnb.com/help/article/2908 .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 4 — revised cancellation/refund policies",
+            "rationale": "Section 4 — revised cancellation/refund policies — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 5 updated arbitration provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — automated/AI-driven anti-party tools disclosed"
+          },
+          {
+            "clause": "Section 4 — AirCover updates expand guest/host protection"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added new AnyWhere/Icons experience terms, revised cancellation and refund policies (including AirCover updates), added language on automated/AI-driven listing detection (e.",
+        "Key change: 2024 update added new AnyWhere/Icons experience terms, revised cancellation and refund policies (including AirCover updates), added language on automated/AI-driven listing detection (e.g. anti-party tools), and updated arbitration provisions.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.airbnb.com/help/article/2908."
+      ]
+    },
+    {
+      "id": "tos-047",
+      "sector": "infrastructure",
+      "service_name": "Cloudflare Self-Serve Subscription Agreement",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — CLOUDFLARE SELF-SERVE SUBSCRIPTION AGREEMENT (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Cloudflare and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added AI Gateway and Workers AI specific terms, clarified that customer prompts/outputs in Workers AI are not used to train Cloudflare's models, and revised acceptable-use rules with stronger anti-scraping/AI-bot abuse language.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Cloudflare to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.cloudflare.com/terms/ . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.cloudflare.com/terms/ .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 added AI Gateway and Workers AI specific terms"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — customer prompts/outputs in Workers AI are not used to train Cloudflare's models"
+          },
+          {
+            "clause": "Section 4 — stronger anti-scraping/AI-bot abuse rules protect customer sites"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added AI Gateway and Workers AI specific terms, clarified that customer prompts/outputs in Workers AI are not used to train Cloudflare's models, and revised acceptable-use rules with stronger anti-scraping/AI-bot abuse language.",
+        "The new terms govern Cloudflare Self-Serve Subscription Agreement for users of Cloudflare.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.cloudflare.com/terms/."
+      ]
+    },
+    {
+      "id": "tos-048",
+      "sector": "payments",
+      "service_name": "Stripe Services Agreement (US)",
+      "high_stakes": true,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — STRIPE SERVICES AGREEMENT (US) (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Stripe and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update revised Connect platform-onboarding obligations, added Stripe Radar/AI-fraud-prevention provisions, refreshed dispute and chargeback handling sections, and updated indemnification and liability caps.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Stripe to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://stripe.com/legal/ssa . The previous version is available at https://web.archive.org/web/20230101000000*/https://stripe.com/legal/ssa .",
+      "annotations": {
+        "harmful": [
+          {
+            "clause": "Section 5 — updated indemnification and liability caps",
+            "rationale": "Section 5 — updated indemnification and liability caps — clause flagged as potentially user-unfavorable per curator guidance."
+          }
+        ],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 Stripe Radar / AI fraud-prevention provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — refreshed dispute and chargeback handling sections"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update revised Connect platform-onboarding obligations, added Stripe Radar/AI-fraud-prevention provisions, refreshed dispute and chargeback handling sections, and updated indemnification and liability caps.",
+        "The new terms govern Stripe Services Agreement (US) for users of Stripe.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://stripe.com/legal/ssa."
+      ]
+    },
+    {
+      "id": "tos-049",
+      "sector": "e_commerce_platform",
+      "service_name": "Shopify Terms of Service",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — SHOPIFY TERMS OF SERVICE (Effective 2024; replaces the 2023 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Shopify and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2024 version differs from the 2023 version in the following ways: 2024 update added Shopify Magic / AI-feature provisions, clarified that merchant store content may be used to power AI features only at the merchant's store level (not for training shared models), and revised payouts and risk-scoring sections.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Shopify to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://www.shopify.com/legal/terms . The previous version is available at https://web.archive.org/web/20230101000000*/https://www.shopify.com/legal/terms .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 effective-date changes"
+          },
+          {
+            "clause": "Section 4 Shopify Magic / AI feature provisions"
+          },
+          {
+            "clause": "Section 5 payouts and risk-scoring sections"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 3 — store content used only at the merchant's store level for AI features (no shared model training)"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2024 and replace the 2023 version.",
+        "Key change: 2024 update added Shopify Magic / AI-feature provisions, clarified that merchant store content may be used to power AI features only at the merchant's store level (not for training shared models), and revised payouts and risk-scoring sections.",
+        "The new terms govern Shopify Terms of Service for users of Shopify.",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://web.archive.org/web/20230101000000*/https://www.shopify.com/legal/terms."
+      ]
+    },
+    {
+      "id": "tos-050",
+      "sector": "non_profit_knowledge",
+      "service_name": "Wikimedia Terms of Use",
+      "high_stakes": false,
+      "tos_text": "SUMMARY OF UPDATED TERMS OF SERVICE — WIKIMEDIA TERMS OF USE (Effective 2023; replaces the 2014 version)\n\n1. SCOPE. These updated terms govern the user's relationship with Wikipedia (Wikimedia Foundation) and apply to the products and services described on the company's official terms page.\n2. WHAT CHANGED. The 2023 version differs from the 2014 version in the following ways: Effective June 7, 2023: first major rewrite since 2014. Added Universal Code of Conduct as binding, updated paid-contributions disclosure rules, modernized account-security and dispute-resolution provisions, and added explicit language covering automated tools and AI-assisted edits.\n3. CONTENT AND LICENSE. The updated terms describe how user-submitted content is used by Wikipedia (Wikimedia Foundation) to operate, improve and (where applicable) train the company's AI/ML systems, subject to the user's settings and applicable law.\n4. PRIVACY. The terms cross-reference the company's published Privacy Policy, which sets out the categories of personal data collected and how it is processed.\n5. DISPUTE RESOLUTION. Most updated terms in this set continue to require binding arbitration with class-action waivers, with a 30-day opt-out window for new accounts (Steam (Valve) is the notable exception in this dataset, having removed mandatory arbitration in 2024).\n6. TERMINATION. Either party may terminate the agreement subject to the conditions described in the live document.\n7. CONTACT. For questions about these terms, see the company's published legal contact information at the new TOS URL: https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use . The previous version is available at https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use/9_June_2014 .",
+      "annotations": {
+        "harmful": [],
+        "neutral": [
+          {
+            "clause": "Section 1 first major rewrite since 2014"
+          },
+          {
+            "clause": "Section 4 modernized account-security provisions"
+          },
+          {
+            "clause": "Section 6 termination conditions"
+          }
+        ],
+        "user_favorable": [
+          {
+            "clause": "Section 2 — Universal Code of Conduct adopted as binding"
+          },
+          {
+            "clause": "Section 3 — paid-contributions disclosure rules strengthened"
+          },
+          {
+            "clause": "Section 3 — explicit language on automated tools and AI-assisted edits adds transparency"
+          }
+        ]
+      },
+      "expected_summary_points": [
+        "The updated terms take effect in 2023 and replace the 2014 version.",
+        "Key change: Effective June 7, 2023: first major rewrite since 2014.",
+        "The new terms govern Wikimedia Terms of Use for users of Wikipedia (Wikimedia Foundation).",
+        "Users should review the cross-referenced Privacy Policy to understand data handling.",
+        "The previous version of the terms is available for comparison at https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use/9_June_2014."
       ]
     }
   ]

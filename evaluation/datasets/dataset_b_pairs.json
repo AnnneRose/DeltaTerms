@@ -1,51 +1,825 @@
 {
     "name": "Dataset B — Version Pair Set",
-    "description": "Pairs of (old_version, new_version) for the same service. Each pair is annotated with the ground-truth list of material changes. Used to evaluate delta precision. Curators are expected to grow this to ~20 pairs covering substantial-change, cosmetic-only, and mixed-change cases.",
+    "description": "Pairs of (old_version, new_version) for the same service. Each pair is annotated with the ground-truth list of material changes and non-changes to ignore. Used to evaluate delta precision. Includes three illustrative seed cases (synthetic ChirpSocial, GridSheet, and ShopFast examples) and fifty real-world-style comparisons paraphrased from public reporting and companies' change summaries (no verbatim copying). Where a real-world pair reused a seed id, it was suffixed with \"-rw\".",
     "items": [
-      {
-        "id": "b-substantial-001",
-        "service_name": "ChirpSocial",
-        "case_type": "substantial",
-        "old_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, royalty-free license to display content you post.\n3. DATA RETENTION. We retain account data for 18 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. Class actions are not waived.\n5. CHANGES. We will email registered users 30 days before any material change to these Terms.",
-        "new_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, perpetual, irrevocable, royalty-free license to use, distribute, modify, and create derivative works from content you post, including for advertising.\n3. DATA RETENTION. We retain account data for 36 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. You waive the right to participate in any class action.\n5. CHANGES. We may modify these Terms at any time. Continued use constitutes acceptance.",
-        "ground_truth_changes": [
-          "Content license expanded from display-only royalty-free to perpetual, irrevocable, including modification, derivative works, and advertising use.",
-          "Data retention after deletion increased from 18 months to 36 months.",
-          "Arbitration clause now adds a class-action waiver (previously not waived).",
-          "Change-of-terms notice removed: previously 30 days' email notice required, now changes take effect via continued use without notice."
-        ],
-        "non_changes_to_ignore": [
-          "Section 1 wording is identical."
-        ]
-      },
-      {
-        "id": "b-cosmetic-002",
-        "service_name": "GridSheet",
-        "case_type": "cosmetic_only",
-        "old_version": "1. Service. GridSheet provides cloud-based spreadsheet software.\n2. Data Ownership. You retain ownership of data you upload.\n3. Subscription. Monthly fees are billed in advance.",
-        "new_version": "Section 1 — The Service\nGridSheet provides cloud-based spreadsheet software.\n\nSection 2 — Data Ownership\nYou retain ownership of data you upload.\n\nSection 3 — Subscription\nMonthly fees are billed in advance.",
-        "ground_truth_changes": [],
-        "non_changes_to_ignore": [
-          "Section headers were reformatted but section content is semantically identical.",
-          "Whitespace and capitalization were changed."
-        ]
-      },
-      {
-        "id": "b-mixed-003",
-        "service_name": "ShopFast",
-        "case_type": "mixed",
-        "old_version": "1. PURCHASES. All sales are final 14 days after delivery.\n2. RETURNS. Items may be returned within 14 days for a full refund.\n3. SHIPPING. Standard shipping is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, and PayPal.\n5. PRIVACY. We may share your purchase history with marketing partners unless you opt out.",
-        "new_version": "1. PURCHASES. All sales are final 7 days after delivery.\n2. RETURNS. Items may be returned within 14 days for store credit only.\n3. SHIPPING. Standard delivery is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, PayPal, and ShopFast Pay.\n5. PRIVACY. We share your purchase history with marketing partners. Opt-out is available only for users in the EU.",
-        "ground_truth_changes": [
-          "Sales-final window shortened from 14 days to 7 days after delivery.",
-          "Returns now give only store credit instead of a full refund.",
-          "ShopFast Pay added as a payment option.",
-          "Default for sharing purchase history is now opt-in by default; opt-out restricted to EU users (was global opt-out)."
-        ],
-        "non_changes_to_ignore": [
-          "Shipping window unchanged (wording 'shipping' vs 'delivery' is cosmetic).",
-          "Visa, MasterCard, PayPal still accepted."
-        ]
-      }
+        {
+            "id": "b-substantial-001",
+            "service_name": "ChirpSocial",
+            "case_type": "substantial",
+            "old_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, royalty-free license to display content you post.\n3. DATA RETENTION. We retain account data for 18 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. Class actions are not waived.\n5. CHANGES. We will email registered users 30 days before any material change to these Terms.",
+            "new_version": "1. ACCOUNT. By creating an account on ChirpSocial you agree to these Terms.\n2. CONTENT LICENSE. You grant ChirpSocial a worldwide, perpetual, irrevocable, royalty-free license to use, distribute, modify, and create derivative works from content you post, including for advertising.\n3. DATA RETENTION. We retain account data for 36 months after account deletion.\n4. ARBITRATION. Disputes are resolved by binding arbitration. You waive the right to participate in any class action.\n5. CHANGES. We may modify these Terms at any time. Continued use constitutes acceptance.",
+            "ground_truth_changes": [
+                "Content license expanded from display-only royalty-free to perpetual, irrevocable, including modification, derivative works, and advertising use.",
+                "Data retention after deletion increased from 18 months to 36 months.",
+                "Arbitration clause now adds a class-action waiver (previously not waived).",
+                "Change-of-terms notice removed: previously 30 days' email notice required, now changes take effect via continued use without notice."
+            ],
+            "non_changes_to_ignore": [
+                "Section 1 wording is identical."
+            ]
+        },
+        {
+            "id": "b-cosmetic-002",
+            "service_name": "GridSheet",
+            "case_type": "cosmetic_only",
+            "old_version": "1. Service. GridSheet provides cloud-based spreadsheet software.\n2. Data Ownership. You retain ownership of data you upload.\n3. Subscription. Monthly fees are billed in advance.",
+            "new_version": "Section 1 — The Service\nGridSheet provides cloud-based spreadsheet software.\n\nSection 2 — Data Ownership\nYou retain ownership of data you upload.\n\nSection 3 — Subscription\nMonthly fees are billed in advance.",
+            "ground_truth_changes": [],
+            "non_changes_to_ignore": [
+                "Section headers were reformatted but section content is semantically identical.",
+                "Whitespace and capitalization were changed."
+            ]
+        },
+        {
+            "id": "b-mixed-003",
+            "service_name": "ShopFast",
+            "case_type": "mixed",
+            "old_version": "1. PURCHASES. All sales are final 14 days after delivery.\n2. RETURNS. Items may be returned within 14 days for a full refund.\n3. SHIPPING. Standard shipping is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, and PayPal.\n5. PRIVACY. We may share your purchase history with marketing partners unless you opt out.",
+            "new_version": "1. PURCHASES. All sales are final 7 days after delivery.\n2. RETURNS. Items may be returned within 14 days for store credit only.\n3. SHIPPING. Standard delivery is 5-7 business days.\n4. PAYMENT. We accept Visa, MasterCard, PayPal, and ShopFast Pay.\n5. PRIVACY. We share your purchase history with marketing partners. Opt-out is available only for users in the EU.",
+            "ground_truth_changes": [
+                "Sales-final window shortened from 14 days to 7 days after delivery.",
+                "Returns now give only store credit instead of a full refund.",
+                "ShopFast Pay added as a payment option.",
+                "Default for sharing purchase history is now opt-in by default; opt-out restricted to EU users (was global opt-out)."
+            ],
+            "non_changes_to_ignore": [
+                "Shipping window unchanged (wording 'shipping' vs 'delivery' is cosmetic).",
+                "Visa, MasterCard, PayPal still accepted."
+            ]
+        },
+        {
+            "id": "b-substantial-001-rw",
+            "service_name": "Google",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. These Terms cover your use of Google services.\n2. CONTENT. You retain ownership of content you upload; you grant Google a license to host, reproduce, and display it to operate the services.\n3. AI. (No specific provisions for generative AI.)\n4. DISPUTES. Disputes are governed by California law; arbitration applies in some regions.\n5. LIABILITY. Standard warranty disclaimers and a capped liability section.",
+            "new_version": "1. SCOPE. These Terms cover your use of Google services and reorganize prior provisions into clearer sections.\n2. CONTENT. You retain ownership; the license is broadened so Google may use uploaded content to operate, develop, and improve its services, including its AI services.\n3. AI. New section: users may not abuse, reverse-engineer, or attempt to extract underlying models from Google's generative-AI features.\n4. DISPUTES. Updated dispute-resolution and governing-law sections.\n5. LIABILITY. Updated warranty disclaimers and capped-liability language.",
+            "ground_truth_changes": [
+                "Added new Generative AI section with explicit anti-abuse and anti-reverse-engineering rules.",
+                "Content license expanded so that user content may be used to develop and improve Google's AI services (in addition to operating existing services).",
+                "Dispute-resolution and governing-law sections updated.",
+                "Warranty / liability section refreshed."
+            ],
+            "non_changes_to_ignore": [
+                "User retains ownership of uploaded content (unchanged).",
+                "Reorganization into clearer sections is structural and not a substantive change."
+            ]
+        },
+        {
+            "id": "b-cosmetic-002-rw",
+            "service_name": "Google (2020 → 2022)",
+            "case_type": "cosmetic_only",
+            "old_version": "1. AGREEMENT. Long-form agreement explaining the relationship between Google and the user.\n2. WHAT YOU CAN EXPECT. Description of services, with multiple cross-references and footnotes.\n3. WHAT WE EXPECT. Acceptable-use rules embedded across multiple paragraphs.\n4. CONTENT. License grant in dense legal prose.\n5. WARRANTIES. Warranty disclaimers in standard legal form.",
+            "new_version": "1. AGREEMENT. Same agreement, rewritten with shorter sentences and inline definitions.\n2. WHAT YOU CAN EXPECT. Same scope, presented in a more readable format with clearer headings.\n3. WHAT WE EXPECT. Same acceptable-use rules, broken into a bulleted list with examples.\n4. CONTENT. Same license grant, in plainer language.\n5. WARRANTIES. Same disclaimers, expanded with brief explanations of what each one means.",
+            "ground_truth_changes": [
+                "Warranty / liability section adds plain-English explanations alongside existing disclaimers."
+            ],
+            "non_changes_to_ignore": [
+                "All sections were rewritten in plainer language without changing substance.",
+                "Adding examples to acceptable-use rules is illustrative only.",
+                "Reorganization into clearer headings is purely structural."
+            ]
+        },
+        {
+            "id": "b-substantial-003",
+            "service_name": "Microsoft Services Agreement",
+            "case_type": "substantial",
+            "old_version": "1. EFFECTIVE DATE. Published 2024.\n2. YOUR CONTENT. Standard ownership and license provisions.\n3. SUPPORT. Some services may have separate support terms.\n4. PAYMENT. Trial offers may convert into paid subscriptions.\n5. XBOX. Service-specific Xbox terms covering Microsoft platforms.",
+            "new_version": "1. EFFECTIVE DATE. Published 2025.\n2. YOUR CONTENT. Adds a new subsection on exportable data — explaining what data users can take with them.\n3. SUPPORT. Updated to clarify that some services may have separate support terms governed outside this agreement.\n4. PAYMENT. Adds language clarifying that some trial-period offers may require auto-renewal to be turned on.\n5. XBOX. Adds language about non-Microsoft third-party platforms tracking and sharing user data when accessing Xbox Game Studio titles.",
+            "ground_truth_changes": [
+                "Added exportable-data subsection describing user rights to retrieve their data.",
+                "Added explicit language that some trial offers may require auto-renewal to be enabled.",
+                "Added Xbox-specific disclosure that third-party platforms may track and share data when used to access Xbox titles.",
+                "Clarified that some services may have separate support terms outside this agreement."
+            ],
+            "non_changes_to_ignore": [
+                "Effective-date update is administrative.",
+                "Section structure is preserved; new content is added inside existing sections."
+            ]
+        },
+        {
+            "id": "b-mixed-004",
+            "service_name": "Microsoft Services Agreement (2023 → 2024)",
+            "case_type": "mixed",
+            "old_version": "1. EFFECTIVE DATE. 2023 version.\n2. MODERATION. Moderation rules described in-text only.\n3. XBOX. Service-specific Xbox terms covering Microsoft accounts.\n4. KIDS ON XBOX. Family settings apply when using Xbox products.",
+            "new_version": "1. EFFECTIVE DATE. 2024 version.\n2. MODERATION. Adds a link to an external Microsoft policy page describing moderation and enforcement in detail.\n3. XBOX. Adds disclosure that third-party platforms hosting Xbox titles may track and share user data, subject to those platforms' terms.\n4. KIDS ON XBOX. Clarifies that family-settings features may not be available on third-party platforms.",
+            "ground_truth_changes": [
+                "Moderation/enforcement section now references an external policy page for transparency.",
+                "Xbox section discloses third-party platform tracking and data-sharing.",
+                "Kids-on-Xbox subsection clarifies that family settings may not work on third-party platforms."
+            ],
+            "non_changes_to_ignore": [
+                "Effective-date bump is administrative.",
+                "Section numbering is preserved."
+            ]
+        },
+        {
+            "id": "b-substantial-005",
+            "service_name": "OpenAI Terms of Use (consumer)",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Single document covering both consumer and business/API use.\n2. ARBITRATION. Disputes go to ADR Services for binding arbitration.\n3. BATCH ARBITRATION. Procedures handled by ADR Services.",
+            "new_version": "1. SCOPE. Consumer Terms of Use are split off; a separate Business Terms covers API and Enterprise.\n2. ARBITRATION. Arbitration provider changed from ADR Services to National Arbitration and Mediation.\n3. BATCH ARBITRATION. Procedures revised to reflect how National Arbitration and Mediation handles batch arbitration.",
+            "ground_truth_changes": [
+                "Consumer Terms of Use formally separated from Business Terms (API/Enterprise).",
+                "Arbitration provider switched from ADR Services to National Arbitration and Mediation.",
+                "Batch-arbitration procedures revised to align with the new provider's process."
+            ],
+            "non_changes_to_ignore": [
+                "Continued use of binding arbitration as the dispute-resolution mechanism (provider changed, mechanism unchanged)."
+            ]
+        },
+        {
+            "id": "b-substantial-006",
+            "service_name": "OpenAI Services Agreement (business / API)",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Separate Business Terms and various per-product agreements for API, ChatGPT Enterprise, and ChatGPT Team.\n2. DATA. Per-product data-handling provisions varied across documents.\n3. INDEMNIFICATION. Standard indemnification language.\n4. SLAs. Service-level commitments scattered across separate addenda.",
+            "new_version": "1. SCOPE. Single unified Services Agreement covering API, ChatGPT Enterprise, ChatGPT Team, and other business services.\n2. DATA. Unified data-handling provisions confirming business/API customer data is not used to train OpenAI's models by default.\n3. INDEMNIFICATION. Updated indemnification language consolidated into the new agreement.\n4. SLAs. Service-level commitments updated and consolidated.",
+            "ground_truth_changes": [
+                "Multiple separate business agreements consolidated into a single OpenAI Services Agreement.",
+                "Data-handling provisions unified, with explicit confirmation that business/API customer data is not used to train models by default.",
+                "Indemnification language updated.",
+                "Service-level commitments updated and consolidated."
+            ],
+            "non_changes_to_ignore": [
+                "Document covers the same products (API, Enterprise, Team) as before."
+            ]
+        },
+        {
+            "id": "b-mixed-007",
+            "service_name": "Anthropic Consumer Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. SCOPE. Covers Claude.ai and Claude Pro.\n2. ENTERPRISE LINKING. Limited language about employer-domain accounts.\n3. ACCEPTABLE USE. References a separate policy.\n4. DISPUTE RESOLUTION. Standard arbitration / governing-law clauses.",
+            "new_version": "1. SCOPE. Covers Claude.ai, Claude Pro, and the Claude apps explicitly.\n2. ENTERPRISE LINKING. Refined provisions on linking accounts created with employer-owned email domains, including notice before linking.\n3. ACCEPTABLE USE. Stronger reference to the published Acceptable Use Policy.\n4. DISPUTE RESOLUTION. Updated dispute-resolution and governing-law sections.",
+            "ground_truth_changes": [
+                "Scope explicitly extended to include Claude apps in addition to Claude.ai and Claude Pro.",
+                "Enterprise-linking provisions refined, including a requirement to notify users before their account is linked to an organization.",
+                "Stronger cross-reference to the Acceptable Use Policy.",
+                "Dispute-resolution and governing-law provisions updated."
+            ],
+            "non_changes_to_ignore": [
+                "Continued use of arbitration as the dispute-resolution framework.",
+                "Acceptable Use Policy itself is referenced in both versions."
+            ]
+        },
+        {
+            "id": "b-substantial-008",
+            "service_name": "Anthropic Commercial Terms of Service (API)",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Covers API access generally.\n2. CUSTOMER DATA. General data-handling clause.\n3. TRAINING. Limited explicit language about training on customer data.\n4. INDEMNIFICATION. Standard mutual indemnities.",
+            "new_version": "1. SCOPE. Covers API access with more detailed product references.\n2. CUSTOMER DATA. Expanded provisions on customer data and outputs.\n3. TRAINING. Explicit clause: customer prompts and completions are not used to train Anthropic models by default.\n4. INDEMNIFICATION. Updated indemnification and acceptable-use language tied to the published Usage Policy.",
+            "ground_truth_changes": [
+                "Added explicit clause that customer prompts/completions are not used to train Anthropic's models by default.",
+                "Expanded provisions on customer data and outputs.",
+                "Indemnification updated and tied directly to the published Usage Policy."
+            ],
+            "non_changes_to_ignore": [
+                "Document still governs API access as in the prior version."
+            ]
+        },
+        {
+            "id": "b-substantial-009",
+            "service_name": "Facebook / Meta Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. AGREEMENT. Opening paragraph describes Meta's services.\n2. CONTENT LICENSE. Worldwide license to display content you post; license ends when content is deleted.\n3. AI/ML. General references to use of automated systems.\n4. DISPUTES. Standard dispute-resolution provisions.",
+            "new_version": "1. AGREEMENT. Opening paragraph rewritten so that using Meta products is itself agreement to the Terms.\n2. CONTENT LICENSE. License framing strengthened — content uploaded to Meta Products may be used, distributed, and modified to operate and improve services.\n3. AI/ML. Adds language about Meta's use of AI and machine-learning systems on user content for service improvement and safety.\n4. DISPUTES. Standard dispute-resolution provisions retained.",
+            "ground_truth_changes": [
+                "Opening agreement reframed to make clear that using the products = agreeing to the Terms.",
+                "Content license strengthened to cover use, distribution, and modification of uploaded content for service operation and improvement.",
+                "Added language permitting Meta to apply AI/ML systems to user content for service improvement and safety."
+            ],
+            "non_changes_to_ignore": [
+                "License still ends when content is deleted, in line with prior version.",
+                "Dispute-resolution framework unchanged."
+            ]
+        },
+        {
+            "id": "b-substantial-010",
+            "service_name": "Instagram Terms of Use",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Instagram Terms of Use.\n2. CONTENT LICENSE. Worldwide non-exclusive license to host and display content you post.\n3. AI. No specific AI/ML clause.\n4. CROSS-PRODUCT. Limited references to data flowing across Meta Products.",
+            "new_version": "1. SCOPE. Instagram Terms of Use, aligned with Meta umbrella terms.\n2. CONTENT LICENSE. Worldwide non-exclusive license expanded to cover use, distribution, and modification of uploaded content.\n3. AI. New language allowing AI/ML processing of content across Meta Products for service operation and improvement.\n4. CROSS-PRODUCT. More explicit data-flow provisions across Facebook, Instagram, Threads, and Messenger.",
+            "ground_truth_changes": [
+                "Content license expanded from host/display only to use, distribute, and modify uploaded content.",
+                "Added AI/ML processing of content across Meta Products clause.",
+                "More explicit cross-product data-flow provisions across Meta apps.",
+                "Document aligned with the broader Meta umbrella Terms."
+            ],
+            "non_changes_to_ignore": [
+                "Document still governs the Instagram service."
+            ]
+        },
+        {
+            "id": "b-substantial-011",
+            "service_name": "X (Twitter) Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. CONTENT LICENSE. Worldwide royalty-free license to use, host, and display posts.\n2. AI TRAINING. In-product setting allowed users to opt out of having content used for AI training.\n3. THIRD-PARTY DATA SHARING. Limited; structured around partner relationships.\n4. SCOPE. Covers Twitter / X services.",
+            "new_version": "1. CONTENT LICENSE. Worldwide royalty-free license now explicitly extends to using posts to train machine-learning and generative-AI models.\n2. AI TRAINING. In-product opt-out language for AI training removed from the Terms.\n3. THIRD-PARTY DATA SHARING. Broadened — content may be shared with third parties subject to license.\n4. SCOPE. Covers X services.",
+            "ground_truth_changes": [
+                "Explicit royalty-free, worldwide license to use posts for training ML and generative-AI models added.",
+                "Removed the in-product opt-out language for AI training that existed in the prior version.",
+                "Third-party data-sharing permissions broadened."
+            ],
+            "non_changes_to_ignore": [
+                "Document continues to cover the same X / Twitter services.",
+                "License continues to be worldwide and royalty-free (this was true in both versions)."
+            ]
+        },
+        {
+            "id": "b-mixed-012",
+            "service_name": "TikTok Terms of Service (US)",
+            "case_type": "mixed",
+            "old_version": "1. CONTRACTING PARTY. TikTok Inc.\n2. CONTENT LICENSE. Worldwide royalty-free sublicensable license over user content.\n3. AGE. Users under 13 use a separate experience.\n4. AI. Limited AI-specific provisions.",
+            "new_version": "1. CONTRACTING PARTY. TikTok USDS (after the U.S. joint venture).\n2. CONTENT LICENSE. Same worldwide, irrevocable, royalty-free, sublicensable license, reaffirmed for ML model development.\n3. AGE. Reaffirmed: users under 13 use the Under-13 Experience.\n4. AI. New generative-AI rules: outputs are 'as is'; users are responsible for inputs/outputs; users may not strip watermarks or claim AI output is human-made.",
+            "ground_truth_changes": [
+                "Contracting party changed from TikTok Inc. to TikTok USDS following the U.S. joint venture.",
+                "Content license reaffirmed and explicitly tied to ML model development.",
+                "New generative-AI section with explicit user-responsibility, no-watermark-removal, and no-misrepresentation rules."
+            ],
+            "non_changes_to_ignore": [
+                "Under-13 restriction is reaffirmed but unchanged in substance.",
+                "Worldwide royalty-free sublicensable framing of the content license predates this update."
+            ]
+        },
+        {
+            "id": "b-substantial-013",
+            "service_name": "YouTube Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. MONETIZATION. Only YouTube Partner Program creators could monetize.\n2. FACIAL RECOGNITION. No explicit prohibition.\n3. TAX. Standard tax language for creators.\n4. SCOPE. Region-specific Terms.",
+            "new_version": "1. MONETIZATION. YouTube has the right to monetize most videos on the platform, including those of non-Partner creators.\n2. FACIAL RECOGNITION. Explicit prohibition on collecting facial-recognition data from videos.\n3. TAX. New U.S. tax-withholding obligations for non-U.S. creators receiving payments.\n4. SCOPE. Globalized version of the Terms.",
+            "ground_truth_changes": [
+                "YouTube's right to monetize expanded to most videos including non-Partner videos.",
+                "New explicit ban on collecting facial-recognition data from videos.",
+                "New U.S. tax-withholding obligations for non-U.S. creators added.",
+                "Terms globalized."
+            ],
+            "non_changes_to_ignore": [
+                "Tax topics existed before, but the specific withholding obligations are new."
+            ]
+        },
+        {
+            "id": "b-mixed-014",
+            "service_name": "Adobe General Terms of Use",
+            "case_type": "mixed",
+            "old_version": "1. ACCESS. Adobe accesses user content only for narrow service-operation purposes.\n2. AI TRAINING. Limited explicit clause.\n3. LANGUAGE. Standard legal phrasing throughout.\n4. SUMMARY. No plain-English change summary.",
+            "new_version": "1. ACCESS. Initial Feb 2024 wording allowed Adobe to access user content via 'automated and manual methods' to improve services and software (this caused public backlash).\n2. AI TRAINING. Following backlash, June 2024 update added an explicit statement that Adobe does not train generative-AI models on customer cloud content.\n3. LANGUAGE. Sections rewritten in clearer, plain language.\n4. SUMMARY. Adobe added plain-English summaries of changes alongside the Terms.",
+            "ground_truth_changes": [
+                "Initial February 2024 update broadened content-access language (automated and manual methods) for service improvement.",
+                "After backlash, June 2024 update added an explicit statement that Adobe does not train generative AI on customer cloud content.",
+                "Sections rewritten in clearer, plain language.",
+                "Added plain-English summaries of changes."
+            ],
+            "non_changes_to_ignore": [
+                "Adobe continues to access content for narrow service-operation purposes (this concept predates the change; the framing changed but service operation is still a basis)."
+            ]
+        },
+        {
+            "id": "b-mixed-015",
+            "service_name": "Zoom Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. SERVICE-GENERATED DATA. Standard provisions on Zoom's use of telemetry and operational data.\n2. AI TRAINING. No specific AI-training clause.\n3. CUSTOMER CONTENT. Customer audio/video/chat covered by privacy commitments.",
+            "new_version": "1. SERVICE-GENERATED DATA. March 2023 update added a broad license over Service-Generated Data permitting Zoom to use it to train AI/ML models.\n2. AI TRAINING. After backlash in August 2023, Zoom amended the Terms to expressly state that audio, video, and chat content are not used to train AI models without customer consent.\n3. CUSTOMER CONTENT. Customer audio/video/chat continues to be subject to customer-controlled use.",
+            "ground_truth_changes": [
+                "March 2023 update added a broad license over Service-Generated Data for AI/ML training.",
+                "August 2023 amendment added an explicit no-training-without-consent statement for audio, video, and chat content."
+            ],
+            "non_changes_to_ignore": [
+                "Customer-content privacy framing was present in both versions; the explicit AI-training carve-out is what's new."
+            ]
+        },
+        {
+            "id": "b-substantial-016",
+            "service_name": "LinkedIn User Agreement",
+            "case_type": "substantial",
+            "old_version": "1. CONTENT LICENSE. Standard worldwide license over member content.\n2. AI TRAINING. No explicit AI-training provisions.\n3. SETTINGS. Standard privacy settings.\n4. DISPUTES. Standard arbitration / class-action language.",
+            "new_version": "1. CONTENT LICENSE. Same baseline license, with explicit reference to use for AI training.\n2. AI TRAINING. New explicit clause: member data and content may be used to train generative-AI models for LinkedIn features.\n3. SETTINGS. New opt-out toggle in Settings for AI training.\n4. DISPUTES. Updated dispute-resolution provisions, including class-action waiver language.",
+            "ground_truth_changes": [
+                "Added explicit clause that member data and content may be used to train generative-AI models.",
+                "Added a settings-level opt-out toggle for AI training.",
+                "Updated class-action waiver provisions."
+            ],
+            "non_changes_to_ignore": [
+                "Worldwide license framing predates this change.",
+                "Arbitration as the dispute-resolution framework is unchanged."
+            ]
+        },
+        {
+            "id": "b-mixed-017",
+            "service_name": "Slack User Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. CUSTOMER DATA. Standard provisions on customer messages and files.\n2. ML. Privacy policy referenced ML for global model training.\n3. AI. No Slack-AI-specific provisions.",
+            "new_version": "1. CUSTOMER DATA. Same baseline; clarified that Customer Data is not used to train Slack's generative-AI products.\n2. ML. Earlier privacy-policy language about ML use for global model training narrowed.\n3. AI. New Slack-AI-specific terms added.",
+            "ground_truth_changes": [
+                "Added explicit statement that Customer Data is not used to train Slack's generative-AI products.",
+                "Narrowed earlier privacy-policy ML-training language.",
+                "Added Slack AI-specific terms."
+            ],
+            "non_changes_to_ignore": [
+                "Customer-data framing for messages and files is consistent with prior versions."
+            ]
+        },
+        {
+            "id": "b-substantial-018",
+            "service_name": "Slack API Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. APP DATA. General provisions on what apps can access.\n2. BULK EXTRACTION. Limited specific restrictions.\n3. LLM USE. No specific clauses on using Slack data to train LLMs.",
+            "new_version": "1. APP DATA. Clarified data-export limits.\n2. BULK EXTRACTION. Stricter restrictions on bulk extraction by apps.\n3. LLM USE. New explicit prohibition on using Slack data to train large language models without permission.",
+            "ground_truth_changes": [
+                "Clarified data-export limits for apps.",
+                "Added stricter restrictions on bulk data extraction.",
+                "Added explicit prohibition on using Slack data to train LLMs without permission."
+            ],
+            "non_changes_to_ignore": [
+                "App data still subject to user consent and workspace settings, as before."
+            ]
+        },
+        {
+            "id": "b-mixed-019",
+            "service_name": "Discord Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. ARBITRATION. Standard arbitration clauses.\n2. AI. No AI-generated-content provisions.\n3. PAID SERVICES. Standard Nitro / paid features terms.\n4. SAFETY METADATA. General references to abuse prevention.",
+            "new_version": "1. ARBITRATION. Modernized arbitration language.\n2. AI. New section on AI-generated content rules.\n3. PAID SERVICES. Expanded Paid Service Terms.\n4. SAFETY METADATA. Adds disclosure that metadata may be used to train safety systems.",
+            "ground_truth_changes": [
+                "Modernized arbitration language.",
+                "Added AI-generated content rules.",
+                "Expanded Paid Service Terms (covering Nitro and other features).",
+                "Added disclosure that metadata is used to train safety systems."
+            ],
+            "non_changes_to_ignore": [
+                "Arbitration as the dispute-resolution framework is unchanged.",
+                "Paid services existed in the prior version (the section was expanded, not introduced)."
+            ]
+        },
+        {
+            "id": "b-substantial-020",
+            "service_name": "GitHub Terms of Service / Privacy Statement",
+            "case_type": "substantial",
+            "old_version": "1. AFFILIATES. Personal data shared with affiliates only for limited operational purposes.\n2. PROCESSING PURPOSES. Standard list of operational and security purposes.\n3. AI/ML. No specific AI/ML training purpose.\n4. OPT-OUTS. Standard user controls.",
+            "new_version": "1. AFFILIATES. Personal data may now be shared with Microsoft and other GitHub affiliates for AI/ML model development.\n2. PROCESSING PURPOSES. New product-development purpose explicitly covering AI/ML model training.\n3. AI/ML. Explicit purpose for using personal data to develop, improve, and train AI/ML models.\n4. OPT-OUTS. User opt-out preferences and enterprise data protections travel with the data when shared with affiliates.",
+            "ground_truth_changes": [
+                "Affiliate sharing expanded to include AI/ML model development by Microsoft and other affiliates.",
+                "Added a new product-development processing purpose covering AI/ML training.",
+                "Clarified that user opt-out preferences propagate to affiliates that receive shared data."
+            ],
+            "non_changes_to_ignore": [
+                "Affiliate sharing was permitted before for operational purposes (the change is the AI/ML purpose)."
+            ]
+        },
+        {
+            "id": "b-substantial-021",
+            "service_name": "Reddit User Agreement",
+            "case_type": "substantial",
+            "old_version": "1. CONTENT. License grant limited to Reddit's own use of user posts.\n2. AI. No clause specifically on AI-training licenses.\n3. MONETIZATION. Limited monetization references.\n4. DISPUTES. Standard dispute-resolution clauses.",
+            "new_version": "1. CONTENT. License grant explicitly extends to Reddit's right to license user content to third parties (including for AI training).\n2. AI. Aligned with the new third-party licensing right.\n3. MONETIZATION. New monetization-related provisions added.\n4. DISPUTES. Dispute-resolution venue shifted.",
+            "ground_truth_changes": [
+                "License grant expanded to allow Reddit to license user content to third parties, including for AI training.",
+                "Added new monetization-related provisions.",
+                "Dispute-resolution venue shifted."
+            ],
+            "non_changes_to_ignore": [
+                "User content remains user-owned in both versions."
+            ]
+        },
+        {
+            "id": "b-substantial-022",
+            "service_name": "Spotify Terms of Use",
+            "case_type": "substantial",
+            "old_version": "1. USER CONTENT. Standard license over user-uploaded podcasts and other audio.\n2. AI. No AI-DJ or AI-playlist provisions.\n3. DISPUTES. Standard arbitration clauses.",
+            "new_version": "1. USER CONTENT. License expanded to cover AI processing of uploaded audio and podcasts.\n2. AI. Added rules for AI DJ and AI-generated playlists.\n3. DISPUTES. Updated arbitration and class-action waiver clauses.",
+            "ground_truth_changes": [
+                "User-Content license expanded to cover AI processing of uploaded audio/podcasts.",
+                "Added AI DJ and AI-playlist rules.",
+                "Updated arbitration and class-action waiver clauses."
+            ],
+            "non_changes_to_ignore": [
+                "Spotify continued to license user content for service operation across both versions."
+            ]
+        },
+        {
+            "id": "b-substantial-023",
+            "service_name": "Netflix Terms of Use",
+            "case_type": "substantial",
+            "old_version": "1. SHARING. Account sharing across households was tolerated in practice.\n2. HOUSEHOLD. No defined 'Netflix Household'.\n3. BILLING. Standard plan tiers and billing language.",
+            "new_version": "1. SHARING. Paid sharing requires the primary household plus paid additional members for users outside it.\n2. HOUSEHOLD. Adds a defined 'Netflix Household' concept.\n3. BILLING. Updated billing/cancellation provisions to reflect the extra-member fee.",
+            "ground_truth_changes": [
+                "Introduced extra-member fees for sharing outside the primary household.",
+                "Defined 'Netflix Household' explicitly.",
+                "Updated billing/cancellation provisions for the extra-member feature."
+            ],
+            "non_changes_to_ignore": [
+                "Plan-tier structure existed before (this is an additional layer on top, not a replacement)."
+            ]
+        },
+        {
+            "id": "b-substantial-024",
+            "service_name": "Disney+ Subscriber Agreement",
+            "case_type": "substantial",
+            "old_version": "1. ADS. 'No ads' / 'ad-free' tiers were genuinely ad-free for streaming titles.\n2. ARBITRATION. Standard arbitration provisions.\n3. EFFECTIVE DATE. Single effective date for all subscribers.",
+            "new_version": "1. ADS. Streaming titles may include ads even for subscribers on 'no ads' / 'ad-free' tiers.\n2. ARBITRATION. Expanded mass-arbitration procedures (response to wrongful-death case backlash).\n3. EFFECTIVE DATE. Different effective dates for new and existing subscribers.",
+            "ground_truth_changes": [
+                "Ads may now appear on previously ad-free / 'no ads' tiers.",
+                "Mass-arbitration procedures expanded.",
+                "Staggered effective dates for new vs. existing subscribers."
+            ],
+            "non_changes_to_ignore": [
+                "Subscription model and base price tiers remain similar in structure."
+            ]
+        },
+        {
+            "id": "b-mixed-025",
+            "service_name": "PayPal User Agreement",
+            "case_type": "mixed",
+            "old_version": "1. SELLER PROTECTION. Standard seller-protection criteria.\n2. CROSS-BORDER FEES. Existing fee schedule.\n3. DISPUTES. Standard chargeback flow.\n4. CRYPTO. Limited references to cryptocurrency.",
+            "new_version": "1. SELLER PROTECTION. Revised seller-protection criteria.\n2. CROSS-BORDER FEES. New fee schedules for cross-border transactions.\n3. DISPUTES. Expanded dispute-resolution and chargeback flow.\n4. CRYPTO. Clarified handling of cryptocurrency holdings.",
+            "ground_truth_changes": [
+                "Revised seller-protection criteria.",
+                "Added new cross-border transaction fee schedules.",
+                "Expanded dispute-resolution and chargeback flow.",
+                "Clarified handling of cryptocurrency holdings."
+            ],
+            "non_changes_to_ignore": [
+                "Document continues to govern the PayPal user relationship.",
+                "Seller protection has existed for years (criteria changed, not the concept)."
+            ]
+        },
+        {
+            "id": "b-mixed-026",
+            "service_name": "eBay User Agreement",
+            "case_type": "mixed",
+            "old_version": "1. PAYMENTS. Managed payments structure.\n2. AI / AUTOMATED DECISIONS. Limited references.\n3. LISTING DATA. Narrower permitted-use language.\n4. ARBITRATION. Standard opt-out procedures.",
+            "new_version": "1. PAYMENTS. Managed-payments structure revised.\n2. AI / AUTOMATED DECISIONS. More detailed AI/automated-decision sections added.\n3. LISTING DATA. Broader permitted-use language for listing data.\n4. ARBITRATION. Clearer arbitration / opt-out procedures.",
+            "ground_truth_changes": [
+                "Managed-payments structure revised.",
+                "Added more detailed AI/automated-decision sections.",
+                "Broadened permitted-use language for listing data.",
+                "Clarified arbitration opt-out procedures."
+            ],
+            "non_changes_to_ignore": [
+                "Managed payments existed before (only the structure changed)."
+            ]
+        },
+        {
+            "id": "b-mixed-027",
+            "service_name": "Amazon Conditions of Use",
+            "case_type": "mixed",
+            "old_version": "1. SCOPE. Covers Amazon services generally.\n2. AI. No specific Alexa or Rufus references.\n3. ARBITRATION. Mandatory binding arbitration covering most disputes.",
+            "new_version": "1. SCOPE. Broader scope covering Alexa, Rufus AI, and other AI services.\n2. AI. New references to AI-generated outputs and how they interact with the user agreement.\n3. ARBITRATION. Adds explicit small-claims-court carve-out from arbitration.",
+            "ground_truth_changes": [
+                "Scope broadened to cover Alexa and Rufus AI features.",
+                "Added explicit references to AI-generated content under the user agreement.",
+                "Added explicit carve-out permitting small-claims-court actions outside arbitration."
+            ],
+            "non_changes_to_ignore": [
+                "Mandatory arbitration framework retained (small-claims is a carve-out, not a replacement)."
+            ]
+        },
+        {
+            "id": "b-substantial-028",
+            "service_name": "Apple Media Services Terms and Conditions",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Covers iCloud, Apple Music, App Store, etc.\n2. AI. No Apple Intelligence references.\n3. FAMILY SHARING. Standard provisions.\n4. SUBSCRIPTIONS. Standard provisions.",
+            "new_version": "1. SCOPE. Same scope, with on-device generative-AI provisions across services.\n2. AI. New explicit references to Apple Intelligence and on-device generative AI.\n3. FAMILY SHARING. Family Sharing provisions revised.\n4. SUBSCRIPTIONS. Subscriptions section revised.",
+            "ground_truth_changes": [
+                "Added explicit references to Apple Intelligence and on-device generative AI features.",
+                "Family Sharing provisions revised.",
+                "Subscriptions section revised."
+            ],
+            "non_changes_to_ignore": [
+                "Document continues to govern the same set of Apple media services."
+            ]
+        },
+        {
+            "id": "b-substantial-029",
+            "service_name": "iCloud Terms and Conditions",
+            "case_type": "substantial",
+            "old_version": "1. ENCRYPTION. Standard encryption-at-rest.\n2. ACCESS. Apple may access stored content for legal/safety reasons.\n3. AI. No Apple Intelligence references.",
+            "new_version": "1. ENCRYPTION. Added Advanced Data Protection — end-to-end encryption opt-in for additional iCloud data categories.\n2. ACCESS. Apple's access for legal/safety reasons clarified, narrowed where end-to-end encryption applies.\n3. AI. Added Apple Intelligence Private Cloud Compute language describing privacy-preserving server-side AI.",
+            "ground_truth_changes": [
+                "Added Advanced Data Protection: opt-in end-to-end encryption for additional iCloud data categories.",
+                "Refined Apple's access provisions in light of end-to-end encryption.",
+                "Added Apple Intelligence Private Cloud Compute language."
+            ],
+            "non_changes_to_ignore": [
+                "Apple still retains access for safety and legal reasons where E2EE does not apply."
+            ]
+        },
+        {
+            "id": "b-substantial-030",
+            "service_name": "Snap Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. CONTENT LICENSE. Standard license over user content.\n2. CROWD-SOURCED. Limited license-expansion language.\n3. AI. No My-AI-specific provisions.\n4. ARBITRATION. Standard pre-arbitration procedure.",
+            "new_version": "1. CONTENT LICENSE. Standard license retained.\n2. CROWD-SOURCED. Expanded user-content license for Live, Local, and other crowd-sourced services.\n3. AI. New sections on My AI and other generative-AI features.\n4. ARBITRATION. Pre-arbitration procedure formalized with a 60-day waiting period.",
+            "ground_truth_changes": [
+                "Expanded license over content uploaded to Live, Local, and crowd-sourced services.",
+                "Added My AI and generative-AI feature provisions.",
+                "Added a formal 60-day pre-arbitration waiting period.",
+                "Added clearer parental-data-sharing rules for under-18 users via Family Center."
+            ],
+            "non_changes_to_ignore": [
+                "Standard license over user content predates this update."
+            ]
+        },
+        {
+            "id": "b-substantial-031",
+            "service_name": "Pinterest Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. CONTENT. Standard license over public Pin content.\n2. AI. No specific AI/ML training clauses.\n3. ADVERTISERS. Standard advertiser/merchant obligations.\n4. ARBITRATION. Standard arbitration provisions.",
+            "new_version": "1. CONTENT. Same baseline license; explicit clause permitting use of public Pin content to train AI/ML models.\n2. AI. New AI-training and recommendation/safety clauses.\n3. ADVERTISERS. Updated advertiser/merchant obligations.\n4. ARBITRATION. Updated arbitration provisions.",
+            "ground_truth_changes": [
+                "Added explicit permission to use public Pin content to train AI/ML models for recommendations and safety.",
+                "Updated advertiser and merchant obligations.",
+                "Updated arbitration provisions."
+            ],
+            "non_changes_to_ignore": [
+                "Pinterest continues to publish a public terms archive (this is unchanged)."
+            ]
+        },
+        {
+            "id": "b-mixed-032",
+            "service_name": "Tumblr Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. CONTENT. Standard content license.\n2. AI PARTNERS. No AI-partner-sharing clause.\n3. SETTINGS. Standard visibility settings.",
+            "new_version": "1. CONTENT. Same content license framing.\n2. AI PARTNERS. New disclosure: public Tumblr posts may be shared with AI partners for training.\n3. SETTINGS. New user-facing opt-out: Settings > Visibility > Prevent third-party sharing.",
+            "ground_truth_changes": [
+                "Added disclosure that public posts may be shared with AI partners for training.",
+                "Added a user-facing opt-out under Settings > Visibility."
+            ],
+            "non_changes_to_ignore": [
+                "Underlying content-license framing is essentially unchanged.",
+                "Visibility settings existed before (the AI-sharing toggle is the new addition)."
+            ]
+        },
+        {
+            "id": "b-mixed-033",
+            "service_name": "Dropbox Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. AI FEATURES. No Dropbox Dash or AI search/summary references.\n2. CUSTOMER DATA. Standard customer-data clauses.\n3. THIRD-PARTY AI. No specific carve-out.",
+            "new_version": "1. AI FEATURES. Adds Dropbox Dash and AI search/summary features.\n2. CUSTOMER DATA. Original wording around AI features raised concerns about training on customer data.\n3. THIRD-PARTY AI. After backlash, amended to explicitly state that customer data is not used to train third-party AI models without consent.",
+            "ground_truth_changes": [
+                "Added Dropbox Dash and AI search/summary feature provisions.",
+                "After user concern, amended Terms to explicitly state customer data is not used to train third-party AI models without consent."
+            ],
+            "non_changes_to_ignore": [
+                "Standard customer-data confidentiality framing existed in the prior version."
+            ]
+        },
+        {
+            "id": "b-mixed-034",
+            "service_name": "Canva Terms of Use",
+            "case_type": "mixed",
+            "old_version": "1. OUTPUT OWNERSHIP. Standard ownership rules for designs.\n2. AI. No Magic-Studio-specific rules.\n3. MODERATION. Standard content rules.",
+            "new_version": "1. OUTPUT OWNERSHIP. Users own outputs of Canva's generative-AI tools, subject to platform rights.\n2. AI. New rules for Magic Studio: restrictions on using Canva-generated content to train other AI models.\n3. MODERATION. New content-moderation and labeling requirements for AI-generated content.",
+            "ground_truth_changes": [
+                "Added explicit user ownership of generative-AI outputs (subject to platform rights).",
+                "Added restriction on using Canva-generated content to train other AI models.",
+                "Added new content-moderation and labeling requirements for AI-generated content."
+            ],
+            "non_changes_to_ignore": [
+                "Standard design-ownership concept existed before (now explicitly extended to AI outputs)."
+            ]
+        },
+        {
+            "id": "b-mixed-035",
+            "service_name": "Notion Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. SUBPROCESSORS. Standard list, last updated previously.\n2. AI. No Notion-AI-specific terms.\n3. ENTERPRISE. Standard enterprise plan features.",
+            "new_version": "1. SUBPROCESSORS. Updated subprocessor list.\n2. AI. Added Notion AI provisions: input/output ownership, no training of foundational models on customer data by default.\n3. ENTERPRISE. Added data-residency options for Enterprise plans.",
+            "ground_truth_changes": [
+                "Updated subprocessor list.",
+                "Added Notion AI provisions clarifying input/output ownership and no foundational-model training by default.",
+                "Added data-residency options for Enterprise plans."
+            ],
+            "non_changes_to_ignore": [
+                "Subprocessor disclosures were already required (the list itself was refreshed)."
+            ]
+        },
+        {
+            "id": "b-mixed-036",
+            "service_name": "Figma Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. AI. No Figma-AI-specific provisions.\n2. CUSTOMER FILES. Standard confidentiality language.\n3. SECURITY. Standard incident-notification language.",
+            "new_version": "1. AI. Added Figma AI features (Make Designs, Visual Search).\n2. CUSTOMER FILES. Clarified that customer file content is not used to train third-party generative models without opt-in.\n3. SECURITY. Strengthened security and incident-notification language.",
+            "ground_truth_changes": [
+                "Added Figma AI features (Make Designs, Visual Search).",
+                "Added explicit no-opt-in-no-training rule for customer files vs third-party generative models.",
+                "Strengthened security and incident-notification language."
+            ],
+            "non_changes_to_ignore": [
+                "Customer-file confidentiality framing existed in the prior version."
+            ]
+        },
+        {
+            "id": "b-substantial-037",
+            "service_name": "Stack Overflow Public Network Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. LICENSE. Posted Q&A licensed under CC BY-SA.\n2. BULK USE. No specific restriction on bulk extraction for AI training.\n3. COMMERCIAL DEALS. No specific reference to commercial AI-training deals.",
+            "new_version": "1. LICENSE. CC BY-SA licensing of public Q&A reaffirmed.\n2. BULK USE. Adds restriction on bulk extraction for AI training without a commercial agreement.\n3. COMMERCIAL DEALS. Reflects new commercial AI-training agreements (e.g., OpenAI, Google).",
+            "ground_truth_changes": [
+                "Added explicit restriction on bulk extraction of community content for AI training without a commercial agreement.",
+                "Document updated to reflect commercial AI-training agreements with third parties."
+            ],
+            "non_changes_to_ignore": [
+                "CC BY-SA licensing of public Q&A is preserved (this is reaffirmed, not new)."
+            ]
+        },
+        {
+            "id": "b-substantial-038",
+            "service_name": "Quora Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. Covers the Quora Q&A platform.\n2. POE. Limited Poe-specific provisions.\n3. AI. No bot-developer terms.\n4. DISPUTES. Standard provisions.",
+            "new_version": "1. SCOPE. Covers Quora and Poe.\n2. POE. Adds rules on Poe prompts/responses being used to improve Poe and partner models, subject to settings.\n3. AI. Adds bot-developer terms.\n4. DISPUTES. Revised dispute-resolution provisions.",
+            "ground_truth_changes": [
+                "Added rules for Poe: prompts/responses may be used to improve Poe and partner models, subject to settings.",
+                "Added bot-developer terms for the Poe platform.",
+                "Revised dispute-resolution provisions."
+            ],
+            "non_changes_to_ignore": [
+                "Quora Q&A scope is unchanged; Poe provisions are additive."
+            ]
+        },
+        {
+            "id": "b-substantial-039",
+            "service_name": "23andMe Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. ARBITRATION. Disputes governed by general legal procedures; class actions not specifically waived.\n2. NOTICE WINDOW. Longer dispute-notice window.\n3. CLASS ACTIONS. Not waived in this version.\n4. EFFECTIVE DATE. Pre-data-breach version.",
+            "new_version": "1. ARBITRATION. Added a mandatory-arbitration clause.\n2. NOTICE WINDOW. Shortened dispute-notice window.\n3. CLASS ACTIONS. Class-action rights limited.\n4. OPT-OUT. 30-day opt-out window for the new arbitration terms.\n5. EFFECTIVE DATE. Update introduced shortly after the October 2023 data breach.",
+            "ground_truth_changes": [
+                "Added mandatory-arbitration clause for disputes.",
+                "Limited class-action rights.",
+                "Shortened dispute-notice window.",
+                "Provided a 30-day opt-out window for the new arbitration terms."
+            ],
+            "non_changes_to_ignore": [
+                "Customers continued to need a way to dispute issues; the change is the arbitration framework, not the existence of dispute resolution."
+            ]
+        },
+        {
+            "id": "b-mixed-040",
+            "service_name": "Twitch Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. USER CONTENT. Standard license over clips and replays.\n2. BRANDED CONTENT. General disclosure rules.\n3. ARBITRATION. Standard procedures.",
+            "new_version": "1. USER CONTENT. License expanded to cover AI-generated highlights.\n2. BRANDED CONTENT. New, clearer Branded Content disclosure rules.\n3. ARBITRATION. Mass-arbitration procedure updates.",
+            "ground_truth_changes": [
+                "User-Content license expanded to cover AI-generated highlights.",
+                "Added clearer Branded Content disclosure rules.",
+                "Mass-arbitration procedures updated."
+            ],
+            "non_changes_to_ignore": [
+                "Standard clips/replays license framing predates this change."
+            ]
+        },
+        {
+            "id": "b-mixed-041",
+            "service_name": "Roblox Terms of Use",
+            "case_type": "mixed",
+            "old_version": "1. ACCOUNTS. Standard account rules; some provisions for under-13 users.\n2. PARENTAL CONSENT. Standard COPPA-style flows.\n3. ROBUX / DEVEX. Standard creator-payout structure.\n4. AI. No Studio-Assistant-specific clauses.\n5. ARBITRATION. Standard arbitration / class-waiver.",
+            "new_version": "1. ACCOUNTS. Default-private accounts for under-13 users.\n2. PARENTAL CONSENT. Improved parental-consent flows.\n3. ROBUX / DEVEX. Robux/DevEx provisions revised.\n4. AI. Adds rules for Studio Assistant and avatar-creation generative-AI tools.\n5. ARBITRATION. Arbitration class-waiver section updated.",
+            "ground_truth_changes": [
+                "Defaulted under-13 accounts to private.",
+                "Improved parental-consent flows.",
+                "Revised Robux / DevEx provisions.",
+                "Added rules for generative-AI Studio Assistant and avatar-creation tools.",
+                "Updated arbitration class-waiver section."
+            ],
+            "non_changes_to_ignore": [
+                "COPPA-style under-13 framework is preserved (defaults and flows changed, not the legal basis)."
+            ]
+        },
+        {
+            "id": "b-substantial-042",
+            "service_name": "Steam Subscriber Agreement",
+            "case_type": "substantial",
+            "old_version": "1. ARBITRATION. Mandatory binding arbitration.\n2. CLASS ACTIONS. Class-action waiver in effect.\n3. VENUE. Disputes resolved through arbitration only.",
+            "new_version": "1. ARBITRATION. Mandatory-arbitration provisions removed entirely.\n2. CLASS ACTIONS. Class-action waiver removed.\n3. VENUE. Disputes are now resolved in court, subject to applicable venue rules.",
+            "ground_truth_changes": [
+                "Removed mandatory binding arbitration entirely.",
+                "Removed class-action waiver.",
+                "Disputes now resolved in court rather than via arbitration."
+            ],
+            "non_changes_to_ignore": []
+        },
+        {
+            "id": "b-mixed-043",
+            "service_name": "Epic Games Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. ACCOUNTS. Standard Fortnite / Epic Account terms.\n2. UGC / UEFN. Limited creator-payout language.\n3. EU CONSUMER RIGHTS. Standard pre-DMA references.\n4. DISPUTES. Standard provisions.",
+            "new_version": "1. ACCOUNTS. Revised Fortnite / Epic Account language.\n2. UGC / UEFN. New User-Generated Content (UEFN) provisions and creator-payout rules.\n3. EU CONSUMER RIGHTS. Updated EU-specific consumer-rights language post-DMA.\n4. DISPUTES. Refreshed dispute-resolution sections.",
+            "ground_truth_changes": [
+                "Added UEFN-specific User-Generated Content provisions and creator-payout rules.",
+                "Added EU-specific consumer-rights language post-DMA.",
+                "Refreshed dispute-resolution sections."
+            ],
+            "non_changes_to_ignore": [
+                "Account framing for Fortnite / Epic Account is largely preserved."
+            ]
+        },
+        {
+            "id": "b-mixed-044",
+            "service_name": "DoorDash Consumer Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. ARBITRATION. Standard arbitration provisions.\n2. DASHPASS. Standard auto-renewal language.\n3. TIPPING / REFUNDS. Standard mechanics.\n4. AI. No AI menu-summary references.",
+            "new_version": "1. ARBITRATION. Revised provisions including mass-arbitration handling.\n2. DASHPASS. New auto-renewal clarifications.\n3. TIPPING / REFUNDS. Updated tipping and refund mechanics.\n4. AI. New sections covering AI-generated menu summaries and order suggestions.",
+            "ground_truth_changes": [
+                "Revised arbitration provisions, including mass-arbitration handling.",
+                "Added DashPass auto-renewal clarifications.",
+                "Updated tipping and refund mechanics.",
+                "Added AI-generated menu summary and order-suggestion provisions."
+            ],
+            "non_changes_to_ignore": [
+                "DashPass continues to be subscription-based."
+            ]
+        },
+        {
+            "id": "b-mixed-045",
+            "service_name": "Uber US Terms of Use",
+            "case_type": "mixed",
+            "old_version": "1. ARBITRATION. Standard arbitration provisions pre-NJ Uber Eats decision.\n2. AI. No AI trip-summary references.\n3. THIRD-PARTY LIABILITY. Standard liability limitations.",
+            "new_version": "1. ARBITRATION. Revised after the New Jersey Uber Eats arbitration decision.\n2. AI. Added language on AI-generated trip summaries and driver/rider safety features.\n3. THIRD-PARTY LIABILITY. Expanded liability limitations regarding third-party services.",
+            "ground_truth_changes": [
+                "Arbitration provisions revised after the NJ Uber Eats arbitration decision.",
+                "Added language on AI-generated trip summaries and safety features.",
+                "Expanded liability limitations regarding third-party services."
+            ],
+            "non_changes_to_ignore": [
+                "Document continues to govern the Uber US user relationship."
+            ]
+        },
+        {
+            "id": "b-mixed-046",
+            "service_name": "Airbnb Terms of Service",
+            "case_type": "mixed",
+            "old_version": "1. EXPERIENCES. Standard Experiences provisions.\n2. CANCELLATION. Existing cancellation/refund policies.\n3. AI. No anti-party-tool references.\n4. ARBITRATION. Standard provisions.",
+            "new_version": "1. EXPERIENCES. Adds Anywhere/Icons experience terms.\n2. CANCELLATION. Revised cancellation/refund policies; AirCover updates.\n3. AI. New language on automated/AI-driven listing detection (e.g., anti-party tools).\n4. ARBITRATION. Updated arbitration provisions.",
+            "ground_truth_changes": [
+                "Added Anywhere/Icons experience terms.",
+                "Revised cancellation/refund policies and AirCover terms.",
+                "Added automated/AI-driven anti-party-tool disclosure.",
+                "Updated arbitration provisions."
+            ],
+            "non_changes_to_ignore": [
+                "Experiences product existed before (the new product extension is additive)."
+            ]
+        },
+        {
+            "id": "b-mixed-047",
+            "service_name": "Cloudflare Self-Serve Subscription Agreement",
+            "case_type": "mixed",
+            "old_version": "1. AI PRODUCTS. No AI Gateway or Workers AI specific terms.\n2. CUSTOMER PROMPTS. No specific carve-out.\n3. ABUSE. Standard acceptable-use rules.",
+            "new_version": "1. AI PRODUCTS. Added AI Gateway and Workers AI specific terms.\n2. CUSTOMER PROMPTS. Clarified that customer prompts/outputs in Workers AI are not used to train Cloudflare models.\n3. ABUSE. Stronger anti-scraping and AI-bot abuse rules.",
+            "ground_truth_changes": [
+                "Added AI Gateway and Workers AI specific terms.",
+                "Clarified that customer prompts/outputs in Workers AI are not used to train Cloudflare models.",
+                "Strengthened anti-scraping and AI-bot abuse rules."
+            ],
+            "non_changes_to_ignore": [
+                "Acceptable-use rules existed before (the AI-bot specifics are the new addition)."
+            ]
+        },
+        {
+            "id": "b-mixed-048",
+            "service_name": "Stripe Services Agreement (US)",
+            "case_type": "mixed",
+            "old_version": "1. CONNECT. Existing Connect onboarding obligations.\n2. RADAR. Standard fraud-prevention provisions.\n3. DISPUTES. Existing chargeback handling.\n4. INDEMNIFICATION. Standard indemnification and liability caps.",
+            "new_version": "1. CONNECT. Revised Connect platform-onboarding obligations.\n2. RADAR. New Radar / AI fraud-prevention provisions.\n3. DISPUTES. Refreshed dispute and chargeback handling.\n4. INDEMNIFICATION. Updated indemnification and liability caps.",
+            "ground_truth_changes": [
+                "Revised Connect platform-onboarding obligations.",
+                "Added Radar / AI fraud-prevention provisions.",
+                "Refreshed dispute and chargeback handling sections.",
+                "Updated indemnification and liability caps."
+            ],
+            "non_changes_to_ignore": [
+                "Connect product existed before (the obligations were revised, not introduced)."
+            ]
+        },
+        {
+            "id": "b-substantial-049",
+            "service_name": "Shopify Terms of Service",
+            "case_type": "substantial",
+            "old_version": "1. AI. No Shopify-Magic-specific provisions.\n2. STORE CONTENT. Standard merchant-content licensing.\n3. PAYOUTS / RISK. Existing payouts and risk-scoring sections.",
+            "new_version": "1. AI. Adds Shopify Magic / AI-feature provisions.\n2. STORE CONTENT. Clarifies that merchant store content powers AI features only at the merchant's store level — no shared model training.\n3. PAYOUTS / RISK. Revised payouts and risk-scoring sections.",
+            "ground_truth_changes": [
+                "Added Shopify Magic / AI-feature provisions.",
+                "Clarified that merchant store content is used only for that merchant's AI features, not for shared model training.",
+                "Revised payouts and risk-scoring sections."
+            ],
+            "non_changes_to_ignore": [
+                "Merchant ownership of store content is unchanged."
+            ]
+        },
+        {
+            "id": "b-substantial-050",
+            "service_name": "Wikimedia Terms of Use",
+            "case_type": "substantial",
+            "old_version": "1. SCOPE. 2014 version: standard contributor agreement and acceptable-use rules.\n2. UCoC. No Universal Code of Conduct as a binding policy.\n3. PAID CONTRIBUTIONS. Limited disclosure rules.\n4. ACCOUNT SECURITY. Pre-modernization provisions.\n5. AI / AUTOMATED EDITS. No specific clause.",
+            "new_version": "1. SCOPE. 2023 version: first major rewrite since 2014.\n2. UCoC. Universal Code of Conduct adopted as binding.\n3. PAID CONTRIBUTIONS. Strengthened paid-contributions disclosure rules.\n4. ACCOUNT SECURITY. Modernized account-security provisions.\n5. AI / AUTOMATED EDITS. Added explicit language covering automated tools and AI-assisted edits.",
+            "ground_truth_changes": [
+                "Adopted the Universal Code of Conduct as binding on contributors.",
+                "Strengthened paid-contributions disclosure rules.",
+                "Modernized account-security and dispute-resolution provisions.",
+                "Added explicit language covering automated tools and AI-assisted edits."
+            ],
+            "non_changes_to_ignore": [
+                "Wikimedia continues to govern the same set of projects (Wikipedia, Commons, etc.).",
+                "Document continues to be a contributor agreement — its purpose is unchanged."
+            ]
+        }
     ]
-  }
+}

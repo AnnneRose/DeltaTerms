@@ -7,4 +7,5 @@ tos_bot_venv/*
 .serena/
 .env
 conversation_logs/
-evaluation/results/*
+# evaluation/results/*
+evaluation/datasets/merge_new_tos_items/*
