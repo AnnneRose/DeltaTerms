@@ -98,3 +98,52 @@ def calibrate(
     run_dir: str,
     threshold: float = 0.8,
     threshold_window: int = 1,
+) -> Dict[str, CalibrationReport]:
+    """Per-metric agreement: |human_score - judge_mean_score| <= 1 (on 0..5)."""
+    cases, reviews = _load_run(run_dir)
+
+    # Aggregate human scores: for each (test_id, metric), use the mean across
+    # reviewers (so multiple reviewers don't double-count).
+    human_per_metric: Dict[str, Dict[str, List[int]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    for review in reviews:
+        tid = review["test_id"]
+        for metric, score in (review.get("scores") or {}).items():
+            human_per_metric[metric][tid].append(int(score))
+
+    reports: Dict[str, CalibrationReport] = {}
+    for metric, by_case in human_per_metric.items():
+        diffs: List[float] = []
+        signed_diffs: List[float] = []
+        for tid, scores in by_case.items():
+            if not scores:
+                continue
+            case = cases.get(tid)
+            if not case:
+                continue
+            judge = case.get("metrics", {}).get(metric)
+            if not judge:
+                continue
+            human_mean = sum(scores) / len(scores)
+            judge_mean = float(judge.get("mean_score", 0.0))
+            diff = judge_mean - human_mean
+            diffs.append(abs(diff))
+            signed_diffs.append(diff)
+
+        n = len(diffs)
+        if n == 0:
+            continue
+        within = sum(1 for d in diffs if d <= threshold_window) / n
+        bias = sum(signed_diffs) / n
+        median_abs = _median(diffs)
+        reports[metric] = CalibrationReport(
+            metric=metric,
+            n_compared=n,
+            within_one_rate=round(within, 4),
+            mean_judge_minus_human=round(bias, 4),
+            median_abs_diff=round(median_abs, 4),
+            passes_threshold=within >= threshold,
+            threshold=threshold,
+        )
+    return reports
