@@ -98,3 +98,61 @@ FAITHFULNESS = Metric(
         "5: Every claim is verifiable in the source ToS.\n"
         "4: All claims grounded; one or two minor wording approximations.\n"
         "3: Most claims grounded, but at least one claim is unsupported or misstated.\n"
+        "2: Several claims unsupported or misstated.\n"
+        "1: Majority of claims unsupported.\n"
+        "0: Response contains fabricated clauses or material misrepresentations."
+    ),
+    applies_to=ALL_MODES,
+)
+
+HARM_FLAGGING_ACCURACY = Metric(
+    name="harm_flagging_accuracy",
+    description=(
+        "Whether the bot correctly identifies and flags genuinely concerning "
+        "clauses (broad data sharing, forced arbitration, class-action waivers, "
+        "unilateral modification, perpetual licenses, etc.) without flagging "
+        "routine boilerplate. Requires comparison against the curated "
+        "ground-truth labels."
+    ),
+    rubric=(
+        "5: Flags all genuinely harmful clauses, no false positives.\n"
+        "4: Flags all genuinely harmful clauses, minor over-flagging.\n"
+        "3: Catches most harmful clauses but misses one, or flags one routine clause as harmful.\n"
+        "2: Misses several harmful clauses or flags multiple routine clauses.\n"
+        "1: Catches only one harmful clause or floods with false flags.\n"
+        "0: Misses critical harmful clauses or floods response with false flags."
+    ),
+    applies_to=(MODE_SUMMARY, MODE_DELTA),
+)
+
+DELTA_PRECISION = Metric(
+    name="delta_precision",
+    description=(
+        "For delta summaries: did the bot capture the material changes between "
+        "old and new ToS, exclude cosmetic-only changes, and avoid inventing "
+        "phantom changes?"
+    ),
+    rubric=(
+        "5: All material changes captured, no fabricated changes, no cosmetic noise.\n"
+        "4: All material changes captured, minimal cosmetic noise or one fabricated minor change.\n"
+        "3: Major changes captured but minor changes missed or some noise included.\n"
+        "2: Most changes missed or substantial noise included.\n"
+        "1: Only one material change captured, or majority fabricated.\n"
+        "0: Reports phantom changes or misses the most material change."
+    ),
+    applies_to=(MODE_DELTA,),
+)
+
+
+ALL_METRICS: tuple = (
+    ANSWER_RELEVANCY,
+    TASK_COMPLETION,
+    PROTOCOL_ADHERENCE,
+    FAITHFULNESS,
+    HARM_FLAGGING_ACCURACY,
+    DELTA_PRECISION,
+)
+
+
+def metrics_for_mode(mode: str) -> Iterable[Metric]:
+    return tuple(m for m in ALL_METRICS if m.applicable(mode))

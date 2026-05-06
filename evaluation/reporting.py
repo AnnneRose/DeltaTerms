@@ -75,7 +75,6 @@ def summarize(run_dir: str) -> Dict[str, MetricSummary]:
         )
     return out
 
-
 def worst_cases(run_dir: str, metric: str, k: int = 10) -> List[dict]:
     """Top-k worst-performing cases for a given metric."""
     cases = _load_jsonl(os.path.join(run_dir, "results.jsonl"))
@@ -97,3 +96,47 @@ def worst_cases(run_dir: str, metric: str, k: int = 10) -> List[dict]:
         for score, case in rows[:k]
     ]
 
+
+def compare_runs(
+    baseline_dir: str,
+    candidate_dir: str,
+    threshold: float = REGRESSION_THRESHOLD,
+) -> List[RegressionFinding]:
+    base = summarize(baseline_dir)
+    cand = summarize(candidate_dir)
+    findings: List[RegressionFinding] = []
+    for metric, cand_summary in cand.items():
+        base_summary = base.get(metric)
+        if not base_summary:
+            continue
+        delta = cand_summary.mean_normalized - base_summary.mean_normalized
+        findings.append(RegressionFinding(
+            metric=metric,
+            baseline=base_summary.mean_normalized,
+            candidate=cand_summary.mean_normalized,
+            delta=round(delta, 4),
+            is_regression=(delta < -threshold),
+        ))
+    return findings
+
+
+def write_summary_report(
+    run_dir: str,
+    baseline_dir: Optional[str] = None,
+) -> str:
+    summary = summarize(run_dir)
+    payload: dict = {
+        "run_dir": run_dir,
+        "metrics": {m: s.as_dict() for m, s in summary.items()},
+        "worst_cases": {m: worst_cases(run_dir, m) for m in summary.keys()},
+    }
+    if baseline_dir:
+        regressions = compare_runs(baseline_dir, run_dir)
+        payload["baseline_dir"] = baseline_dir
+        payload["regressions"] = [r.as_dict() for r in regressions]
+        payload["any_regression"] = any(r.is_regression for r in regressions)
+
+    path = os.path.join(run_dir, "summary_report.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+    return path

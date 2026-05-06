@@ -80,8 +80,7 @@ def _load_run(run_dir: str) -> Tuple[Dict[str, dict], List[dict]]:
                 reviews.append(json.loads(line))
     return cases, reviews
 
-
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 # Calibration math
 
 
@@ -147,3 +146,84 @@ def calibrate(
             threshold=threshold,
         )
     return reports
+
+#---------------------------------------------------------------------------
+# Cohen's kappa for inter-rater reliability
+
+
+def _cohens_kappa(rater_a: List[int], rater_b: List[int]) -> float:
+    """Cohen's kappa for two raters scoring on the same 0..5 ordinal scale."""
+    if len(rater_a) != len(rater_b) or not rater_a:
+        return 0.0
+    n = len(rater_a)
+    categories = sorted(set(rater_a) | set(rater_b))
+    agree = sum(1 for a, b in zip(rater_a, rater_b) if a == b) / n
+    # Expected agreement under independence
+    expected = 0.0
+    for c in categories:
+        p_a = sum(1 for x in rater_a if x == c) / n
+        p_b = sum(1 for x in rater_b if x == c) / n
+        expected += p_a * p_b
+    if math.isclose(expected, 1.0):
+        return 1.0
+    return (agree - expected) / (1.0 - expected)
+
+
+def inter_rater_reliability(run_dir: str) -> List[KappaReport]:
+    """Compute Cohen's kappa for every reviewer pair on every metric.
+
+    Only pairs with at least 5 shared cases are reported.
+    """
+    _, reviews = _load_run(run_dir)
+    # reviewer_id -> metric -> test_id -> score
+    by_reviewer: Dict[str, Dict[str, Dict[str, int]]] = defaultdict(
+        lambda: defaultdict(dict)
+    )
+    for review in reviews:
+        rid = review["reviewer_id"]
+        tid = review["test_id"]
+        for metric, score in (review.get("scores") or {}).items():
+            by_reviewer[rid][metric][tid] = int(score)
+
+    reports: List[KappaReport] = []
+    reviewer_ids = sorted(by_reviewer.keys())
+    for i in range(len(reviewer_ids)):
+        for j in range(i + 1, len(reviewer_ids)):
+            a, b = reviewer_ids[i], reviewer_ids[j]
+            metrics = set(by_reviewer[a].keys()) & set(by_reviewer[b].keys())
+            for metric in sorted(metrics):
+                shared = (
+                    set(by_reviewer[a][metric].keys())
+                    & set(by_reviewer[b][metric].keys())
+                )
+                if len(shared) < 5:
+                    continue
+                vals_a = [by_reviewer[a][metric][t] for t in shared]
+                vals_b = [by_reviewer[b][metric][t] for t in shared]
+                kappa = _cohens_kappa(vals_a, vals_b)
+                reports.append(KappaReport(
+                    pair=(a, b),
+                    metric=metric,
+                    n_compared=len(shared),
+                    cohens_kappa=round(kappa, 4),
+                    needs_rubric_review=kappa < 0.6,
+                ))
+    return reports
+
+
+def write_calibration_report(run_dir: str) -> str:
+    """Persist the calibration + kappa report alongside the run."""
+    calibration = calibrate(run_dir)
+    kappas = inter_rater_reliability(run_dir)
+    path = os.path.join(run_dir, "calibration_report.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "calibration": {m: r.as_dict() for m, r in calibration.items()},
+                "inter_rater": [k.as_dict() for k in kappas],
+            },
+            f,
+            indent=2,
+        )
+    return path
+
