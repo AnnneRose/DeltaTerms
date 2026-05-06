@@ -3,4 +3,11 @@ node_modules
 __pycache__/
 dist/
 .python-version
+<<<<<<< HEAD
 tos_bot_venv/* 
+=======
+tos_bot_venv/*
+.serena/
+.env
+conversation_logs/
+>>>>>>> main

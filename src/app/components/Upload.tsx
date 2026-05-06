@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { Link, Upload as UploadIcon, FileText } from "lucide-react";
+
+type UploadLocationState = {
+  serviceName?: string;
+  url?: string;
+};
 
 export function Upload() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const prefill = (location.state as UploadLocationState | null) ?? {};
+  const isUpdate = Boolean(prefill.serviceName);
   // const [activeTab, setActiveTab] = useState<"link" | "text" >("link");
-  const [serviceName, setServiceName] = useState("");
-  const [url, setUrl] = useState("");
+  const [serviceName, setServiceName] = useState(prefill.serviceName ?? "");
+  const [url, setUrl] = useState(prefill.url ?? "");
   const [tosText, setTosText] = useState("");
   // const [file, setFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -51,8 +59,7 @@ export function Upload() {
       const result = await response.json();
       console.log("Backend response:", result);
 
-      const mockServiceId = Math.random().toString(36).substr(2, 9);
-      navigate(`/chat/${mockServiceId}`);
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
       alert("There was an error submitting the form. Check the console for details.");
@@ -70,8 +77,14 @@ export function Upload() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">Add/Update New ToS</h1>
-        <p className="text-gray-600">Upload or link a Terms of Service document to track</p>
+        <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+          {isUpdate ? `Update ToS for ${prefill.serviceName}` : "Add New ToS"}
+        </h1>
+        <p className="text-gray-600">
+          {isUpdate
+            ? "Paste the latest version. We'll compare it against the previous one."
+            : "Upload or link a Terms of Service document to track"}
+        </p>
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6">

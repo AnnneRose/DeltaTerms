@@ -9,71 +9,121 @@ interface Message {
   timestamp: Date;
 }
 
-// Mock data for the service
-const mockServiceData: Record<string, { name: string; summary: string; flags: string[] }> = {
-  "1": {
-    name: "Google",
-    summary: "Recent changes detected in Google's Terms of Service (Updated March 15, 2026)",
-    flags: [
-      "Data retention period extended from 18 to 24 months",
-      "New clause allowing data sharing with third-party AI training partners",
-      "Updated dispute resolution requiring binding arbitration",
-    ],
-  },
+type ServiceData = {
+  name: string;
+  delta: string | null;
 };
 
 export function Chat() {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([]);
+  const [serviceData, setServiceData] = useState<ServiceData | null>(null);
   const [inputValue, setInputValue] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
+  const conversationIdRef = useRef<string>(
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID().slice(0, 8)
+      : Math.random().toString(36).slice(2, 10)
+  );
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const serviceData = mockServiceData[serviceId || ""] || {
-    name: "New Service",
-    summary: "Terms of Service uploaded successfully. Ask me anything about the content!",
-    flags: ["First-time analysis - no previous version to compare"],
-  };
-
   useEffect(() => {
-    // Initialize with AI summary
-    const initialMessage: Message = {
-      id: "init",
-      role: "assistant",
-      content: `📋 **${serviceData.name}**\n\n${serviceData.summary}\n\n**⚠️ Key Flags:**\n${serviceData.flags.map((flag) => `• ${flag}`).join("\n")}\n\nFeel free to ask me any questions about these terms!`,
-      timestamp: new Date(),
+    let cancelled = false;
+    async function loadService() {
+      try {
+        const response = await fetch("/api/tos-history", { credentials: "include" });
+        if (!response.ok) throw new Error(`Request failed (${response.status})`);
+        const items: { id: number; chatbot_name: string; delta: string | null }[] =
+          await response.json();
+        const match = items.find((item) => String(item.id) === serviceId);
+        if (cancelled || !match) return;
+
+        const service: ServiceData = {
+          name: match.chatbot_name,
+          delta: match.delta,
+        };
+        setServiceData(service);
+
+        const body = service.delta
+          ? `Here's a summary of changes detected in the latest Terms of Service:\n\n**⚠️ Key Changes:**\n${service.delta}`
+          : "This is the first version uploaded for this service — no previous terms to compare against yet.";
+
+        setMessages([
+          {
+            id: "init",
+            role: "assistant",
+            content: `📋 **${service.name}**\n\n${body}\n\nFeel free to ask me any questions about these terms!`,
+            timestamp: new Date(),
+          },
+        ]);
+      } catch (err) {
+        console.error("Failed to load service:", err);
+      }
+    }
+    void loadService();
+    return () => {
+      cancelled = true;
     };
-    setMessages([initialMessage]);
   }, [serviceId]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    const trimmed = inputValue.trim();
+    if (!trimmed || isSending || !serviceId) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: inputValue,
+      content: trimmed,
       timestamp: new Date(),
     };
 
+    const historyForRequest = messages.map((m) => ({
+      role: m.role,
+      content: m.content,
+    }));
+
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
+    setIsSending(true);
+    setSendError(null);
 
-    // Mock AI response
-    setTimeout(() => {
+    try {
+      const response = await fetch(`/api/chat/${serviceId}`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: trimmed,
+          history: historyForRequest,
+          conversation_id: conversationIdRef.current,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || `Request failed (${response.status})`);
+      }
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: `Based on the Terms of Service, here's what I found regarding "${inputValue}":\n\nThis is a mock response. In the full version, the AI would analyze the actual ToS content and provide detailed answers about specific clauses, implications, and comparisons with previous versions.`,
+        content: data.reply ?? "",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
+    } catch (err) {
+      setSendError(err instanceof Error ? err.message : "Failed to get a reply");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -90,7 +140,7 @@ export function Chat() {
 
       <div className="bg-white rounded-lg shadow-md h-full flex flex-col">
         <div className="border-b border-gray-200 p-4">
-          <h2 className="text-xl font-semibold text-gray-900">{serviceData.name}</h2>
+          <h2 className="text-xl font-semibold text-gray-900">{serviceData?.name ?? "Loading…"}</h2>
           <p className="text-sm text-gray-500">AI-powered ToS Analysis & Q&A</p>
         </div>
 
@@ -141,10 +191,22 @@ export function Chat() {
               </div>
             </div>
           ))}
+          {isSending && (
+            <div className="flex justify-start" aria-live="polite">
+              <div className="max-w-[80%] rounded-lg p-4 bg-gray-100 text-gray-600 italic">
+                Thinking…
+              </div>
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
 
         <div className="border-t border-gray-200 p-4">
+          {sendError && (
+            <div className="mb-2 p-2 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm" role="alert">
+              {sendError}
+            </div>
+          )}
           <form onSubmit={handleSend} className="flex gap-2">
             <input
               type="text"
@@ -156,7 +218,7 @@ export function Chat() {
             <button
               type="submit"
               className="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
-              disabled={!inputValue.trim()}
+              disabled={!inputValue.trim() || isSending}
             >
               <Send size={20} />
             </button>
